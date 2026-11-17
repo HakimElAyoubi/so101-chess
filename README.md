@@ -237,8 +237,11 @@ scripts/play.sh --sync --model-repo YOUR_HF_USERNAME/smolvla_chess_skills_vision
 scripts/play_scripted_game.sh --grasp-repo YOUR_HF_USERNAME/smolvla_chess_grasp
 ```
 
-The datasets and models of the project are on the Hugging Face Hub under `LeHak0/` and are private, and the scripts use
-those names as defaults. To train on your own data, replace the dataset/repository constants in
+The project's datasets and models are on the Hugging Face Hub under [`LeHak0`](https://huggingface.co/LeHak0), and the
+scripts use those names as defaults. Public: the skill-clip and grasp datasets (`so101_chess_skills`,
+`so101_chess_grasp_skill`) and the grasp models G1 and G2 (`smolvla_chess_grasp_b`, `smolvla_chess_grasp`). The
+full-move demonstrations (`so101_chess_moves`) and skill models A, B and C (`smolvla_chess_skills`,
+`smolvla_chess_skills_vision`, `act_chess_skills`) remain private. To train on your own data, replace the dataset/repository constants in
 `goal/build_skills_dataset.py`, the dataset paths in the other builders, and the exported dataset/model names and
 validation indices in `train/launch_skills.sh` or `train/launch_grasp.sh`. The launch scripts contain the author's
 experiment settings; passing a different recorder `--repo-id` alone does not retarget the rest of the pipeline.
