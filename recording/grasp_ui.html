@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grasp Drill</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --s1: .25rem; --s2: .5rem; --s3: .75rem; --s4: 1rem; --s5: 1.5rem; --s6: 2rem;
+    --ink: #1b1b1a; --ink-2: #55554f; --ink-3: #85857d;
+    --bg: #ffffff; --panel: #f4f4f1; --rule: #dcdcd6;
+    --blue: #1d5bbf; --blue-dark: #164a9e; --blue-tint: #e8effa;
+    --red: #b8322a; --red-tint: #fbeceb; --amber-tint: #fdf4de; --green: #2c7a3b; --green-tint: #e9f4eb;
+    --sq-light: #ece6d6; --sq-dark: #b8a888;
+    --sans: "Source Sans 3", -apple-system, "Helvetica Neue", sans-serif;
+    --serif: "Source Serif 4", Georgia, serif; --mono: "Source Code Pro", ui-monospace, monospace;
+    --radius: 4px;
+  }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 1rem/1.5 var(--sans); -webkit-font-smoothing: antialiased; }
+  header { border-bottom: 1px solid var(--rule); padding: var(--s4) var(--s5); display: flex; flex-wrap: wrap; gap: var(--s2) var(--s5); align-items: baseline; justify-content: space-between; }
+  header h1 { font: 600 1.375rem/1.2 var(--serif); margin: 0; }
+  .byline { color: var(--ink-2); font-size: .9375rem; } .byline b { color: var(--ink); font-variant-numeric: tabular-nums; }
+  main { max-width: 1320px; margin: 0 auto; padding: var(--s5); display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: var(--s6); }
+  @media (max-width: 960px) { main { grid-template-columns: minmax(0, 1fr); padding: var(--s4); gap: var(--s5); } }
+  h2 { font: 600 .8125rem/1.3 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); margin: 0 0 var(--s3); }
+  section + section { margin-top: var(--s5); padding-top: var(--s5); border-top: 1px solid var(--rule); }
+  .cam { position: relative; background: #000; border-radius: var(--radius); overflow: hidden; aspect-ratio: 16 / 9; outline: 3px solid transparent; outline-offset: 2px; }
+  .cam img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .cam.recording { outline-color: var(--red); }
+  .rec { position: absolute; top: var(--s3); left: var(--s3); display: none; background: var(--red); color: #fff; font: 700 .875rem/1 var(--sans); padding: var(--s2) var(--s3); border-radius: var(--radius); font-variant-numeric: tabular-nums; }
+  .cam.recording .rec { display: block; }
+  .note { color: var(--ink-2); font-size: .875rem; margin: var(--s3) 0 0; }
+  .phase { font: 600 .8125rem/1.3 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--blue); }
+  .instruction { font: 600 1.375rem/1.35 var(--serif); margin: var(--s2) 0 var(--s4); }
+  .spotrow { display: flex; gap: var(--s5); align-items: center; }
+  .spotrow svg { flex: none; }
+  .msg { padding: var(--s3) var(--s4); border-radius: var(--radius); margin: var(--s4) 0; display: none; }
+  .msg.info, .msg.good, .msg.warn, .msg.err { display: block; }
+  .msg.info { background: var(--blue-tint); } .msg.good { background: var(--green-tint); } .msg.warn { background: var(--amber-tint); } .msg.err { background: var(--red-tint); color: var(--red); }
+  .actions { display: flex; flex-wrap: wrap; gap: var(--s2); }
+  button { font: 600 .9375rem/1 var(--sans); padding: var(--s3) var(--s4); border-radius: var(--radius); border: 1px solid var(--rule); background: #fff; color: var(--ink); cursor: pointer; }
+  button:hover { border-color: var(--ink-3); }
+  button.next { background: var(--blue); border-color: var(--blue); color: #fff; } button.next:hover { background: var(--blue-dark); }
+  button.danger { color: var(--red); border-color: #e2b4b0; }
+  kbd { font: 500 .75rem/1 var(--mono); margin-left: var(--s2); padding: 2px 5px; border: 1px solid currentColor; border-radius: 3px; opacity: .75; }
+  table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+  td { padding: var(--s2) 0; border-bottom: 1px solid var(--rule); } td.n { text-align: right; }
+  .bar { height: 6px; background: var(--panel); border-radius: 3px; overflow: hidden; margin-top: var(--s2); } .bar i { display: block; height: 100%; background: var(--blue); }
+</style>
+</head>
+<body>
+<header>
+  <h1>SO-101 grasp drill</h1>
+  <div class="byline">dataset <b id="repo"></b> · <b id="eps">0</b> episodes · board pose <b id="board"></b> · leader→follower <b id="tele">-</b></div>
+</header>
+<main>
+  <div>
+    <section>
+      <h2>Wrist camera</h2>
+      <div class="cam" id="cam"><img src="/stream.mjpg" alt="Live wrist camera"><div class="rec" id="rec">REC 0.0 s</div></div>
+      <p class="note">At the hover: the green dot is what the model will see (the square's centre), the white ring is where the piece should stand.</p>
+    </section>
+  </div>
+  <div>
+    <section>
+      <div class="msg" id="err"></div>
+      <div class="phase" id="phase"></div>
+      <p class="instruction" id="instruction"></p>
+      <div class="spotrow"><svg id="spot" width="132" height="132" viewBox="-16 -16 132 132" aria-label="Where in the square"></svg>
+        <p class="note" id="hint" style="margin: 0"></p></div>
+      <div class="msg" id="msg"></div>
+      <div class="actions" id="btns"></div>
+    </section>
+    <section>
+      <h2>Progress</h2>
+      <table><tbody id="parts"></tbody></table>
+      <div class="bar"><i id="bar" style="width: 0"></i></div>
+      <p class="note">Space starts / stops, Enter takes the arm to the hover, R discards a recording, S skips. The drill resumes where it stopped.</p>
+    </section>
+  </div>
+</main>
+<script>
+const $ = id => document.getElementById(id);
+let S = null, lastBtns = "";
+const cmd = c => fetch("/cmd", {method: "POST", body: JSON.stringify({cmd: c})});
+const B = (c, label, cls = "", key = "") => `<button class="${cls}" onclick="cmd('${c}')">${label}${key ? `<kbd>${key}</kbd>` : ""}</button>`;
+const PARTS = {A: "black pieces at home", C: "white pieces at home", B: "tours over the open board"};
+const TITLES = {place: "Set the piece", moving: "Arms to the hover", ready: "At the hover", recording: "Recording", saving: "Saving", closing: "Saving the dataset", done: "Done"};
+function spotSvg(e, mm) {
+  // the square as seen with rank 8 at the top and the h-file on the right; the dot is where the piece goes
+  const k = 100 / 28, x = 50 + (e ? e.offset_mm[1] : 0) * k, y = 50 - (e ? e.offset_mm[0] : 0) * k;
+  return `<rect x="0" y="0" width="100" height="100" fill="var(--sq-light)" stroke="var(--sq-dark)"/>
+    <circle cx="50" cy="50" r="3" fill="var(--green)"/>
+    <circle cx="${x}" cy="${y}" r="17" fill="none" stroke="var(--ink)" stroke-width="2.5"/>
+    <text x="50" y="-5" text-anchor="middle" font-size="9" fill="var(--ink-2)">rank 8 side</text>
+    <text x="50" y="112" text-anchor="middle" font-size="9" fill="var(--ink-2)">rank 1 side</text>
+    <text x="-6" y="53" text-anchor="end" font-size="9" fill="var(--ink-2)">a</text><text x="106" y="53" font-size="9" fill="var(--ink-2)">h</text>`;
+}
+function render(s) {
+  S = s; const ph = s.phase, e = s.cur;
+  $("repo").textContent = s.repo + (s.fake ? " (dry run)" : ""); $("eps").textContent = s.episodes; $("board").textContent = s.board; $("tele").textContent = s.teleop && s.teleop.hz ? (s.teleop.hz + " Hz, " + s.teleop.ms + " ms") : "-";
+  $("phase").textContent = (TITLES[ph] || ph) + (e ? ` · grasp ${s.idx + 1} of ${s.n} · part ${e.part}: ${PARTS[e.part]}` : "");
+  $("instruction").textContent = e ? e.text : "All grasps recorded.";
+  $("spot").innerHTML = spotSvg(e);
+  $("hint").textContent = !e ? "" : ph === "place" ? "Place it by hand (or with the arm: the follower follows the leader), then take the arm to the hover."
+    : ph === "moving" ? `Moving ${s.move_pct}%. Hands off the leader.` : ph === "ready" ? "Check the piece against the ring, take the leader handle, then Start."
+    : ph === "recording" ? "Grasp, lift ~3 cm, hold a moment, Stop." : "";
+  $("msg").className = "msg " + (s.msg ? s.msg_kind : ""); $("msg").textContent = s.msg;
+  $("err").className = "msg " + (s.error ? "err" : ""); $("err").textContent = s.error;
+  $("cam").classList.toggle("recording", ph === "recording"); $("rec").textContent = `REC ${s.rec_s.toFixed(1)} s`;
+  let b = "";
+  if (ph === "place") b = B("hover", "Arm to the hover", "next", "Enter") + B("skip", "Skip", "", "S") + (s.idx > 0 ? B("back", "Back one") : "") + B("finish", "Finish and upload", "danger");
+  if (ph === "ready") b = B("start", "Start recording", "next", "Space") + B("follow", "Give the arm back") + B("skip", "Skip", "", "S");
+  if (ph === "recording") b = B("stop", "Stop and save", "next", "Space") + B("redo", "Discard", "danger", "R");
+  if (ph === "done" && s.episodes) b = B("finish", "Finish and upload", "next");
+  const key = ph + s.idx + s.episodes; if (key !== lastBtns) { $("btns").innerHTML = b; lastBtns = key; }
+  $("parts").innerHTML = ["A", "C", "B"].map(p => `<tr><td>Part ${p} · ${PARTS[p]}</td><td class="n">${s.parts[p][0]} / ${s.parts[p][1]}</td></tr>`).join("")
+    + `<tr><td>This session</td><td class="n">${s.session_eps}</td></tr>`;
+  $("bar").style.width = `${100 * s.done / s.n}%`;
+}
+async function poll() {
+  try { render(await (await fetch("/state")).json()); }
+  catch (e) { $("err").className = "msg err"; $("err").textContent = S && S.phase === "done" ? "Recorder closed." : "Lost contact with the recorder. Is the Terminal window still open?"; }
+  setTimeout(poll, 150);
+}
+poll();
+document.addEventListener("keydown", e => {
+  if (!S || e.repeat || e.metaKey || e.ctrlKey) return;
+  const k = e.key.toLowerCase();
+  if (k === " ") { e.preventDefault(); if (S.phase === "ready") cmd("start"); else if (S.phase === "recording") cmd("stop"); }
+  else if (k === "enter" && S.phase === "place") cmd("hover");
+  else if (k === "r" && S.phase === "recording") cmd("redo");
+  else if (k === "s" && (S.phase === "place" || S.phase === "ready")) cmd("skip");
+});
+</script>
+</body>
+</html>

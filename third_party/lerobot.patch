@@ -1,0 +1,39 @@
+diff --git a/src/lerobot/scripts/lerobot_record.py b/src/lerobot/scripts/lerobot_record.py
+index 820f00462..54038c05d 100644
+--- a/src/lerobot/scripts/lerobot_record.py
++++ b/src/lerobot/scripts/lerobot_record.py
+@@ -549,6 +549,11 @@ def record(
+                     timer.restart()
+                     continue
+ 
++                if not dataset.has_pending_frames():  # project patch: an empty episode (e.g. key pressed twice) is re-recorded
++                    log_say("Empty episode, recording it again", cfg.play_sounds)
++                    dataset.clear_episode_buffer()
++                    timer.restart()
++                    continue
+                 dataset.save_episode()
+                 recorded_episodes += 1
+                 # Close the window on the episode just saved.  The digest is emitted on
+diff --git a/src/lerobot/utils/keyboard_input.py b/src/lerobot/utils/keyboard_input.py
+index b53ab8ffa..8d7afd230 100644
+--- a/src/lerobot/utils/keyboard_input.py
++++ b/src/lerobot/utils/keyboard_input.py
+@@ -429,9 +429,17 @@ def init_keyboard_listener():
+     # Accept the single-byte letter equivalents n/r/q alongside the arrow/Esc keys: the
+     # letters are immune to the escape-sequence split/delay/interception that affects arrows
+     # over laggy SSH/VNC links. Case-insensitive so Shift+letter still works.
++    last = {"t": 0.0}
++
+     def on_key(name: str) -> None:
++        import time as _time
+         key = name.lower()
+-        if key in ("right", "n"):
++        if key in ("right", "n", "b", "B"):  # b/B added for this project: end the episode (or the reset) now
++            # project patch: ignore repeats within 1.5 s (one press must not end two phases)
++            now = _time.monotonic()
++            if now - last["t"] < 1.5 or events.get("exit_early"):
++                return
++            last["t"] = now
+             apply_recording_control("right", events)
+         elif key in ("left", "r"):
+             apply_recording_control("left", events)

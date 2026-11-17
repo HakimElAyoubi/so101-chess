@@ -1,0 +1,22 @@
+{
+ "dx": 0.016885384234611726,
+ "dy": -0.02044710763085554,
+ "yaw_deg": 9.353999159632725,
+ "score": 0.35577719198772684,
+ "sized": {
+  "dx": 0.011999999999999999,
+  "dy": -0.0163,
+  "yaw_deg": 7.45,
+  "score": 0.5108303014421836,
+  "scale_rank": 1.0205,
+  "scale_file": 0.9134,
+  "session7": {
+   "dx": 0.0215,
+   "dy": -0.0208,
+   "yaw_deg": 6.25,
+   "scale_rank": 1.0205,
+   "scale_file": 0.9134
+  },
+  "note": "fit of reference_view.jpg with the board size of session 7's demo fit (ranks x1.02, files x0.913); measure_board: pose = session7 + live - this"
+ }
+}

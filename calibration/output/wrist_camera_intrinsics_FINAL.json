@@ -1,0 +1,41 @@
+{
+  "model": "fisheye (equidistant, OpenCV k1..k4)",
+  "n_images": 13,
+  "rms_px": 0.19,
+  "image_size": [
+    1920,
+    1080
+  ],
+  "K": [
+    [
+      1238.8,
+      0.0,
+      956.2
+    ],
+    [
+      0.0,
+      1239.1,
+      538.2
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "dist_k1k2k3k4": [
+    -0.1257,
+    0.0075,
+    -0.0051,
+    -0.0014
+  ],
+  "fov_deg": {
+    "horizontal": 88.8,
+    "vertical": 49.9
+  },
+  "tilt_range_deg": [
+    27,
+    51
+  ],
+  "target": "iPad 9x6, 24 mm squares"
+}

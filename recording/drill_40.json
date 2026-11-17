@@ -1,0 +1,351 @@
+{
+ "setup_black": {
+  "a8": "rook",
+  "b8": "knight",
+  "c8": "bishop",
+  "d8": "queen",
+  "e8": "king",
+  "f8": "bishop",
+  "g8": "knight",
+  "h8": "rook",
+  "a7": "pawn",
+  "b7": "pawn",
+  "c7": "pawn",
+  "d7": "pawn",
+  "e7": "pawn",
+  "f7": "pawn",
+  "g7": "pawn",
+  "h7": "pawn"
+ },
+ "setup_white": {
+  "g1": "rook",
+  "f1": "bishop",
+  "c1": "bishop",
+  "c2": "pawn",
+  "a3": "pawn",
+  "g3": "pawn",
+  "e1": "king"
+ },
+ "episodes": [
+  {
+   "i": 0,
+   "task": "move the black queen from d8 to d2",
+   "frm": "d8",
+   "to": "d2",
+   "to_drop": false,
+   "from_spare": false
+  },
+  {
+   "i": 1,
+   "task": "move the black queen from d2 to g2",
+   "frm": "d2",
+   "to": "g2",
+   "to_drop": false,
+   "from_spare": false
+  },
+  {
+   "i": 2,
+   "task": "move the black queen from g2 to g4",
+   "frm": "g2",
+   "to": "g4",
+   "to_drop": false,
+   "from_spare": false
+  },
+  {
+   "i": 3,
+   "task": "move the black queen from g4 to d8",
+   "frm": "g4",
+   "to": "d8",
+   "to_drop": false,
+   "from_spare": false
+  },
+  {
+   "i": 4,
+   "task": "move the black rook from h8 to h2",
+   "frm": "h8",
+   "to": "h2",
+   "to_drop": false,
+   "from_spare": false
+  },
+  {
+   "i": 5,
+   "task": "move the black rook from h2 to f2",
+   "frm": "h2",
+   "to": "f2",
+   "to_drop": false,
+   "from_spare": false
+  },
+  {
+   "i": 6,
+   "task": "move the black rook from f2 to f3",
+   "frm": "f2",
+   "to": "f3",
+   "to_drop": false,
+   "from_spare": false
+  },
+  {
+   "i": 7,
+   "task": "move the black rook from f3 to h3",
+   "frm": "f3",
+   "to": "h3",
+   "to_drop": false,
+   "from_spare": false
+  },
+  {
+   "i": 8,
+   "task": "move the black rook from h3 to h8",
+   "frm": "h3",
+   "to": "h8",
+   "to_drop": false,
+   "from_spare": false
+  },
+  {
+   "i": 9,
+   "task": "move the black bishop from c8 to g4",
+   "frm": "c8",
+   "to": "g4",
+   "to_drop": false,
+   "from_spare": false
+  },
+  {
+   "i": 10,
+   "task": "move the black bishop from g4 to e2",
+   "frm": "g4",
+   "to": "e2",
+   "to_drop": false,
+   "from_spare": false
+  },
+  {
+   "i": 11,
+   "task": "move the black bishop from e2 to c4",
+   "frm": "e2",
+   "to": "c4",
+   "to_drop": false,
+   "from_spare": false
+  },
+  {
+   "i": 12,
+   "task": "move the black bishop from c4 to a6",
+   "frm": "c4",
+   "to": "a6",
+   "to_drop": false,
+   "from_spare": false
+  },
+  {
+   "i": 13,
+   "task": "move the black bishop from a6 to c8",
+   "frm": "a6",
+   "to": "c8",
+   "to_drop": false,
+   "from_spare": false
+  },
+  {
+   "i": 14,
+   "task": "move the black knight from b8 to c6",
+   "frm": "b8",
+   "to": "c6",
+   "to_drop": false,
+   "from_spare": false
+  },
+  {
+   "i": 15,
+   "task": "move the black knight from c6 to e5",
+   "frm": "c6",
+   "to": "e5",
+   "to_drop": false,
+   "from_spare": false
+  },
+  {
+   "i": 16,
+   "task": "move the black knight from e5 to c4",
+   "frm": "e5",
+   "to": "c4",
+   "to_drop": false,
+   "from_spare": false
+  },
+  {
+   "i": 17,
+   "task": "move the black knight from c4 to a5",
+   "frm": "c4",
+   "to": "a5",
+   "to_drop": false,
+   "from_spare": false
+  },
+  {
+   "i": 18,
+   "task": "move the black knight from a5 to c6",
+   "frm": "a5",
+   "to": "c6",
+   "to_drop": false,
+   "from_spare": false
+  },
+  {
+   "i": 19,
+   "task": "move the black knight from c6 to b8",
+   "frm": "c6",
+   "to": "b8",
+   "to_drop": false,
+   "from_spare": false
+  },
+  {
+   "i": 20,
+   "task": "move the black knight from g8 to h6",
+   "frm": "g8",
+   "to": "h6",
+   "to_drop": false,
+   "from_spare": false
+  },
+  {
+   "i": 21,
+   "task": "move the black knight from h6 to g8",
+   "frm": "h6",
+   "to": "g8",
+   "to_drop": false,
+   "from_spare": false
+  },
+  {
+   "i": 22,
+   "task": "move the white rook on g1 to the drop zone",
+   "frm": "g1",
+   "to": null,
+   "to_drop": true,
+   "from_spare": false
+  },
+  {
+   "i": 23,
+   "task": "move the white bishop on f1 to the drop zone",
+   "frm": "f1",
+   "to": null,
+   "to_drop": true,
+   "from_spare": false
+  },
+  {
+   "i": 24,
+   "task": "move the white bishop on c1 to the drop zone",
+   "frm": "c1",
+   "to": null,
+   "to_drop": true,
+   "from_spare": false
+  },
+  {
+   "i": 25,
+   "task": "move the white pawn on c2 to the drop zone",
+   "frm": "c2",
+   "to": null,
+   "to_drop": true,
+   "from_spare": false
+  },
+  {
+   "i": 26,
+   "task": "move the white pawn on a3 to the drop zone",
+   "frm": "a3",
+   "to": null,
+   "to_drop": true,
+   "from_spare": false
+  },
+  {
+   "i": 27,
+   "task": "move the white pawn on g3 to the drop zone",
+   "frm": "g3",
+   "to": null,
+   "to_drop": true,
+   "from_spare": false
+  },
+  {
+   "i": 28,
+   "task": "place the spare black queen on g1",
+   "frm": null,
+   "to": "g1",
+   "to_drop": false,
+   "from_spare": true
+  },
+  {
+   "i": 29,
+   "task": "place the spare black queen on c1",
+   "frm": null,
+   "to": "c1",
+   "to_drop": false,
+   "from_spare": true
+  },
+  {
+   "i": 30,
+   "task": "move the black rook from a8 to a4",
+   "frm": "a8",
+   "to": "a4",
+   "to_drop": false,
+   "from_spare": false
+  },
+  {
+   "i": 31,
+   "task": "move the black rook from a4 to a8",
+   "frm": "a4",
+   "to": "a8",
+   "to_drop": false,
+   "from_spare": false
+  },
+  {
+   "i": 32,
+   "task": "move the black queen from d8 to h4",
+   "frm": "d8",
+   "to": "h4",
+   "to_drop": false,
+   "from_spare": false
+  },
+  {
+   "i": 33,
+   "task": "move the black queen from h4 to d8",
+   "frm": "h4",
+   "to": "d8",
+   "to_drop": false,
+   "from_spare": false
+  },
+  {
+   "i": 34,
+   "task": "move the black pawn from e7 to e5",
+   "frm": "e7",
+   "to": "e5",
+   "to_drop": false,
+   "from_spare": false
+  },
+  {
+   "i": 35,
+   "task": "move the black pawn from e5 to e4",
+   "frm": "e5",
+   "to": "e4",
+   "to_drop": false,
+   "from_spare": false
+  },
+  {
+   "i": 36,
+   "task": "move the black pawn from e4 to e3",
+   "frm": "e4",
+   "to": "e3",
+   "to_drop": false,
+   "from_spare": false
+  },
+  {
+   "i": 37,
+   "task": "move the black pawn from e3 to e7",
+   "frm": "e3",
+   "to": "e7",
+   "to_drop": false,
+   "from_spare": false
+  },
+  {
+   "i": 38,
+   "task": "move the black rook from h8 to h5",
+   "frm": "h8",
+   "to": "h5",
+   "to_drop": false,
+   "from_spare": false
+  },
+  {
+   "i": 39,
+   "task": "move the black rook from h5 to h8",
+   "frm": "h5",
+   "to": "h8",
+   "to_drop": false,
+   "from_spare": false
+  }
+ ]
+}

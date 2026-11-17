@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chess Recorder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* spacing scale: every margin and padding uses one of these */
+    --s1: .25rem; --s2: .5rem; --s3: .75rem; --s4: 1rem; --s5: 1.5rem; --s6: 2rem; --s7: 3rem;
+
+    --ink: #1b1b1a; --ink-2: #55554f; --ink-3: #85857d;
+    --bg: #ffffff; --panel: #f4f4f1; --rule: #dcdcd6; --rule-strong: #b9b9b1;
+    --blue: #1d5bbf; --blue-dark: #164a9e; --blue-tint: #e8effa;
+    --red: #b8322a; --red-tint: #fbeceb;
+    --amber: #e3a21a; --amber-dark: #c98c0e; --amber-tint: #fdf4de;
+    --green: #2c7a3b; --green-tint: #e9f4eb;
+    --sq-light: #ece6d6; --sq-dark: #b8a888;
+
+    --sans: "Source Sans 3", -apple-system, "Helvetica Neue", sans-serif;
+    --serif: "Source Serif 4", Georgia, serif;
+    --mono: "Source Code Pro", ui-monospace, monospace;
+    --radius: 4px;
+  }
+  * { box-sizing: border-box; }
+  html { font-size: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 1rem/1.5 var(--sans); -webkit-font-smoothing: antialiased; }
+
+  header { border-bottom: 1px solid var(--rule); padding: var(--s4) var(--s5); display: flex; flex-wrap: wrap; gap: var(--s2) var(--s5); align-items: baseline; justify-content: space-between; }
+  header h1 { font: 600 1.375rem/1.2 var(--serif); letter-spacing: -.01em; margin: 0; }
+  .byline { color: var(--ink-2); font-size: .9375rem; }
+  .byline b { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
+
+  main { max-width: 1320px; margin: 0 auto; padding: var(--s5); display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: var(--s6); }
+  @media (max-width: 960px) { main > div:last-child { order: -1; } main { grid-template-columns: minmax(0, 1fr); gap: var(--s5); padding: var(--s4); } header { padding: var(--s4); } }
+
+  h2 { font: 600 .8125rem/1.3 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); margin: 0 0 var(--s3); }
+  section + section { margin-top: var(--s5); padding-top: var(--s5); border-top: 1px solid var(--rule); }
+
+  /* camera */
+  .cam { position: relative; background: #000; border-radius: var(--radius); overflow: hidden; aspect-ratio: 16 / 9; outline: 3px solid transparent; outline-offset: 2px; }
+  .cam img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .cam.recording { outline-color: var(--red); }
+  .rec { position: absolute; top: var(--s3); left: var(--s3); display: none; align-items: center; gap: var(--s2); background: var(--red); color: #fff;
+    font: 700 .875rem/1 var(--sans); padding: var(--s2) var(--s3); border-radius: var(--radius); font-variant-numeric: tabular-nums; }
+  .rec i { width: .625rem; height: .625rem; border-radius: 50%; background: #fff; animation: blink 1s steps(2) infinite; }
+  .cam.recording .rec { display: flex; }
+  @keyframes blink { 50% { opacity: .25; } }
+
+  /* ready pose table */
+  .status { display: flex; align-items: center; gap: var(--s2); font-weight: 600; margin-bottom: var(--s3); }
+  .status i { width: .75rem; height: .75rem; border-radius: 2px; background: var(--ink-3); }
+  .status.ok { color: var(--green); } .status.ok i { background: var(--green); }
+  .status.no { color: var(--amber-dark); } .status.no i { background: var(--amber); }
+  table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+  thead th { border-top: 1.5px solid var(--ink); border-bottom: 1px solid var(--ink); }
+  tbody tr:last-child td { border-bottom: 1.5px solid var(--ink); }
+  th, td { text-align: left; padding: var(--s1) var(--s2); font-size: .9375rem; }
+  th { font-weight: 600; color: var(--ink-2); font-size: .8125rem; }
+  td.num, th.num { text-align: right; width: 4.5rem; }
+  td.bar { width: 45%; }
+  .track { position: relative; height: .625rem; background: var(--panel); border-radius: 2px; }
+  .zone { position: absolute; top: 0; bottom: 0; left: 37.5%; width: 25%; background: #cfe8d4; border-left: 1px solid #8cc39a; border-right: 1px solid #8cc39a; }
+  .mark { position: absolute; top: -3px; width: 3px; height: calc(100% + 6px); background: var(--ink); border-radius: 1px; transform: translateX(-1px); }
+  td.state { width: 2.5rem; font-weight: 700; }
+  tr.ok td.state { color: var(--green); } tr.no td.state { color: var(--amber-dark); }
+  tr.no td.val { color: var(--amber-dark); font-weight: 600; }
+  .note { color: var(--ink-2); font-size: .875rem; margin: var(--s3) 0 0; }
+
+  /* step */
+  .steps { display: flex; flex-wrap: wrap; gap: var(--s1) var(--s3); font-size: .875rem; color: var(--ink-3); margin-bottom: var(--s4); }
+  .steps span { white-space: nowrap; }
+  .steps span.now { color: var(--blue); font-weight: 700; }
+  .steps span.rec-now { color: var(--red); font-weight: 700; }
+  .steps span + span::before { content: "›"; margin-right: var(--s3); color: var(--rule-strong); font-weight: 400; }
+  .phase { font: 700 .8125rem/1.3 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--blue); margin-bottom: var(--s2); }
+  .phase.recording { color: var(--red); } .phase.warn { color: var(--amber-dark); }
+  .instruction { font: 600 1.75rem/1.2 var(--serif); letter-spacing: -.015em; margin: 0 0 var(--s3); }
+  .hint { color: var(--ink-2); margin: 0 0 var(--s4); max-width: 38rem; }
+  .parts { margin: 0 0 var(--s4); padding-left: var(--s5); color: var(--ink-3); }
+  .parts li.now { color: var(--ink); font-weight: 600; } .parts li.done { text-decoration: line-through; }
+
+  .msg { display: none; border: 1px solid; border-radius: var(--radius); padding: var(--s2) var(--s3); margin: 0 0 var(--s4); font-weight: 600; }
+  .msg.info { display: block; background: var(--panel); border-color: var(--rule); }
+  .msg.good { display: block; background: var(--green-tint); border-color: #b9dcc0; color: var(--green); }
+  .msg.warn { display: block; background: var(--amber-tint); border-color: #efd28a; color: #7a5304; }
+  .msg.err { display: block; background: var(--red-tint); border-color: #eab8b4; color: var(--red); }
+
+  /* buttons: one colour per meaning, everywhere
+       blue   = the next step (always the first, largest button)
+       white  = optional / alternative
+       amber  = confirm after a warning
+       red    = discard, cancel or end                                                */
+  .actions { display: flex; flex-wrap: wrap; gap: var(--s3); align-items: center; }
+  button { font: 600 1rem/1.2 var(--sans); border-radius: var(--radius); padding: var(--s3) var(--s4); cursor: pointer;
+    border: 1px solid var(--rule-strong); background: var(--bg); color: var(--ink); display: inline-flex; align-items: center; gap: var(--s2);
+    transition: background-color 80ms, border-color 80ms, transform 80ms; }
+  button:hover { border-color: var(--ink-2); background: var(--panel); }
+  button:active { transform: scale(.98); }
+  button:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+  button.next { background: var(--blue); border-color: var(--blue); color: #fff; font-size: 1.125rem; padding: var(--s4) var(--s5); }
+  button.next:hover { background: var(--blue-dark); border-color: var(--blue-dark); }
+  button.confirm { background: var(--amber); border-color: var(--amber); color: var(--ink); font-size: 1.125rem; padding: var(--s4) var(--s5); }
+  button.confirm:hover { background: var(--amber-dark); border-color: var(--amber-dark); }
+  button.danger { color: var(--red); border-color: #e2aaa5; }
+  button.danger:hover { background: var(--red-tint); border-color: var(--red); }
+  kbd { font: 500 .75rem/1 var(--mono); border: 1px solid currentColor; border-radius: 3px; padding: 2px 5px; opacity: .75; }
+  .legend { color: var(--ink-3); font-size: .8125rem; margin: var(--s3) 0 0; }
+  .legend b { font-weight: 600; } .legend .b { color: var(--blue); } .legend .a { color: var(--amber-dark); } .legend .r { color: var(--red); }
+
+  .board-wrap { background: var(--panel); border-radius: var(--radius); padding: var(--s4); }
+  .board-wrap svg { display: block; width: 100%; max-width: 440px; height: auto; margin: 0 auto; }
+  .caption { color: var(--ink-2); font-size: .8125rem; margin: var(--s2) 0 0; }
+  .tools { display: flex; flex-wrap: wrap; gap: var(--s2); }
+  .tools button { font-size: .9375rem; padding: var(--s2) var(--s3); }
+
+  @media (prefers-reduced-motion: reduce) { .rec i { animation: none; } button { transition: none; } button:active { transform: none; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>SO-101 chess recorder</h1>
+  <div class="byline"><span id="repo"></span> · <b id="eps">0</b> episodes · <b id="seps">0</b> this session · move <b id="moveno">1</b> · leader→follower <b id="tele">-</b></div>
+</header>
+
+<main>
+  <div>
+    <section>
+      <h2>Wrist camera</h2>
+      <div class="cam" id="cam"><img src="/stream.mjpg" alt="Live wrist camera"><div class="rec"><i></i><span id="rectime">REC 0.0 s</span></div></div>
+    </section>
+    <section>
+      <h2>Ready pose</h2>
+      <div class="status" id="readystatus"><i></i><span id="readytext">No ready pose saved</span></div>
+      <table>
+        <thead><tr><th>Joint</th><th class="num">Offset</th><th>Position vs. tolerance</th><th class="num">Tol.</th><th></th></tr></thead>
+        <tbody id="joints"></tbody>
+      </table>
+      <p class="note" id="readyhelp"></p>
+    </section>
+  </div>
+
+  <div>
+    <section>
+      <div class="steps" id="steps"></div>
+      <div class="msg" id="err"></div>
+      <div class="phase" id="phase"></div>
+      <p class="instruction" id="instruction"></p>
+      <p class="hint" id="hint"></p>
+      <ol class="parts" id="parts"></ol>
+      <div class="msg" id="msg"></div>
+      <div class="actions" id="btns"></div>
+      <p class="legend"><b class="b">Blue</b> next step · <b>White</b> optional · <b class="a">Amber</b> confirm a warning · <b class="r">Red</b> discard or end</p>
+    </section>
+    <section>
+      <h2>Board</h2>
+      <div class="board-wrap"><svg id="board" viewBox="-70 -6 506 448" role="img" aria-label="Chess board"></svg></div>
+      <p class="caption">Seen from your seat (white). The robot sits at the top; the drop zone is on the left, which is the robot's right.</p>
+    </section>
+    <section>
+      <h2>Session</h2>
+      <div class="tools" id="tools"></div>
+    </section>
+  </div>
+</main>
+
+<script>
+const $ = id => document.getElementById(id);
+let S = null, lastBtns = "", lastTools = "";
+const cmd = c => fetch("/cmd", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({cmd: c})});
+const CSS = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+
+// ---------------- board (white at the bottom, a-file on the left; robot at the top)
+const GLYPH = {k: "♚", q: "♛", r: "♜", b: "♝", n: "♞", p: "♟"};
+const SQ = 52;
+function xy(sq) { const f = sq % 8, r = Math.floor(sq / 8); return [f * SQ + SQ / 2, (7 - r) * SQ + SQ / 2]; }
+const DROP = [-46, 4 * SQ];   // drop zone centre (left of the a-file)
+function drawBoard(fen, hl) {
+  const label = CSS("--ink-2");
+  let s = `<defs><marker id="ah" markerWidth="4" markerHeight="4" refX="2.2" refY="2" orient="auto"><path d="M0,0 L4,2 L0,4 z" fill="${hl.color}"/></marker></defs>`;
+  for (let r = 0; r < 8; r++) for (let f = 0; f < 8; f++) {
+    const sq = r * 8 + f, x = f * SQ, y = (7 - r) * SQ, light = (r + f) % 2 === 1;
+    let fill = light ? CSS("--sq-light") : CSS("--sq-dark");
+    if (sq === hl.from || sq === hl.to) fill = hl.tint;
+    s += `<rect x="${x}" y="${y}" width="${SQ}" height="${SQ}" fill="${fill}"/>`;
+  }
+  s += `<rect x="0" y="0" width="${8*SQ}" height="${8*SQ}" fill="none" stroke="${CSS("--rule-strong")}"/>`;
+  for (let i = 0; i < 8; i++) {
+    s += `<text x="${i*SQ+SQ/2}" y="${8*SQ+18}" fill="${label}" font-size="13" font-family="Source Sans 3, sans-serif" text-anchor="middle">${"abcdefgh"[i]}</text>`;
+    s += `<text x="${8*SQ+10}" y="${(7-i)*SQ+SQ/2+5}" fill="${label}" font-size="13" font-family="Source Sans 3, sans-serif">${i+1}</text>`;
+  }
+  const dz = hl.drop || hl.spare;
+  s += `<rect x="${DROP[0]-22}" y="${DROP[1]-40}" width="44" height="80" rx="4" fill="${dz ? hl.tint : 'none'}" stroke="${label}" stroke-dasharray="4 3"/>`;
+  s += `<text x="${DROP[0]}" y="${DROP[1]+56}" fill="${label}" font-size="12" font-family="Source Sans 3, sans-serif" text-anchor="middle">drop</text>`;
+  let r = 7, f = 0;
+  for (const ch of fen) {
+    if (ch === "/") { r--; f = 0; continue; }
+    if (/\d/.test(ch)) { f += +ch; continue; }
+    const [x, y] = xy(r * 8 + f), white = ch === ch.toUpperCase();
+    s += `<text x="${x}" y="${y+15}" font-size="42" text-anchor="middle" fill="${white ? '#fff' : '#1b1b1a'}" stroke="${white ? '#1b1b1a' : '#fff'}" stroke-width="${white ? 1.2 : .6}">${GLYPH[ch.toLowerCase()]}</text>`;
+    f++;
+  }
+  const a = hl.from != null ? xy(hl.from) : (hl.spare ? DROP : null);
+  const b = hl.to != null ? xy(hl.to) : (hl.drop ? DROP : null);
+  if (a && b) s += `<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="${hl.color}" stroke-width="8" stroke-linecap="round" opacity=".9" marker-end="url(#ah)"/>`;
+  s += `<text x="${4*SQ}" y="${8*SQ+38}" fill="${label}" font-size="12" font-family="Source Sans 3, sans-serif" text-anchor="middle">you (white)</text>`;
+  $("board").innerHTML = s;
+}
+
+// ---------------- UI
+const STEP = {
+  setup:     ["Get started", "Set up the pieces in the starting position.", "Then press the blue button. The recorder chooses every move for you."],
+  white:     ["White · by hand", "", "Make this move with your hand on the real board. Nothing is recorded. Then press the blue button."],
+  ready:     ["Black · get ready", "", "Put the arm in the ready pose (all rows green), then start recording."],
+  recording: ["Recording", "", "Do the move with the leader arm. When the piece is placed, press the blue button: both arms return to the ready pose by themselves and the episode is saved."],
+  saving:    ["Saving", "Saving the episode.", ""],
+  homing:    ["Auto-move", "Moving both arms to the ready pose.", "Hands off the leader until it finishes. You get control back automatically."],
+  parking:   ["Finish session", "Fold the arm before it lets go.", "Bring the leader to the folded rest pose (gripper up) so the follower is stable, then press the blue button. The follower goes limp after that."],
+  closing:   ["Finishing", "Saving the dataset.", "Keep this page open."],
+  done:      ["Done", "Session finished.", "You can close this tab and the Terminal window."],
+  drill_setup: ["Drill · set up the board", "Set up the drill board.", ""],
+};
+const CYCLE = [["white", "1 White by hand"], ["ready", "2 Get ready"], ["recording", "3 Record"], ["saving", "4 Save"]];
+
+function setButtons(id, html, key) { if (key !== (id === "btns" ? lastBtns : lastTools)) { $(id).innerHTML = html; id === "btns" ? lastBtns = key : lastTools = key; } }
+function B(c, label, cls = "", k = "") { return `<button class="${cls}" onclick="cmd('${c}')">${label}${k ? `<kbd>${k}</kbd>` : ""}</button>`; }
+
+function render(s) {
+  S = s;
+  const ph = s.phase, recLike = ph === "recording" || s.home_rec;
+  let [tag, big, hint] = STEP[ph];
+  const dr = s.drill;
+  if (dr && ph === "drill_setup") hint = dr.setup + " The board below shows exactly what to set up.";
+  if (dr && ph === "ready") { tag = "Drill · get ready"; hint = "Targeted demo to fill a gap in the dataset. " + hint; }
+
+  // where am I in the cycle (drill: position in the list)
+  const at = recLike ? "recording" : ph;
+  $("steps").innerHTML = dr ? `<span class="${recLike ? "rec-now" : "now"}">Drill ${Math.min(dr.idx, dr.n)} of ${dr.n}</span>`
+      + `<span>${dr.n - dr.idx} left after this one</span>`
+    : CYCLE.map(([k, t]) => `<span class="${k === at ? (k === "recording" ? "rec-now" : "now") : ""}">${t}</span>`).join("");
+
+  $("phase").className = "phase" + (recLike ? " recording" : s.force_pending ? " warn" : "");
+  $("phase").textContent = tag + ((ph === "ready" || ph === "recording") && s.parts > 1 ? ` · part ${s.part} of ${s.parts}` : "");
+  $("instruction").textContent = ph === "white" ? s.white.text
+    : (s.cur && (ph === "ready" || ph === "recording" || ph === "saving") ? s.cur.task + "."
+    : (ph === "homing" && s.home_rec ? "Returning to the ready pose (still recording)." : big));
+  $("hint").textContent = ph === "homing" ? `${hint} ${s.home_pct}%` : hint;
+  $("msg").className = "msg " + (s.msg ? s.msg_kind : ""); $("msg").textContent = s.msg;
+  $("err").className = "msg " + (s.error ? "err" : ""); $("err").textContent = s.error;
+  $("parts").innerHTML = s.all_tasks.length > 1 ? s.all_tasks.map((t, i) => `<li class="${i + 1 < s.part ? 'done' : i + 1 === s.part ? 'now' : ''}">${t}</li>`).join("") : "";
+
+  // camera
+  $("cam").classList.toggle("recording", recLike);
+  $("rectime").textContent = `REC ${s.rec_s.toFixed(1)} s`;
+
+  // board
+  const hl = {color: CSS("--blue"), tint: "#b9cff0"};
+  if (ph === "white" && s.white) Object.assign(hl, {from: s.white.from, to: s.white.to});
+  if (s.cur) Object.assign(hl, {from: s.cur.from, to: s.cur.to, drop: s.cur.to_drop, spare: s.cur.from_spare});
+  if (recLike) Object.assign(hl, {color: CSS("--red"), tint: "#f0bdb8"});
+  drawBoard(s.fen, hl);
+
+  // ready pose
+  const st = $("readystatus");
+  st.className = "status " + (!s.ready_saved ? "" : s.at_ready ? "ok" : "no");
+  $("readytext").textContent = !s.ready_saved ? "No ready pose saved" : s.hold ? "Follower is holding the ready pose · rows show the leader"
+    : s.at_ready ? "At the ready pose" : "Not at the ready pose";
+  $("joints").innerHTML = (s.hold ? s.lead_ready : s.ready).map(j => {
+    const ok = Math.abs(j.off) <= j.tol;
+    const pos = Math.max(0, Math.min(100, 50 + 50 * j.off / (4 * j.tol)));   // track spans ±4 × tolerance
+    if (!s.ready_saved) return `<tr><td>${j.name}</td><td class="num">n/a</td><td class="bar"><div class="track"></div></td><td class="num">${j.tol}${j.unit}</td><td class="state"></td></tr>`;
+    return `<tr class="${ok ? 'ok' : 'no'}"><td>${j.name}</td><td class="num val">${(j.off > 0 ? "+" : "") + j.off.toFixed(1)}${j.unit}</td>`
+      + `<td class="bar"><div class="track"><div class="zone"></div><div class="mark" style="left:${pos}%"></div></div></td>`
+      + `<td class="num">±${j.tol}${j.unit}</td><td class="state">${ok ? "ok" : "move"}</td></tr>`;
+  }).join("");
+  $("readyhelp").textContent = s.hold ? "The follower stays exactly at the ready pose and ignores the leader until you start recording (or press Follow). Then it glides onto the leader in under a second. Keep the leader roughly near the ready pose."
+    : s.ready_saved ? "The green band is the tolerance. Every episode should start and end with all rows green."
+    : "Put the arm where every episode should start (camera looking at the board), then press “Save ready pose”.";
+
+  // main actions
+  let b = "";
+  const idle = ["setup", "white", "ready", "drill_setup"].includes(ph);
+  const goReady = (idle && s.ready_saved && !s.at_ready ? B("go_ready", "Both arms to ready pose", "", "H") : "")
+    + (idle && s.hold ? B("follow", "Follower follows leader", "", "F") : "");
+  if (ph === "setup") b = B("start_game", "Pieces are set up, start", "next", "Enter") + goReady;
+  if (ph === "white") b = B("white_done", "Done, I made the move", "next", "Enter") + B("reroll", "Pick another move") + goReady;
+  if (ph === "ready") b = (s.force_pending ? B("start", "Start anyway", "confirm", "Space") : B("start", "Start recording", "next", "Space"))
+    + goReady + (dr ? B("drill_skip", "Skip (do it by hand)") + B("drill_exit", "Leave drill", "danger") : (s.part === 1 ? B("reroll", "Pick another move") : ""));
+  if (ph === "drill_setup") b = B("drill_setup_done", "Board is set up, start", "next", "Enter") + goReady + B("drill_exit", "Leave drill", "danger");
+  if (ph === "recording") b = (s.force_pending ? B("stop", "Save anyway", "confirm", "Space") : B("return_save", "Piece placed: return and save", "next", "Enter"))
+    + (s.force_pending ? "" : B("stop", "Stop here and save", "", "Space")) + B("redo", "Discard and redo", "danger", "R");
+  if (ph === "homing") b = B("cancel_home", "Stop the auto-move", "danger", "Space");
+  if (ph === "parking") b = B("park_done", "Arm is folded: save and upload", "next") + B("cancel_finish", "Back");
+  setButtons("btns", b, ph + s.force_pending + s.part + (s.ready_saved && !s.at_ready) + s.hold + !!dr);
+
+  // session tools
+  const busy = ["recording", "saving", "homing", "parking", "closing", "done"].includes(ph);
+  const drillBtn = !dr && s.drill_n && s.drill_next < s.drill_n && (ph === "setup" || ph === "white" || (ph === "ready" && s.part === 1))
+    ? B("drill_start", `Drill mode · ${s.drill_next} of ${s.drill_n} done`) : "";
+  const t = busy ? `<span class="note">Available between moves.</span>` : drillBtn + B("save_ready", "Save ready pose", "", "P")
+    + (!dr && s.last && (ph !== "ready" || s.part === 1) ? B("undo", "Undo last move") : "") + (dr ? "" : B("new_game", "New game")) + B("finish", "Finish session", "danger");
+  setButtons("tools", t, (busy ? "busy" : "free") + !!s.last + s.part + ph + !!dr + s.drill_next);
+
+  $("repo").textContent = (s.repo || "dataset") + (s.fake ? " (dry run)" : ""); $("eps").textContent = s.episodes; $("seps").textContent = s.session_eps; $("moveno").textContent = s.move_no;
+  $("tele").textContent = s.teleop && s.teleop.hz ? (s.teleop.hz + " Hz, " + s.teleop.ms + " ms") : "-";   // the leader -> follower thread's achieved rate and read-to-write time
+}
+
+async function poll() {
+  try { render(await (await fetch("/state")).json()); }
+  catch (e) { $("err").className = "msg err"; $("err").textContent = S && S.phase === "done" ? "Recorder closed." : "Lost contact with the recorder. Is the Terminal window still open?"; }
+  setTimeout(poll, 150);
+}
+poll();
+
+document.addEventListener("keydown", e => {
+  if (!S || e.repeat || e.metaKey || e.ctrlKey) return;
+  const now = Date.now(); if (now - (window._lastKey || 0) < 600) return; window._lastKey = now;   // one press = one action
+  const k = e.key.toLowerCase();
+  if (k === " ") { e.preventDefault(); if (S.phase === "ready") cmd("start"); else if (S.phase === "recording") cmd("stop"); else if (S.phase === "homing") cmd("cancel_home"); }
+  else if (k === "h" && ["setup", "white", "ready", "drill_setup"].includes(S.phase)) cmd("go_ready");
+  else if (k === "f" && ["setup", "white", "ready", "drill_setup"].includes(S.phase) && S.hold) cmd("follow");
+  else if (k === "enter") { if (S.phase === "drill_setup") cmd("drill_setup_done"); else if (S.phase === "white") cmd("white_done"); else if (S.phase === "setup") cmd("start_game"); else if (S.phase === "recording") cmd(S.force_pending ? "stop" : "return_save"); }
+  else if (k === "r" && S.phase === "recording") cmd("redo");
+  else if (k === "p" && !["recording", "saving", "closing", "done"].includes(S.phase)) cmd("save_ready");
+});
+</script>
+</body>
+</html>

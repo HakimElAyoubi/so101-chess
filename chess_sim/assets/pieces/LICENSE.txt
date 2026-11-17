@@ -1,0 +1,13 @@
+Chess Set (3D model)
+Author: Riley Queen
+Source: Poly Haven — https://polyhaven.com/a/chess_set
+License: CC0 1.0 Universal (Public Domain Dedication) — https://creativecommons.org/publicdomain/zero/1.0/
+Downloaded: 2026-10-02
+
+Files:
+  chess_set_1k.gltf  https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/chess_set/chess_set_1k.gltf
+  chess_set.bin      https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/chess_set/chess_set.bin
+  (textures referenced by the .gltf were not downloaded; geometry only)
+
+Derived files in ../pieces/ (OBJ/STL, rescaled and reoriented) are derived from
+this CC0 asset and carry no additional restrictions.

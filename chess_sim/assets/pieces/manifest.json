@@ -1,0 +1,2292 @@
+{
+  "generated_utc": "2026-10-02T17:40:30+00:00",
+  "source": {
+    "asset": "Chess Set by Riley Queen, Poly Haven, CC0",
+    "url": "https://polyhaven.com/a/chess_set",
+    "gltf": "source/chess_set_1k.gltf",
+    "bin": "source/chess_set.bin",
+    "license_file": "source/LICENSE.txt",
+    "coordinate_system": "glTF Y-up, metres"
+  },
+  "tools": {
+    "python": "3.12.14",
+    "trimesh": "5.1.0",
+    "mujoco": "3.14.0",
+    "numpy": "2.2.6"
+  },
+  "units": "exported OBJ/STL are in metres; all numbers in this manifest are mm unless suffixed _m",
+  "method": {
+    "yup_to_zup": "rotation +90 deg about +x: (x,y,z) -> (x,-z,y)",
+    "recentre": "x,y: centroid of the vertices in the bottom 1.5 mm; z_min = 0",
+    "height": "z extent; z scale = target_height / source height",
+    "foot": "vertices in the bottom 20 % of the height",
+    "foot_diameter": "widest point of the foot: maximum pairwise x-y distance of the foot vertices (= maximum caliper width over all directions)",
+    "xy_scale": "target_base_diameter / foot_diameter, with the foot diameter measured on the z-scaled piece",
+    "checks": "(a) exported foot diameter within 0.2 mm of the target, (b) max x-y width of everything above the foot <= foot diameter (+0.01 mm), (c) height within 0.2 mm",
+    "allowed_exceptions_to_check_b": {
+      "knight": "the knight's head overhangs its base front-to-back in the source geometry (45.4 mm head vs 39.1 mm base); scaling the foot to the target keeps that ratio"
+    },
+    "base_diameter_bottom_1p5mm": "reference only: max of x/y extent of the vertices in the bottom 1.5 mm",
+    "diameter_profile": "max x-y extent (and max pairwise x-y distance) of vertices in 10 equal-height bands, bottom to top",
+    "stem": "x-y extent of the exact planar cross-section (trimesh mesh_plane) every 1 % of height between 45 % and 75 %; 'stem_diameter_at_62pct' is the 62 % cut, 'stem_min_45_75pct' the narrowest cut",
+    "convex_hull": "MuJoCo qhull via a vertex= point-cloud mesh; verified closed and containing all vertices",
+    "knight_facing": "direction of the centroid of vertices in the top 40 % of the height relative to the base centroid"
+  },
+  "targets_mm": {
+    "pawn": {
+      "height": 25.0,
+      "base_diameter": 15.0
+    },
+    "rook": {
+      "height": 28.0,
+      "base_diameter": 20.0
+    },
+    "knight": {
+      "height": 31.0,
+      "base_diameter": 17.0
+    },
+    "bishop": {
+      "height": 36.0,
+      "base_diameter": 20.0
+    },
+    "queen": {
+      "height": 40.0,
+      "base_diameter": 20.0
+    },
+    "king": {
+      "height": 50.0,
+      "base_diameter": 20.0
+    }
+  },
+  "pieces": {
+    "pawn": {
+      "type": "pawn",
+      "source_node_prefix": "piece_pawn_white_01",
+      "source_nodes": [
+        "piece_pawn_white_01"
+      ],
+      "source_geometries": [
+        "Cylinder.002"
+      ],
+      "source_mesh": {
+        "vertices_raw": 1028,
+        "vertices_merged": 822,
+        "triangles": 1640
+      },
+      "source_measurements_mm": {
+        "height": 53.7033,
+        "foot_width_bottom_20pct": 28.9351,
+        "foot_widest_at_z_mm": 1.88,
+        "base_diameter_bottom_1p5mm": 28.2881,
+        "base_centroid_vs_bbox_centre_offset_mm": 0.0592,
+        "foot_width_on_z_scaled_piece": 28.9351
+      },
+      "transforms": {
+        "order": [
+          "yup_to_zup_rotation",
+          "recentre_translation_m",
+          "scale_z",
+          "scale_xy",
+          "z_rotation (knight only)",
+          "final_recentre_translation_m"
+        ],
+        "yup_to_zup_rotation_matrix": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ]
+        ],
+        "recentre_translation_m": [
+          -0.2026164270162117,
+          -0.14472126979672073,
+          -0.017392648751083595
+        ],
+        "scale_factors": {
+          "x": 0.5184022592207432,
+          "y": 0.5184022592207432,
+          "z": 0.4655203185177543
+        },
+        "z_rotation": {
+          "applied": false,
+          "angle_deg": 0.0
+        },
+        "final_recentre_translation_m": [
+          -3.890229988148672e-06,
+          -2.620777730427715e-06,
+          -0.0
+        ],
+        "faces_flipped": false
+      },
+      "files": {
+        "obj": "pieces/pawn.obj",
+        "stl": "pieces/pawn.stl",
+        "hull_obj": "pieces/pawn_hull.obj"
+      },
+      "measured_mm": {
+        "height": 25.0,
+        "foot_diameter_bottom_20pct": 15.0,
+        "foot_max_extent_bottom_20pct": 14.9839,
+        "foot_x_extent": 14.9839,
+        "foot_y_extent": 14.9685,
+        "foot_caliper_width_min": 14.7571,
+        "foot_caliper_width_max": 15.0,
+        "foot_vertex_count": 221,
+        "above_foot_max_width": 13.194,
+        "above_foot_x_extent": 13.1812,
+        "above_foot_y_extent": 13.194,
+        "base_diameter_bottom_1p5mm": 14.9839,
+        "base_x_extent_bottom_1p5mm": 14.9839,
+        "base_y_extent_bottom_1p5mm": 14.9685,
+        "bbox_min": [
+          -7.4837,
+          -7.4891,
+          0.0
+        ],
+        "bbox_max": [
+          7.5002,
+          7.4794,
+          25.0
+        ],
+        "diameter_profile_10_slices": [
+          {
+            "slice": 0,
+            "z_from_mm": 0.0,
+            "z_to_mm": 2.5,
+            "max_extent_mm": 14.984,
+            "max_xy_distance_mm": 15.0,
+            "x_extent_mm": 14.984,
+            "y_extent_mm": 14.969,
+            "vertices": 161
+          },
+          {
+            "slice": 1,
+            "z_from_mm": 2.5,
+            "z_to_mm": 5.0,
+            "max_extent_mm": 14.839,
+            "max_xy_distance_mm": 14.839,
+            "x_extent_mm": 14.81,
+            "y_extent_mm": 14.839,
+            "vertices": 60
+          },
+          {
+            "slice": 2,
+            "z_from_mm": 5.0,
+            "z_to_mm": 7.5,
+            "max_extent_mm": 13.194,
+            "max_xy_distance_mm": 13.194,
+            "x_extent_mm": 13.181,
+            "y_extent_mm": 13.194,
+            "vertices": 120
+          },
+          {
+            "slice": 3,
+            "z_from_mm": 7.5,
+            "z_to_mm": 10.0,
+            "max_extent_mm": 8.69,
+            "max_xy_distance_mm": 8.69,
+            "x_extent_mm": 8.679,
+            "y_extent_mm": 8.69,
+            "vertices": 80
+          },
+          {
+            "slice": 4,
+            "z_from_mm": 10.0,
+            "z_to_mm": 12.5,
+            "max_extent_mm": 5.326,
+            "max_xy_distance_mm": 5.328,
+            "x_extent_mm": 5.325,
+            "y_extent_mm": 5.326,
+            "vertices": 20
+          },
+          {
+            "slice": 5,
+            "z_from_mm": 12.5,
+            "z_to_mm": 15.0,
+            "max_extent_mm": 6.675,
+            "max_xy_distance_mm": 6.675,
+            "x_extent_mm": 6.675,
+            "y_extent_mm": 6.674,
+            "vertices": 60
+          },
+          {
+            "slice": 6,
+            "z_from_mm": 15.0,
+            "z_to_mm": 17.5,
+            "max_extent_mm": 9.256,
+            "max_xy_distance_mm": 9.256,
+            "x_extent_mm": 9.238,
+            "y_extent_mm": 9.256,
+            "vertices": 128
+          },
+          {
+            "slice": 7,
+            "z_from_mm": 17.5,
+            "z_to_mm": 20.0,
+            "max_extent_mm": 7.584,
+            "max_xy_distance_mm": 7.584,
+            "x_extent_mm": 7.571,
+            "y_extent_mm": 7.584,
+            "vertices": 52
+          },
+          {
+            "slice": 8,
+            "z_from_mm": 20.0,
+            "z_to_mm": 22.5,
+            "max_extent_mm": 8.733,
+            "max_xy_distance_mm": 8.733,
+            "x_extent_mm": 8.692,
+            "y_extent_mm": 8.733,
+            "vertices": 60
+          },
+          {
+            "slice": 9,
+            "z_from_mm": 22.5,
+            "z_to_mm": 25.0,
+            "max_extent_mm": 7.577,
+            "max_xy_distance_mm": 7.577,
+            "x_extent_mm": 7.532,
+            "y_extent_mm": 7.577,
+            "vertices": 81
+          }
+        ],
+        "stem_diameter_at_62pct": 9.0514,
+        "stem_x_extent_at_62pct": 9.0395,
+        "stem_y_extent_at_62pct": 9.0514,
+        "stem_min_45_75pct": {
+          "diameter": 4.1537,
+          "at_height_pct": 69.0,
+          "at_z_mm": 17.25
+        },
+        "stem_profile_45_75pct": [
+          {
+            "height_pct": 45.0,
+            "extent_mm": 5.125
+          },
+          {
+            "height_pct": 46.0,
+            "extent_mm": 5.058
+          },
+          {
+            "height_pct": 47.0,
+            "extent_mm": 4.991
+          },
+          {
+            "height_pct": 48.0,
+            "extent_mm": 4.924
+          },
+          {
+            "height_pct": 49.0,
+            "extent_mm": 4.858
+          },
+          {
+            "height_pct": 50.0,
+            "extent_mm": 4.791
+          },
+          {
+            "height_pct": 51.0,
+            "extent_mm": 4.731
+          },
+          {
+            "height_pct": 52.0,
+            "extent_mm": 4.71
+          },
+          {
+            "height_pct": 53.0,
+            "extent_mm": 4.688
+          },
+          {
+            "height_pct": 54.0,
+            "extent_mm": 4.667
+          },
+          {
+            "height_pct": 55.0,
+            "extent_mm": 4.645
+          },
+          {
+            "height_pct": 56.0,
+            "extent_mm": 4.624
+          },
+          {
+            "height_pct": 57.0,
+            "extent_mm": 4.602
+          },
+          {
+            "height_pct": 58.0,
+            "extent_mm": 4.583
+          },
+          {
+            "height_pct": 59.0,
+            "extent_mm": 6.854
+          },
+          {
+            "height_pct": 60.0,
+            "extent_mm": 7.992
+          },
+          {
+            "height_pct": 61.0,
+            "extent_mm": 8.692
+          },
+          {
+            "height_pct": 62.0,
+            "extent_mm": 9.051
+          },
+          {
+            "height_pct": 63.0,
+            "extent_mm": 9.166
+          },
+          {
+            "height_pct": 64.0,
+            "extent_mm": 8.958
+          },
+          {
+            "height_pct": 65.0,
+            "extent_mm": 8.281
+          },
+          {
+            "height_pct": 66.0,
+            "extent_mm": 7.256
+          },
+          {
+            "height_pct": 67.0,
+            "extent_mm": 5.765
+          },
+          {
+            "height_pct": 68.0,
+            "extent_mm": 4.341
+          },
+          {
+            "height_pct": 69.0,
+            "extent_mm": 4.154
+          },
+          {
+            "height_pct": 70.0,
+            "extent_mm": 4.317
+          },
+          {
+            "height_pct": 71.0,
+            "extent_mm": 4.945
+          },
+          {
+            "height_pct": 72.0,
+            "extent_mm": 5.581
+          },
+          {
+            "height_pct": 73.0,
+            "extent_mm": 6.21
+          },
+          {
+            "height_pct": 74.0,
+            "extent_mm": 6.628
+          },
+          {
+            "height_pct": 75.0,
+            "extent_mm": 7.043
+          }
+        ]
+      },
+      "mesh": {
+        "vertices": 822,
+        "triangles": 1640,
+        "watertight": true,
+        "winding_consistent": true,
+        "connected_components": 1,
+        "volume_mm3": 1659.01,
+        "stl_triangles": 1640,
+        "hull_vertices": 206,
+        "hull_triangles": 408,
+        "hull_volume_mm3": 2663.25,
+        "hull_containment_max_violation_m": 3.469446951953614e-18
+      },
+      "targets_mm": {
+        "height": 25.0,
+        "base_diameter": 15.0
+      },
+      "check": {
+        "height_error_mm": 0.0,
+        "foot_diameter_error_mm": 1e-05,
+        "tolerance_mm": 0.2,
+        "above_foot_not_wider": {
+          "pass": true,
+          "above_foot_max_width_mm": 13.194,
+          "wider_than_foot_by_mm": -1.806,
+          "allowed_exception": false,
+          "reason": null
+        },
+        "pass": true
+      },
+      "warnings": []
+    },
+    "rook": {
+      "type": "rook",
+      "source_node_prefix": "piece_rook_white_01",
+      "source_nodes": [
+        "piece_rook_white_01"
+      ],
+      "source_geometries": [
+        "ChessRook.003"
+      ],
+      "source_mesh": {
+        "vertices_raw": 2016,
+        "vertices_merged": 1490,
+        "triangles": 2976
+      },
+      "source_measurements_mm": {
+        "height": 60.5709,
+        "foot_width_bottom_20pct": 36.7934,
+        "foot_widest_at_z_mm": 2.43,
+        "base_diameter_bottom_1p5mm": 36.5148,
+        "base_centroid_vs_bbox_centre_offset_mm": 0.1805,
+        "foot_width_on_z_scaled_piece": 36.7934
+      },
+      "transforms": {
+        "order": [
+          "yup_to_zup_rotation",
+          "recentre_translation_m",
+          "scale_z",
+          "scale_xy",
+          "z_rotation (knight only)",
+          "final_recentre_translation_m"
+        ],
+        "yup_to_zup_rotation_matrix": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ]
+        ],
+        "recentre_translation_m": [
+          -0.20260218916999317,
+          -0.2025668837207601,
+          -0.017335281318082707
+        ],
+        "scale_factors": {
+          "x": 0.5435761025507003,
+          "y": 0.5435761025507003,
+          "z": 0.46226829313341306
+        },
+        "z_rotation": {
+          "applied": false,
+          "angle_deg": 0.0
+        },
+        "final_recentre_translation_m": [
+          1.6948567697284402e-07,
+          5.103992688768583e-06,
+          -0.0
+        ],
+        "faces_flipped": false
+      },
+      "files": {
+        "obj": "pieces/rook.obj",
+        "stl": "pieces/rook.stl",
+        "hull_obj": "pieces/rook_hull.obj"
+      },
+      "measured_mm": {
+        "height": 28.0,
+        "foot_diameter_bottom_20pct": 20.0,
+        "foot_max_extent_bottom_20pct": 19.9793,
+        "foot_x_extent": 19.9793,
+        "foot_y_extent": 19.9484,
+        "foot_caliper_width_min": 19.7374,
+        "foot_caliper_width_max": 20.0,
+        "foot_vertex_count": 289,
+        "above_foot_max_width": 19.0754,
+        "above_foot_x_extent": 18.9681,
+        "above_foot_y_extent": 19.0327,
+        "base_diameter_bottom_1p5mm": 19.9793,
+        "base_x_extent_bottom_1p5mm": 19.9793,
+        "base_y_extent_bottom_1p5mm": 19.9484,
+        "bbox_min": [
+          -9.9598,
+          -10.062,
+          0.0
+        ],
+        "bbox_max": [
+          10.0195,
+          9.8865,
+          28.0
+        ],
+        "diameter_profile_10_slices": [
+          {
+            "slice": 0,
+            "z_from_mm": 0.0,
+            "z_to_mm": 2.8,
+            "max_extent_mm": 19.979,
+            "max_xy_distance_mm": 20.0,
+            "x_extent_mm": 19.979,
+            "y_extent_mm": 19.948,
+            "vertices": 217
+          },
+          {
+            "slice": 1,
+            "z_from_mm": 2.8,
+            "z_to_mm": 5.6,
+            "max_extent_mm": 19.083,
+            "max_xy_distance_mm": 19.105,
+            "x_extent_mm": 19.083,
+            "y_extent_mm": 19.062,
+            "vertices": 72
+          },
+          {
+            "slice": 2,
+            "z_from_mm": 5.6,
+            "z_to_mm": 8.4,
+            "max_extent_mm": 19.033,
+            "max_xy_distance_mm": 19.075,
+            "x_extent_mm": 18.968,
+            "y_extent_mm": 19.033,
+            "vertices": 72
+          },
+          {
+            "slice": 3,
+            "z_from_mm": 8.4,
+            "z_to_mm": 11.2,
+            "max_extent_mm": 13.388,
+            "max_xy_distance_mm": 13.409,
+            "x_extent_mm": 13.313,
+            "y_extent_mm": 13.388,
+            "vertices": 24
+          },
+          {
+            "slice": 4,
+            "z_from_mm": 11.2,
+            "z_to_mm": 14.0,
+            "max_extent_mm": 11.503,
+            "max_xy_distance_mm": 11.506,
+            "x_extent_mm": 11.503,
+            "y_extent_mm": 11.485,
+            "vertices": 48
+          },
+          {
+            "slice": 5,
+            "z_from_mm": 14.0,
+            "z_to_mm": 16.8,
+            "max_extent_mm": 10.19,
+            "max_xy_distance_mm": 10.19,
+            "x_extent_mm": 10.19,
+            "y_extent_mm": 10.18,
+            "vertices": 24
+          },
+          {
+            "slice": 6,
+            "z_from_mm": 16.8,
+            "z_to_mm": 19.6,
+            "max_extent_mm": 10.265,
+            "max_xy_distance_mm": 10.335,
+            "x_extent_mm": 10.265,
+            "y_extent_mm": 10.259,
+            "vertices": 24
+          },
+          {
+            "slice": 7,
+            "z_from_mm": 19.6,
+            "z_to_mm": 22.4,
+            "max_extent_mm": 14.727,
+            "max_xy_distance_mm": 14.764,
+            "x_extent_mm": 14.727,
+            "y_extent_mm": 13.778,
+            "vertices": 90
+          },
+          {
+            "slice": 8,
+            "z_from_mm": 22.4,
+            "z_to_mm": 25.2,
+            "max_extent_mm": 15.64,
+            "max_xy_distance_mm": 15.66,
+            "x_extent_mm": 15.601,
+            "y_extent_mm": 15.64,
+            "vertices": 222
+          },
+          {
+            "slice": 9,
+            "z_from_mm": 25.2,
+            "z_to_mm": 28.0,
+            "max_extent_mm": 15.723,
+            "max_xy_distance_mm": 15.727,
+            "x_extent_mm": 15.679,
+            "y_extent_mm": 15.723,
+            "vertices": 697
+          }
+        ],
+        "stem_diameter_at_62pct": 10.2338,
+        "stem_x_extent_at_62pct": 10.2338,
+        "stem_y_extent_at_62pct": 10.226,
+        "stem_min_45_75pct": {
+          "diameter": 10.1937,
+          "at_height_pct": 57.0,
+          "at_z_mm": 15.96
+        },
+        "stem_profile_45_75pct": [
+          {
+            "height_pct": 45.0,
+            "extent_mm": 11.038
+          },
+          {
+            "height_pct": 46.0,
+            "extent_mm": 10.916
+          },
+          {
+            "height_pct": 47.0,
+            "extent_mm": 10.794
+          },
+          {
+            "height_pct": 48.0,
+            "extent_mm": 10.672
+          },
+          {
+            "height_pct": 49.0,
+            "extent_mm": 10.563
+          },
+          {
+            "height_pct": 50.0,
+            "extent_mm": 10.513
+          },
+          {
+            "height_pct": 51.0,
+            "extent_mm": 10.463
+          },
+          {
+            "height_pct": 52.0,
+            "extent_mm": 10.414
+          },
+          {
+            "height_pct": 53.0,
+            "extent_mm": 10.364
+          },
+          {
+            "height_pct": 54.0,
+            "extent_mm": 10.314
+          },
+          {
+            "height_pct": 55.0,
+            "extent_mm": 10.264
+          },
+          {
+            "height_pct": 56.0,
+            "extent_mm": 10.215
+          },
+          {
+            "height_pct": 57.0,
+            "extent_mm": 10.194
+          },
+          {
+            "height_pct": 58.0,
+            "extent_mm": 10.202
+          },
+          {
+            "height_pct": 59.0,
+            "extent_mm": 10.21
+          },
+          {
+            "height_pct": 60.0,
+            "extent_mm": 10.218
+          },
+          {
+            "height_pct": 61.0,
+            "extent_mm": 10.226
+          },
+          {
+            "height_pct": 62.0,
+            "extent_mm": 10.234
+          },
+          {
+            "height_pct": 63.0,
+            "extent_mm": 10.242
+          },
+          {
+            "height_pct": 64.0,
+            "extent_mm": 10.25
+          },
+          {
+            "height_pct": 65.0,
+            "extent_mm": 10.258
+          },
+          {
+            "height_pct": 66.0,
+            "extent_mm": 10.271
+          },
+          {
+            "height_pct": 67.0,
+            "extent_mm": 10.35
+          },
+          {
+            "height_pct": 68.0,
+            "extent_mm": 10.429
+          },
+          {
+            "height_pct": 69.0,
+            "extent_mm": 10.512
+          },
+          {
+            "height_pct": 70.0,
+            "extent_mm": 10.594
+          },
+          {
+            "height_pct": 71.0,
+            "extent_mm": 10.676
+          },
+          {
+            "height_pct": 72.0,
+            "extent_mm": 10.758
+          },
+          {
+            "height_pct": 73.0,
+            "extent_mm": 10.88
+          },
+          {
+            "height_pct": 74.0,
+            "extent_mm": 11.211
+          },
+          {
+            "height_pct": 75.0,
+            "extent_mm": 11.597
+          }
+        ]
+      },
+      "mesh": {
+        "vertices": 1490,
+        "triangles": 2976,
+        "watertight": true,
+        "winding_consistent": true,
+        "connected_components": 1,
+        "volume_mm3": 4438.08,
+        "stl_triangles": 2976,
+        "hull_vertices": 247,
+        "hull_triangles": 490,
+        "hull_volume_mm3": 6961.86,
+        "hull_containment_max_violation_m": 3.469446951953614e-18
+      },
+      "targets_mm": {
+        "height": 28.0,
+        "base_diameter": 20.0
+      },
+      "check": {
+        "height_error_mm": 0.0,
+        "foot_diameter_error_mm": 0.0,
+        "tolerance_mm": 0.2,
+        "above_foot_not_wider": {
+          "pass": true,
+          "above_foot_max_width_mm": 19.0754,
+          "wider_than_foot_by_mm": -0.9246,
+          "allowed_exception": false,
+          "reason": null
+        },
+        "pass": true
+      },
+      "warnings": []
+    },
+    "knight": {
+      "type": "knight",
+      "source_node_prefix": "piece_knight_white_01",
+      "source_nodes": [
+        "piece_knight_white_01"
+      ],
+      "source_geometries": [
+        "mesh.025"
+      ],
+      "source_mesh": {
+        "vertices_raw": 1705,
+        "vertices_merged": 1333,
+        "triangles": 2662
+      },
+      "source_measurements_mm": {
+        "height": 74.9986,
+        "foot_width_bottom_20pct": 39.116,
+        "foot_widest_at_z_mm": 0.3,
+        "base_diameter_bottom_1p5mm": 39.116,
+        "base_centroid_vs_bbox_centre_offset_mm": 0.0911,
+        "foot_width_on_z_scaled_piece": 39.116
+      },
+      "transforms": {
+        "order": [
+          "yup_to_zup_rotation",
+          "recentre_translation_m",
+          "scale_z",
+          "scale_xy",
+          "z_rotation (knight only)",
+          "final_recentre_translation_m"
+        ],
+        "yup_to_zup_rotation_matrix": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ]
+        ],
+        "recentre_translation_m": [
+          -0.14472025548290035,
+          -0.20243034500856916,
+          -0.017392652079406545
+        ],
+        "scale_factors": {
+          "x": 0.4346050670364886,
+          "y": 0.4346050670364886,
+          "z": 0.4133411390080083
+        },
+        "z_rotation": {
+          "applied": true,
+          "facing_angle_measured_deg_top40pct_centroid": -89.993,
+          "facing_angle_measured_deg_farthest_top_vertex": -90.019,
+          "top40pct_centroid_offset_mm": [
+            0.0002,
+            -1.3947
+          ],
+          "farthest_top_vertex_offset_mm": [
+            -0.0035,
+            -10.501
+          ],
+          "angle_deg": 90.0,
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "snapped_to_90deg_multiple": true,
+          "note": "rotation about +z applied after scaling; afterwards the top-40% centroid / muzzle lie on +x"
+        },
+        "final_recentre_translation_m": [
+          -5.397226626027799e-18,
+          6.777412887976363e-18,
+          -0.0
+        ],
+        "faces_flipped": false
+      },
+      "files": {
+        "obj": "pieces/knight.obj",
+        "stl": "pieces/knight.stl",
+        "hull_obj": "pieces/knight_hull.obj"
+      },
+      "measured_mm": {
+        "height": 31.0,
+        "foot_diameter_bottom_20pct": 17.0,
+        "foot_max_extent_bottom_20pct": 17.0,
+        "foot_x_extent": 17.0,
+        "foot_y_extent": 16.8605,
+        "foot_caliper_width_min": 16.8259,
+        "foot_caliper_width_max": 17.0,
+        "foot_vertex_count": 435,
+        "above_foot_max_width": 19.7233,
+        "above_foot_x_extent": 19.7233,
+        "above_foot_y_extent": 12.0496,
+        "base_diameter_bottom_1p5mm": 17.0,
+        "base_x_extent_bottom_1p5mm": 17.0,
+        "base_y_extent_bottom_1p5mm": 16.8605,
+        "bbox_min": [
+          -9.2028,
+          -8.4277,
+          0.0
+        ],
+        "bbox_max": [
+          10.5205,
+          8.4328,
+          31.0
+        ],
+        "diameter_profile_10_slices": [
+          {
+            "slice": 0,
+            "z_from_mm": 0.0,
+            "z_to_mm": 3.1,
+            "max_extent_mm": 17.0,
+            "max_xy_distance_mm": 17.0,
+            "x_extent_mm": 17.0,
+            "y_extent_mm": 16.86,
+            "vertices": 331
+          },
+          {
+            "slice": 1,
+            "z_from_mm": 3.1,
+            "z_to_mm": 6.2,
+            "max_extent_mm": 16.877,
+            "max_xy_distance_mm": 16.877,
+            "x_extent_mm": 16.877,
+            "y_extent_mm": 16.708,
+            "vertices": 104
+          },
+          {
+            "slice": 2,
+            "z_from_mm": 6.2,
+            "z_to_mm": 9.3,
+            "max_extent_mm": 13.693,
+            "max_xy_distance_mm": 13.693,
+            "x_extent_mm": 13.693,
+            "y_extent_mm": 11.676,
+            "vertices": 158
+          },
+          {
+            "slice": 3,
+            "z_from_mm": 9.3,
+            "z_to_mm": 12.4,
+            "max_extent_mm": 14.804,
+            "max_xy_distance_mm": 14.804,
+            "x_extent_mm": 14.804,
+            "y_extent_mm": 12.05,
+            "vertices": 78
+          },
+          {
+            "slice": 4,
+            "z_from_mm": 12.4,
+            "z_to_mm": 15.5,
+            "max_extent_mm": 15.202,
+            "max_xy_distance_mm": 15.202,
+            "x_extent_mm": 15.202,
+            "y_extent_mm": 11.7,
+            "vertices": 48
+          },
+          {
+            "slice": 5,
+            "z_from_mm": 15.5,
+            "z_to_mm": 18.6,
+            "max_extent_mm": 19.723,
+            "max_xy_distance_mm": 19.723,
+            "x_extent_mm": 19.723,
+            "y_extent_mm": 10.174,
+            "vertices": 174
+          },
+          {
+            "slice": 6,
+            "z_from_mm": 18.6,
+            "z_to_mm": 21.7,
+            "max_extent_mm": 19.538,
+            "max_xy_distance_mm": 19.538,
+            "x_extent_mm": 19.538,
+            "y_extent_mm": 9.867,
+            "vertices": 103
+          },
+          {
+            "slice": 7,
+            "z_from_mm": 21.7,
+            "z_to_mm": 24.8,
+            "max_extent_mm": 16.934,
+            "max_xy_distance_mm": 16.957,
+            "x_extent_mm": 16.934,
+            "y_extent_mm": 9.828,
+            "vertices": 92
+          },
+          {
+            "slice": 8,
+            "z_from_mm": 24.8,
+            "z_to_mm": 27.9,
+            "max_extent_mm": 12.612,
+            "max_xy_distance_mm": 12.698,
+            "x_extent_mm": 12.612,
+            "y_extent_mm": 10.123,
+            "vertices": 97
+          },
+          {
+            "slice": 9,
+            "z_from_mm": 27.9,
+            "z_to_mm": 31.0,
+            "max_extent_mm": 10.369,
+            "max_xy_distance_mm": 10.369,
+            "x_extent_mm": 8.195,
+            "y_extent_mm": 10.369,
+            "vertices": 148
+          }
+        ],
+        "stem_diameter_at_62pct": 19.5726,
+        "stem_x_extent_at_62pct": 19.5726,
+        "stem_y_extent_at_62pct": 9.2492,
+        "stem_min_45_75pct": {
+          "diameter": 12.6103,
+          "at_height_pct": 53.0,
+          "at_z_mm": 16.43
+        },
+        "stem_profile_45_75pct": [
+          {
+            "height_pct": 45.0,
+            "extent_mm": 13.894
+          },
+          {
+            "height_pct": 46.0,
+            "extent_mm": 13.795
+          },
+          {
+            "height_pct": 47.0,
+            "extent_mm": 13.686
+          },
+          {
+            "height_pct": 48.0,
+            "extent_mm": 13.56
+          },
+          {
+            "height_pct": 49.0,
+            "extent_mm": 13.378
+          },
+          {
+            "height_pct": 50.0,
+            "extent_mm": 13.172
+          },
+          {
+            "height_pct": 51.0,
+            "extent_mm": 12.966
+          },
+          {
+            "height_pct": 52.0,
+            "extent_mm": 12.77
+          },
+          {
+            "height_pct": 53.0,
+            "extent_mm": 12.61
+          },
+          {
+            "height_pct": 54.0,
+            "extent_mm": 18.414
+          },
+          {
+            "height_pct": 55.0,
+            "extent_mm": 18.96
+          },
+          {
+            "height_pct": 56.0,
+            "extent_mm": 19.235
+          },
+          {
+            "height_pct": 57.0,
+            "extent_mm": 19.454
+          },
+          {
+            "height_pct": 58.0,
+            "extent_mm": 19.609
+          },
+          {
+            "height_pct": 59.0,
+            "extent_mm": 19.711
+          },
+          {
+            "height_pct": 60.0,
+            "extent_mm": 19.683
+          },
+          {
+            "height_pct": 61.0,
+            "extent_mm": 19.655
+          },
+          {
+            "height_pct": 62.0,
+            "extent_mm": 19.573
+          },
+          {
+            "height_pct": 63.0,
+            "extent_mm": 19.464
+          },
+          {
+            "height_pct": 64.0,
+            "extent_mm": 19.295
+          },
+          {
+            "height_pct": 65.0,
+            "extent_mm": 19.062
+          },
+          {
+            "height_pct": 66.0,
+            "extent_mm": 18.768
+          },
+          {
+            "height_pct": 67.0,
+            "extent_mm": 18.442
+          },
+          {
+            "height_pct": 68.0,
+            "extent_mm": 18.078
+          },
+          {
+            "height_pct": 69.0,
+            "extent_mm": 17.721
+          },
+          {
+            "height_pct": 70.0,
+            "extent_mm": 17.364
+          },
+          {
+            "height_pct": 71.0,
+            "extent_mm": 17.045
+          },
+          {
+            "height_pct": 72.0,
+            "extent_mm": 16.748
+          },
+          {
+            "height_pct": 73.0,
+            "extent_mm": 16.452
+          },
+          {
+            "height_pct": 74.0,
+            "extent_mm": 16.118
+          },
+          {
+            "height_pct": 75.0,
+            "extent_mm": 15.746
+          }
+        ]
+      },
+      "mesh": {
+        "vertices": 1333,
+        "triangles": 2662,
+        "watertight": true,
+        "winding_consistent": true,
+        "connected_components": 1,
+        "volume_mm3": 3645.34,
+        "stl_triangles": 2662,
+        "hull_vertices": 262,
+        "hull_triangles": 520,
+        "hull_volume_mm3": 5107.53,
+        "hull_containment_max_violation_m": 1.4267417722328279e-15
+      },
+      "targets_mm": {
+        "height": 31.0,
+        "base_diameter": 17.0
+      },
+      "check": {
+        "height_error_mm": 0.0,
+        "foot_diameter_error_mm": 0.0,
+        "tolerance_mm": 0.2,
+        "above_foot_not_wider": {
+          "pass": false,
+          "above_foot_max_width_mm": 19.7233,
+          "wider_than_foot_by_mm": 2.7233,
+          "allowed_exception": true,
+          "reason": "the knight's head overhangs its base front-to-back in the source geometry (45.4 mm head vs 39.1 mm base); scaling the foot to the target keeps that ratio"
+        },
+        "pass": true
+      },
+      "warnings": [
+        "geometry above the foot is wider than the foot by 2.72 mm (19.72 vs 17.00 mm) [allowed exception]"
+      ]
+    },
+    "bishop": {
+      "type": "bishop",
+      "source_node_prefix": "piece_bishop_white_01",
+      "source_nodes": [
+        "piece_bishop_white_01_09f001",
+        "piece_bishop_white_01_b4af32"
+      ],
+      "source_geometries": [
+        "Cylinder.003",
+        "Cylinder.003_1"
+      ],
+      "source_mesh": {
+        "vertices_raw": 1838,
+        "vertices_merged": 1464,
+        "triangles": 2924
+      },
+      "source_measurements_mm": {
+        "height": 85.8122,
+        "foot_width_bottom_20pct": 32.3597,
+        "foot_widest_at_z_mm": 5.07,
+        "base_diameter_bottom_1p5mm": 32.0717,
+        "base_centroid_vs_bbox_centre_offset_mm": 0.1148,
+        "foot_width_on_z_scaled_piece": 32.3597
+      },
+      "transforms": {
+        "order": [
+          "yup_to_zup_rotation",
+          "recentre_translation_m",
+          "scale_z",
+          "scale_xy",
+          "z_rotation (knight only)",
+          "final_recentre_translation_m"
+        ],
+        "yup_to_zup_rotation_matrix": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ]
+        ],
+        "recentre_translation_m": [
+          -0.08683520023049413,
+          -0.20264423885369848,
+          -0.017392655834555626
+        ],
+        "scale_factors": {
+          "x": 0.6180529125556253,
+          "y": 0.6180529125556253,
+          "z": 0.4195208591852618
+        },
+        "z_rotation": {
+          "applied": false,
+          "angle_deg": 0.0
+        },
+        "final_recentre_translation_m": [
+          -1.032341557140164e-06,
+          5.6318050627486684e-08,
+          -0.0
+        ],
+        "faces_flipped": false
+      },
+      "files": {
+        "obj": "pieces/bishop.obj",
+        "stl": "pieces/bishop.stl",
+        "hull_obj": "pieces/bishop_hull.obj"
+      },
+      "measured_mm": {
+        "height": 36.0,
+        "foot_diameter_bottom_20pct": 20.0,
+        "foot_max_extent_bottom_20pct": 19.9107,
+        "foot_x_extent": 19.8958,
+        "foot_y_extent": 19.9107,
+        "foot_caliper_width_min": 19.7834,
+        "foot_caliper_width_max": 20.0,
+        "foot_vertex_count": 421,
+        "above_foot_max_width": 16.5213,
+        "above_foot_x_extent": 16.4441,
+        "above_foot_y_extent": 16.4698,
+        "base_diameter_bottom_1p5mm": 19.822,
+        "base_x_extent_bottom_1p5mm": 19.822,
+        "base_y_extent_bottom_1p5mm": 19.7964,
+        "bbox_min": [
+          -9.9342,
+          -9.9421,
+          0.0
+        ],
+        "bbox_max": [
+          9.9617,
+          9.9686,
+          36.0
+        ],
+        "diameter_profile_10_slices": [
+          {
+            "slice": 0,
+            "z_from_mm": 0.0,
+            "z_to_mm": 3.6,
+            "max_extent_mm": 19.911,
+            "max_xy_distance_mm": 20.0,
+            "x_extent_mm": 19.896,
+            "y_extent_mm": 19.911,
+            "vertices": 301
+          },
+          {
+            "slice": 1,
+            "z_from_mm": 3.6,
+            "z_to_mm": 7.2,
+            "max_extent_mm": 19.452,
+            "max_xy_distance_mm": 19.609,
+            "x_extent_mm": 19.452,
+            "y_extent_mm": 19.261,
+            "vertices": 120
+          },
+          {
+            "slice": 2,
+            "z_from_mm": 7.2,
+            "z_to_mm": 10.8,
+            "max_extent_mm": 16.47,
+            "max_xy_distance_mm": 16.521,
+            "x_extent_mm": 16.444,
+            "y_extent_mm": 16.47,
+            "vertices": 120
+          },
+          {
+            "slice": 3,
+            "z_from_mm": 10.8,
+            "z_to_mm": 14.4,
+            "max_extent_mm": 8.34,
+            "max_xy_distance_mm": 8.34,
+            "x_extent_mm": 8.267,
+            "y_extent_mm": 8.34,
+            "vertices": 60
+          },
+          {
+            "slice": 4,
+            "z_from_mm": 14.4,
+            "z_to_mm": 18.0,
+            "max_extent_mm": 7.237,
+            "max_xy_distance_mm": 7.237,
+            "x_extent_mm": 7.166,
+            "y_extent_mm": 7.237,
+            "vertices": 60
+          },
+          {
+            "slice": 5,
+            "z_from_mm": 18.0,
+            "z_to_mm": 21.6,
+            "max_extent_mm": 14.313,
+            "max_xy_distance_mm": 14.344,
+            "x_extent_mm": 14.237,
+            "y_extent_mm": 14.313,
+            "vertices": 150
+          },
+          {
+            "slice": 6,
+            "z_from_mm": 21.6,
+            "z_to_mm": 25.2,
+            "max_extent_mm": 12.349,
+            "max_xy_distance_mm": 12.349,
+            "x_extent_mm": 12.107,
+            "y_extent_mm": 12.349,
+            "vertices": 240
+          },
+          {
+            "slice": 7,
+            "z_from_mm": 25.2,
+            "z_to_mm": 28.8,
+            "max_extent_mm": 12.888,
+            "max_xy_distance_mm": 12.888,
+            "x_extent_mm": 12.461,
+            "y_extent_mm": 12.888,
+            "vertices": 197
+          },
+          {
+            "slice": 8,
+            "z_from_mm": 28.8,
+            "z_to_mm": 32.4,
+            "max_extent_mm": 7.509,
+            "max_xy_distance_mm": 7.509,
+            "x_extent_mm": 5.971,
+            "y_extent_mm": 7.509,
+            "vertices": 125
+          },
+          {
+            "slice": 9,
+            "z_from_mm": 32.4,
+            "z_to_mm": 36.0,
+            "max_extent_mm": 5.661,
+            "max_xy_distance_mm": 5.692,
+            "x_extent_mm": 5.606,
+            "y_extent_mm": 5.661,
+            "vertices": 91
+          }
+        ],
+        "stem_diameter_at_62pct": 10.0456,
+        "stem_x_extent_at_62pct": 10.012,
+        "stem_y_extent_at_62pct": 10.0456,
+        "stem_min_45_75pct": {
+          "diameter": 7.0294,
+          "at_height_pct": 45.0,
+          "at_z_mm": 16.2
+        },
+        "stem_profile_45_75pct": [
+          {
+            "height_pct": 45.0,
+            "extent_mm": 7.029
+          },
+          {
+            "height_pct": 46.0,
+            "extent_mm": 7.122
+          },
+          {
+            "height_pct": 47.0,
+            "extent_mm": 7.214
+          },
+          {
+            "height_pct": 48.0,
+            "extent_mm": 7.427
+          },
+          {
+            "height_pct": 49.0,
+            "extent_mm": 7.679
+          },
+          {
+            "height_pct": 50.0,
+            "extent_mm": 7.93
+          },
+          {
+            "height_pct": 51.0,
+            "extent_mm": 8.181
+          },
+          {
+            "height_pct": 52.0,
+            "extent_mm": 8.433
+          },
+          {
+            "height_pct": 53.0,
+            "extent_mm": 9.196
+          },
+          {
+            "height_pct": 54.0,
+            "extent_mm": 10.201
+          },
+          {
+            "height_pct": 55.0,
+            "extent_mm": 12.819
+          },
+          {
+            "height_pct": 56.0,
+            "extent_mm": 13.807
+          },
+          {
+            "height_pct": 57.0,
+            "extent_mm": 14.237
+          },
+          {
+            "height_pct": 58.0,
+            "extent_mm": 13.788
+          },
+          {
+            "height_pct": 59.0,
+            "extent_mm": 12.876
+          },
+          {
+            "height_pct": 60.0,
+            "extent_mm": 11.124
+          },
+          {
+            "height_pct": 61.0,
+            "extent_mm": 10.248
+          },
+          {
+            "height_pct": 62.0,
+            "extent_mm": 10.046
+          },
+          {
+            "height_pct": 63.0,
+            "extent_mm": 10.58
+          },
+          {
+            "height_pct": 64.0,
+            "extent_mm": 10.713
+          },
+          {
+            "height_pct": 65.0,
+            "extent_mm": 9.888
+          },
+          {
+            "height_pct": 66.0,
+            "extent_mm": 10.289
+          },
+          {
+            "height_pct": 67.0,
+            "extent_mm": 11.307
+          },
+          {
+            "height_pct": 68.0,
+            "extent_mm": 11.886
+          },
+          {
+            "height_pct": 69.0,
+            "extent_mm": 12.375
+          },
+          {
+            "height_pct": 70.0,
+            "extent_mm": 12.631
+          },
+          {
+            "height_pct": 71.0,
+            "extent_mm": 12.888
+          },
+          {
+            "height_pct": 72.0,
+            "extent_mm": 12.883
+          },
+          {
+            "height_pct": 73.0,
+            "extent_mm": 12.877
+          },
+          {
+            "height_pct": 74.0,
+            "extent_mm": 12.352
+          },
+          {
+            "height_pct": 75.0,
+            "extent_mm": 12.006
+          }
+        ]
+      },
+      "mesh": {
+        "vertices": 1464,
+        "triangles": 2924,
+        "watertight": true,
+        "winding_consistent": true,
+        "connected_components": 1,
+        "volume_mm3": 3842.85,
+        "stl_triangles": 2924,
+        "hull_vertices": 270,
+        "hull_triangles": 536,
+        "hull_volume_mm3": 6371.41,
+        "hull_containment_max_violation_m": 6.938893903907228e-18
+      },
+      "targets_mm": {
+        "height": 36.0,
+        "base_diameter": 20.0
+      },
+      "check": {
+        "height_error_mm": 0.0,
+        "foot_diameter_error_mm": 0.0,
+        "tolerance_mm": 0.2,
+        "above_foot_not_wider": {
+          "pass": true,
+          "above_foot_max_width_mm": 16.5213,
+          "wider_than_foot_by_mm": -3.4787,
+          "allowed_exception": false,
+          "reason": null
+        },
+        "pass": true
+      },
+      "warnings": []
+    },
+    "queen": {
+      "type": "queen",
+      "source_node_prefix": "piece_queen_white",
+      "source_nodes": [
+        "piece_queen_white"
+      ],
+      "source_geometries": [
+        "Cylinder.005"
+      ],
+      "source_mesh": {
+        "vertices_raw": 1827,
+        "vertices_merged": 1472,
+        "triangles": 2940
+      },
+      "source_measurements_mm": {
+        "height": 90.7205,
+        "foot_width_bottom_20pct": 40.8067,
+        "foot_widest_at_z_mm": 11.62,
+        "base_diameter_bottom_1p5mm": 36.2357,
+        "base_centroid_vs_bbox_centre_offset_mm": 0.0246,
+        "foot_width_on_z_scaled_piece": 40.8067
+      },
+      "transforms": {
+        "order": [
+          "yup_to_zup_rotation",
+          "recentre_translation_m",
+          "scale_z",
+          "scale_xy",
+          "z_rotation (knight only)",
+          "final_recentre_translation_m"
+        ],
+        "yup_to_zup_rotation_matrix": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ]
+        ],
+        "recentre_translation_m": [
+          0.028945651437361854,
+          -0.2026080869086287,
+          -0.017126112448750064
+        ],
+        "scale_factors": {
+          "x": 0.4901155653978261,
+          "y": 0.4901155653978261,
+          "z": 0.4409149145122109
+        },
+        "z_rotation": {
+          "applied": false,
+          "angle_deg": 0.0
+        },
+        "final_recentre_translation_m": [
+          -8.605028058142773e-07,
+          -8.483173604009432e-07,
+          -0.0
+        ],
+        "faces_flipped": false
+      },
+      "files": {
+        "obj": "pieces/queen.obj",
+        "stl": "pieces/queen.stl",
+        "hull_obj": "pieces/queen_hull.obj"
+      },
+      "measured_mm": {
+        "height": 40.0,
+        "foot_diameter_bottom_20pct": 20.0,
+        "foot_max_extent_bottom_20pct": 19.9789,
+        "foot_x_extent": 19.8892,
+        "foot_y_extent": 19.9789,
+        "foot_caliper_width_min": 19.845,
+        "foot_caliper_width_max": 20.0,
+        "foot_vertex_count": 421,
+        "above_foot_max_width": 15.2913,
+        "above_foot_x_extent": 15.2074,
+        "above_foot_y_extent": 15.2018,
+        "base_diameter_bottom_1p5mm": 18.1407,
+        "base_x_extent_bottom_1p5mm": 18.0284,
+        "base_y_extent_bottom_1p5mm": 18.1407,
+        "bbox_min": [
+          -9.9422,
+          -9.9903,
+          0.0
+        ],
+        "bbox_max": [
+          9.947,
+          9.9886,
+          40.0
+        ],
+        "diameter_profile_10_slices": [
+          {
+            "slice": 0,
+            "z_from_mm": 0.0,
+            "z_to_mm": 4.0,
+            "max_extent_mm": 19.557,
+            "max_xy_distance_mm": 19.565,
+            "x_extent_mm": 19.28,
+            "y_extent_mm": 19.557,
+            "vertices": 271
+          },
+          {
+            "slice": 1,
+            "z_from_mm": 4.0,
+            "z_to_mm": 8.0,
+            "max_extent_mm": 19.979,
+            "max_xy_distance_mm": 20.0,
+            "x_extent_mm": 19.889,
+            "y_extent_mm": 19.979,
+            "vertices": 150
+          },
+          {
+            "slice": 2,
+            "z_from_mm": 8.0,
+            "z_to_mm": 12.0,
+            "max_extent_mm": 15.207,
+            "max_xy_distance_mm": 15.291,
+            "x_extent_mm": 15.207,
+            "y_extent_mm": 15.202,
+            "vertices": 180
+          },
+          {
+            "slice": 3,
+            "z_from_mm": 12.0,
+            "z_to_mm": 16.0,
+            "max_extent_mm": 14.63,
+            "max_xy_distance_mm": 14.666,
+            "x_extent_mm": 14.586,
+            "y_extent_mm": 14.63,
+            "vertices": 150
+          },
+          {
+            "slice": 4,
+            "z_from_mm": 16.0,
+            "z_to_mm": 20.0,
+            "max_extent_mm": 7.936,
+            "max_xy_distance_mm": 7.975,
+            "x_extent_mm": 7.907,
+            "y_extent_mm": 7.936,
+            "vertices": 30
+          },
+          {
+            "slice": 5,
+            "z_from_mm": 20.0,
+            "z_to_mm": 24.0,
+            "max_extent_mm": 7.134,
+            "max_xy_distance_mm": 7.135,
+            "x_extent_mm": 7.075,
+            "y_extent_mm": 7.134,
+            "vertices": 30
+          },
+          {
+            "slice": 6,
+            "z_from_mm": 24.0,
+            "z_to_mm": 28.0,
+            "max_extent_mm": 12.142,
+            "max_xy_distance_mm": 12.142,
+            "x_extent_mm": 12.061,
+            "y_extent_mm": 12.142,
+            "vertices": 270
+          },
+          {
+            "slice": 7,
+            "z_from_mm": 28.0,
+            "z_to_mm": 32.0,
+            "max_extent_mm": 10.133,
+            "max_xy_distance_mm": 10.148,
+            "x_extent_mm": 10.075,
+            "y_extent_mm": 10.133,
+            "vertices": 60
+          },
+          {
+            "slice": 8,
+            "z_from_mm": 32.0,
+            "z_to_mm": 36.0,
+            "max_extent_mm": 13.933,
+            "max_xy_distance_mm": 13.975,
+            "x_extent_mm": 13.744,
+            "y_extent_mm": 13.933,
+            "vertices": 195
+          },
+          {
+            "slice": 9,
+            "z_from_mm": 36.0,
+            "z_to_mm": 40.0,
+            "max_extent_mm": 6.979,
+            "max_xy_distance_mm": 7.009,
+            "x_extent_mm": 6.979,
+            "y_extent_mm": 6.97,
+            "vertices": 136
+          }
+        ],
+        "stem_diameter_at_62pct": 7.6527,
+        "stem_x_extent_at_62pct": 7.6338,
+        "stem_y_extent_at_62pct": 7.6527,
+        "stem_min_45_75pct": {
+          "diameter": 7.1544,
+          "at_height_pct": 58.0,
+          "at_z_mm": 23.2
+        },
+        "stem_profile_45_75pct": [
+          {
+            "height_pct": 45.0,
+            "extent_mm": 8.604
+          },
+          {
+            "height_pct": 46.0,
+            "extent_mm": 8.35
+          },
+          {
+            "height_pct": 47.0,
+            "extent_mm": 8.097
+          },
+          {
+            "height_pct": 48.0,
+            "extent_mm": 7.908
+          },
+          {
+            "height_pct": 49.0,
+            "extent_mm": 7.833
+          },
+          {
+            "height_pct": 50.0,
+            "extent_mm": 7.758
+          },
+          {
+            "height_pct": 51.0,
+            "extent_mm": 7.682
+          },
+          {
+            "height_pct": 52.0,
+            "extent_mm": 7.607
+          },
+          {
+            "height_pct": 53.0,
+            "extent_mm": 7.531
+          },
+          {
+            "height_pct": 54.0,
+            "extent_mm": 7.456
+          },
+          {
+            "height_pct": 55.0,
+            "extent_mm": 7.381
+          },
+          {
+            "height_pct": 56.0,
+            "extent_mm": 7.305
+          },
+          {
+            "height_pct": 57.0,
+            "extent_mm": 7.23
+          },
+          {
+            "height_pct": 58.0,
+            "extent_mm": 7.154
+          },
+          {
+            "height_pct": 59.0,
+            "extent_mm": 7.183
+          },
+          {
+            "height_pct": 60.0,
+            "extent_mm": 7.25
+          },
+          {
+            "height_pct": 61.0,
+            "extent_mm": 7.317
+          },
+          {
+            "height_pct": 62.0,
+            "extent_mm": 7.653
+          },
+          {
+            "height_pct": 63.0,
+            "extent_mm": 8.165
+          },
+          {
+            "height_pct": 64.0,
+            "extent_mm": 8.678
+          },
+          {
+            "height_pct": 65.0,
+            "extent_mm": 11.638
+          },
+          {
+            "height_pct": 66.0,
+            "extent_mm": 12.065
+          },
+          {
+            "height_pct": 67.0,
+            "extent_mm": 11.876
+          },
+          {
+            "height_pct": 68.0,
+            "extent_mm": 10.806
+          },
+          {
+            "height_pct": 69.0,
+            "extent_mm": 8.467
+          },
+          {
+            "height_pct": 70.0,
+            "extent_mm": 8.285
+          },
+          {
+            "height_pct": 71.0,
+            "extent_mm": 8.299
+          },
+          {
+            "height_pct": 72.0,
+            "extent_mm": 8.312
+          },
+          {
+            "height_pct": 73.0,
+            "extent_mm": 8.339
+          },
+          {
+            "height_pct": 74.0,
+            "extent_mm": 8.698
+          },
+          {
+            "height_pct": 75.0,
+            "extent_mm": 9.057
+          }
+        ]
+      },
+      "mesh": {
+        "vertices": 1472,
+        "triangles": 2940,
+        "watertight": true,
+        "winding_consistent": true,
+        "connected_components": 1,
+        "volume_mm3": 4544.5,
+        "stl_triangles": 2940,
+        "hull_vertices": 229,
+        "hull_triangles": 454,
+        "hull_volume_mm3": 8334.86,
+        "hull_containment_max_violation_m": 6.938893903907228e-18
+      },
+      "targets_mm": {
+        "height": 40.0,
+        "base_diameter": 20.0
+      },
+      "check": {
+        "height_error_mm": 0.0,
+        "foot_diameter_error_mm": 0.0,
+        "tolerance_mm": 0.2,
+        "above_foot_not_wider": {
+          "pass": true,
+          "above_foot_max_width_mm": 15.2913,
+          "wider_than_foot_by_mm": -4.7087,
+          "allowed_exception": false,
+          "reason": null
+        },
+        "pass": true
+      },
+      "warnings": []
+    },
+    "king": {
+      "type": "king",
+      "source_node_prefix": "piece_king_white",
+      "source_nodes": [
+        "piece_king_white"
+      ],
+      "source_geometries": [
+        "Cylinder.006"
+      ],
+      "source_mesh": {
+        "vertices_raw": 2643,
+        "vertices_merged": 2088,
+        "triangles": 4172
+      },
+      "source_measurements_mm": {
+        "height": 95.0032,
+        "foot_width_bottom_20pct": 41.771,
+        "foot_widest_at_z_mm": 2.14,
+        "base_diameter_bottom_1p5mm": 40.5115,
+        "base_centroid_vs_bbox_centre_offset_mm": 0.0197,
+        "foot_width_on_z_scaled_piece": 41.771
+      },
+      "transforms": {
+        "order": [
+          "yup_to_zup_rotation",
+          "recentre_translation_m",
+          "scale_z",
+          "scale_xy",
+          "z_rotation (knight only)",
+          "final_recentre_translation_m"
+        ],
+        "yup_to_zup_rotation_matrix": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            -1.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ]
+        ],
+        "recentre_translation_m": [
+          -0.02894157730581343,
+          -0.20261245779789339,
+          -0.017392655834555626
+        ],
+        "scale_factors": {
+          "x": 0.4788013550419972,
+          "y": 0.4788013550419972,
+          "z": 0.526298129919963
+        },
+        "z_rotation": {
+          "applied": false,
+          "angle_deg": 0.0
+        },
+        "final_recentre_translation_m": [
+          1.8778218846038155e-06,
+          -1.398856612418017e-06,
+          -0.0
+        ],
+        "faces_flipped": false
+      },
+      "files": {
+        "obj": "pieces/king.obj",
+        "stl": "pieces/king.stl",
+        "hull_obj": "pieces/king_hull.obj"
+      },
+      "measured_mm": {
+        "height": 50.0,
+        "foot_diameter_bottom_20pct": 20.0,
+        "foot_max_extent_bottom_20pct": 19.9756,
+        "foot_x_extent": 19.8832,
+        "foot_y_extent": 19.9756,
+        "foot_caliper_width_min": 19.807,
+        "foot_caliper_width_max": 20.0,
+        "foot_vertex_count": 481,
+        "above_foot_max_width": 11.4579,
+        "above_foot_x_extent": 11.3663,
+        "above_foot_y_extent": 11.4551,
+        "base_diameter_bottom_1p5mm": 19.9756,
+        "base_x_extent_bottom_1p5mm": 19.8832,
+        "base_y_extent_bottom_1p5mm": 19.9756,
+        "bbox_min": [
+          -9.944,
+          -9.9931,
+          0.0
+        ],
+        "bbox_max": [
+          9.9393,
+          9.9825,
+          50.0
+        ],
+        "diameter_profile_10_slices": [
+          {
+            "slice": 0,
+            "z_from_mm": 0.0,
+            "z_to_mm": 5.0,
+            "max_extent_mm": 19.976,
+            "max_xy_distance_mm": 20.0,
+            "x_extent_mm": 19.883,
+            "y_extent_mm": 19.976,
+            "vertices": 301
+          },
+          {
+            "slice": 1,
+            "z_from_mm": 5.0,
+            "z_to_mm": 10.0,
+            "max_extent_mm": 18.307,
+            "max_xy_distance_mm": 18.403,
+            "x_extent_mm": 18.249,
+            "y_extent_mm": 18.307,
+            "vertices": 180
+          },
+          {
+            "slice": 2,
+            "z_from_mm": 10.0,
+            "z_to_mm": 15.0,
+            "max_extent_mm": 9.788,
+            "max_xy_distance_mm": 9.856,
+            "x_extent_mm": 9.788,
+            "y_extent_mm": 9.753,
+            "vertices": 30
+          },
+          {
+            "slice": 3,
+            "z_from_mm": 15.0,
+            "z_to_mm": 20.0,
+            "max_extent_mm": 8.008,
+            "max_xy_distance_mm": 8.049,
+            "x_extent_mm": 8.008,
+            "y_extent_mm": 7.969,
+            "vertices": 60
+          },
+          {
+            "slice": 4,
+            "z_from_mm": 20.0,
+            "z_to_mm": 25.0,
+            "max_extent_mm": 6.475,
+            "max_xy_distance_mm": 6.498,
+            "x_extent_mm": 6.471,
+            "y_extent_mm": 6.475,
+            "vertices": 30
+          },
+          {
+            "slice": 5,
+            "z_from_mm": 25.0,
+            "z_to_mm": 30.0,
+            "max_extent_mm": 10.856,
+            "max_xy_distance_mm": 10.858,
+            "x_extent_mm": 10.776,
+            "y_extent_mm": 10.856,
+            "vertices": 150
+          },
+          {
+            "slice": 6,
+            "z_from_mm": 30.0,
+            "z_to_mm": 35.0,
+            "max_extent_mm": 11.455,
+            "max_xy_distance_mm": 11.458,
+            "x_extent_mm": 11.366,
+            "y_extent_mm": 11.455,
+            "vertices": 300
+          },
+          {
+            "slice": 7,
+            "z_from_mm": 35.0,
+            "z_to_mm": 40.0,
+            "max_extent_mm": 10.454,
+            "max_xy_distance_mm": 10.486,
+            "x_extent_mm": 10.428,
+            "y_extent_mm": 10.454,
+            "vertices": 60
+          },
+          {
+            "slice": 8,
+            "z_from_mm": 40.0,
+            "z_to_mm": 45.0,
+            "max_extent_mm": 11.031,
+            "max_xy_distance_mm": 11.065,
+            "x_extent_mm": 11.002,
+            "y_extent_mm": 11.031,
+            "vertices": 251
+          },
+          {
+            "slice": 9,
+            "z_from_mm": 45.0,
+            "z_to_mm": 50.0,
+            "max_extent_mm": 5.598,
+            "max_xy_distance_mm": 5.621,
+            "x_extent_mm": 5.598,
+            "y_extent_mm": 2.193,
+            "vertices": 726
+          }
+        ],
+        "stem_diameter_at_62pct": 10.9302,
+        "stem_x_extent_at_62pct": 10.8479,
+        "stem_y_extent_at_62pct": 10.9302,
+        "stem_min_45_75pct": {
+          "diameter": 6.3433,
+          "at_height_pct": 54.0,
+          "at_z_mm": 27.0
+        },
+        "stem_profile_45_75pct": [
+          {
+            "height_pct": 45.0,
+            "extent_mm": 6.472
+          },
+          {
+            "height_pct": 46.0,
+            "extent_mm": 6.458
+          },
+          {
+            "height_pct": 47.0,
+            "extent_mm": 6.444
+          },
+          {
+            "height_pct": 48.0,
+            "extent_mm": 6.429
+          },
+          {
+            "height_pct": 49.0,
+            "extent_mm": 6.415
+          },
+          {
+            "height_pct": 50.0,
+            "extent_mm": 6.401
+          },
+          {
+            "height_pct": 51.0,
+            "extent_mm": 6.386
+          },
+          {
+            "height_pct": 52.0,
+            "extent_mm": 6.372
+          },
+          {
+            "height_pct": 53.0,
+            "extent_mm": 6.358
+          },
+          {
+            "height_pct": 54.0,
+            "extent_mm": 6.343
+          },
+          {
+            "height_pct": 55.0,
+            "extent_mm": 6.373
+          },
+          {
+            "height_pct": 56.0,
+            "extent_mm": 6.413
+          },
+          {
+            "height_pct": 57.0,
+            "extent_mm": 6.453
+          },
+          {
+            "height_pct": 58.0,
+            "extent_mm": 6.702
+          },
+          {
+            "height_pct": 59.0,
+            "extent_mm": 10.889
+          },
+          {
+            "height_pct": 60.0,
+            "extent_mm": 11.246
+          },
+          {
+            "height_pct": 61.0,
+            "extent_mm": 11.301
+          },
+          {
+            "height_pct": 62.0,
+            "extent_mm": 10.93
+          },
+          {
+            "height_pct": 63.0,
+            "extent_mm": 9.708
+          },
+          {
+            "height_pct": 64.0,
+            "extent_mm": 9.402
+          },
+          {
+            "height_pct": 65.0,
+            "extent_mm": 8.278
+          },
+          {
+            "height_pct": 66.0,
+            "extent_mm": 8.228
+          },
+          {
+            "height_pct": 67.0,
+            "extent_mm": 7.564
+          },
+          {
+            "height_pct": 68.0,
+            "extent_mm": 6.434
+          },
+          {
+            "height_pct": 69.0,
+            "extent_mm": 6.563
+          },
+          {
+            "height_pct": 70.0,
+            "extent_mm": 6.825
+          },
+          {
+            "height_pct": 71.0,
+            "extent_mm": 7.208
+          },
+          {
+            "height_pct": 72.0,
+            "extent_mm": 7.592
+          },
+          {
+            "height_pct": 73.0,
+            "extent_mm": 7.976
+          },
+          {
+            "height_pct": 74.0,
+            "extent_mm": 8.453
+          },
+          {
+            "height_pct": 75.0,
+            "extent_mm": 8.944
+          }
+        ]
+      },
+      "mesh": {
+        "vertices": 2088,
+        "triangles": 4172,
+        "watertight": true,
+        "winding_consistent": true,
+        "connected_components": 1,
+        "volume_mm3": 4114.81,
+        "stl_triangles": 4172,
+        "hull_vertices": 286,
+        "hull_triangles": 568,
+        "hull_volume_mm3": 8259.54,
+        "hull_containment_max_violation_m": 6.938893903907228e-18
+      },
+      "targets_mm": {
+        "height": 50.0,
+        "base_diameter": 20.0
+      },
+      "check": {
+        "height_error_mm": 0.0,
+        "foot_diameter_error_mm": 0.0,
+        "tolerance_mm": 0.2,
+        "above_foot_not_wider": {
+          "pass": true,
+          "above_foot_max_width_mm": 11.4579,
+          "wider_than_foot_by_mm": -8.5421,
+          "allowed_exception": false,
+          "reason": null
+        },
+        "pass": true
+      },
+      "warnings": []
+    }
+  }
+}

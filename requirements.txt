@@ -1,0 +1,13 @@
+# LeRobot is installed from source at commit e595b79 with third_party/lerobot.patch (see README). It brings torch,
+# torchvision, transformers, huggingface_hub, the Feetech motor SDK and SmolVLA. Versions below are the ones the
+# project ran with (Python 3.12, macOS).
+mujoco==3.14.0
+chess==1.11.2                     # python-chess
+gymnasium==1.3.0
+numpy==2.2.6
+opencv-python-headless==4.13.0.92
+pandas==2.3.3
+pyarrow==25.0.1
+pillow==12.2.0
+pyyaml==6.0.3                     # optional: config.yaml is also read without it
+# anthropic==2.6.0                # only for scripts/play_claude.sh (Claude as the grasp and place skill)

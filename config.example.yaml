@@ -1,0 +1,18 @@
+# Machine-specific settings. Copy to config.yaml (ignored by git) and fill in.
+# Environment variables override these: SO101_FOLLOWER_PORT, SO101_LEADER_PORT, SO101_STOCKFISH, ...
+
+# Serial ports of the two arms. Find them with `lerobot-find-port` (once per arm, unplugging when asked).
+# macOS: /dev/tty.usbmodemXXXXXXXXXXX   Linux: /dev/ttyACM0
+follower_port: /dev/tty.usbmodemXXXXXXXXXXX
+leader_port: /dev/tty.usbmodemYYYYYYYYYYY
+
+# Names of the LeRobot motor calibrations (lerobot-calibrate --robot.id / --teleop.id)
+follower_id: follower_arm_1
+leader_id: leader_arm_1
+
+# Stockfish binary; leave empty to use the one on PATH (brew install stockfish, apt install stockfish)
+stockfish_path:
+
+# Optional Hub repository ID or local trained SmolVLA folder for the live-game page.
+# Leave empty to choose on the page.
+live_model_repo:

@@ -1,0 +1,372 @@
+{
+  "source": "astra/20261110_180458",
+  "z_board": 0.01,
+  "attempts": [
+    {
+      "hover": {
+        "n": 4,
+        "kind": "from",
+        "time": "18:06:35",
+        "phase": "hover",
+        "text": "GRASP black bishop on c8; feature: the middle of the small ball on top. Image 840 x 840 pixels. Phase: hover before descent. The coloured boundary is approximate; locate the real feature.",
+        "answer": {
+          "visible": true,
+          "target_px": [
+            468,
+            363
+          ],
+          "pad_gap_px": [
+            630,
+            365
+          ],
+          "clear": true,
+          "roll_deg": 0,
+          "confidence": 0.87,
+          "_latency_s": 21.09,
+          "_usage": {
+            "in": 1532,
+            "out": 1030,
+            "cached": 0,
+            "effort": "medium"
+          },
+          "_model": "gpt-6-astra",
+          "_service_tier": "fast",
+          "pads_offset_px": [
+            9.033085637202362,
+            -54.94407504865205
+          ],
+          "grid_px": [],
+          "notes": "",
+          "_source": "astra",
+          "_grid_trusted": false
+        },
+        "q": [
+          32.131866455078125,
+          -28.659339904785156,
+          21.538461685180664,
+          101.80220031738281,
+          21.406593322753906,
+          9.584450721740723
+        ],
+        "land_px": [
+          456.7806374440322,
+          404.2265140005668
+        ],
+        "land_w": [
+          0.14850448552108825,
+          -0.07038004815575837,
+          0.043000000000000003
+        ],
+        "z_plane": 0.043000000000000003,
+        "tips_px": [
+          [
+            621.8529858229919,
+            483.4029775377023
+          ],
+          [
+            619.7028367912186,
+            355.7316496084024
+          ]
+        ],
+        "reg": {
+          "grid_n": 0,
+          "grid_used": 0,
+          "reason": "insufficient 2D grid support"
+        },
+        "target_px": [
+          468.0,
+          363.0
+        ],
+        "target_raw": [
+          636.0,
+          365.0
+        ],
+        "feat_xy": [
+          0.15306788653466835,
+          -0.0732592028519095
+        ],
+        "method": "centre",
+        "pads_offset_mm": [
+          5.036438241312835,
+          -2.483538696938112
+        ],
+        "d_mm": [
+          -0.47303722773273105,
+          -0.3956159992130197
+        ],
+        "pads_applied": true,
+        "action": "descend",
+        "used_mm": [
+          -0.47303722773273105,
+          -0.3956159992130197
+        ],
+        "truth_after_mm": null
+      },
+      "occluded": {
+        "n": 5,
+        "kind": "from",
+        "time": "18:06:48",
+        "phase": "low",
+        "text": "GRASP black bishop on c8; feature: the middle of the small ball on top. Image 840 x 840 pixels. Phase: at BODY grasp/release height. The coloured boundary is approximate; locate the real feature.",
+        "answer": {
+          "visible": false,
+          "target_px": null,
+          "pad_gap_px": null,
+          "clear": true,
+          "roll_deg": 0,
+          "confidence": 0.35,
+          "_latency_s": 9.57,
+          "_usage": {
+            "in": 1535,
+            "out": 437,
+            "cached": 0,
+            "effort": "medium"
+          },
+          "_model": "gpt-6-astra",
+          "_service_tier": "fast",
+          "pads_offset_px": [
+            0,
+            0
+          ],
+          "grid_px": [],
+          "notes": "",
+          "_source": "astra"
+        },
+        "q": [
+          32.131866455078125,
+          -17.58241844177246,
+          35.516483306884766,
+          82.63735961914062,
+          21.406593322753906,
+          14.745307922363281
+        ],
+        "land_px": [
+          466.42047408612365,
+          389.2301527174815
+        ],
+        "land_w": [
+          0.14956547742708337,
+          -0.07036798398254762,
+          0.043000000000000003
+        ],
+        "z_plane": 0.043000000000000003,
+        "tips_px": [
+          [
+            362.3529858229922,
+            442.90297753770244
+          ],
+          [
+            355.65760885868985,
+            279.52345154405106
+          ]
+        ],
+        "action": "give_up",
+        "used_mm": [
+          0.0,
+          0.0
+        ],
+        "truth_after_mm": null
+      }
+    },
+    {
+      "hover": {
+        "n": 8,
+        "kind": "from",
+        "time": "18:07:26",
+        "phase": "hover",
+        "text": "GRASP black bishop on c8; feature: the middle of the small ball on top. Image 840 x 840 pixels. Phase: hover before descent. The coloured boundary is approximate; locate the real feature.",
+        "answer": {
+          "visible": true,
+          "target_px": [
+            463,
+            348
+          ],
+          "pad_gap_px": [
+            646,
+            370
+          ],
+          "clear": true,
+          "roll_deg": 0,
+          "confidence": 0.92,
+          "_latency_s": 12.1,
+          "_usage": {
+            "in": 1532,
+            "out": 537,
+            "cached": 0,
+            "effort": "medium"
+          },
+          "_model": "gpt-6-astra",
+          "_service_tier": "fast",
+          "pads_offset_px": [
+            14.776671126265683,
+            -51.086204704202146
+          ],
+          "grid_px": [
+            [
+              192.72720336914062,
+              343.93482971191406
+            ],
+            [
+              499.42987060546875,
+              208.49253845214844
+            ],
+            [
+              436.7535095214844,
+              52.20787811279297
+            ],
+            [
+              24.078964233398438,
+              422.5330352783203
+            ]
+          ],
+          "notes": "",
+          "_source": "astra",
+          "_grid_trusted": true
+        },
+        "q": [
+          32.92307662963867,
+          -31.208791732788086,
+          22.769229888916016,
+          101.89010620117188,
+          21.406593322753906,
+          10.120643615722656
+        ],
+        "land_px": [
+          459.9310471526801,
+          411.3247430638433
+        ],
+        "land_w": [
+          0.14620022417641004,
+          -0.0709584753278733,
+          0.043000000000000003
+        ],
+        "z_plane": 0.043000000000000003,
+        "tips_px": [
+          [
+            632.3529858229922,
+            486.40297753770216
+          ],
+          [
+            629.6927643905635,
+            355.02182841495136
+          ]
+        ],
+        "reg": {
+          "grid_n": 4,
+          "grid_matched": 4,
+          "grid_used": 3,
+          "grid_step_mm": [
+            2.732657080936692,
+            -5.472808410054414
+          ],
+          "reg_t_mm": [
+            4.467512381380042,
+            0.6709625561164556
+          ],
+          "reg_resid_mm": 3.015922672943345
+        },
+        "target_px": [
+          463.0,
+          348.0
+        ],
+        "target_raw": [
+          625.6666666666667,
+          353.0
+        ],
+        "feat_xy": [
+          0.15375354991894485,
+          -0.07365575714749155
+        ],
+        "method": "centre",
+        "top_from_square_mm": 9.09631201551816,
+        "pads_offset_mm": [
+          4.399686479528542,
+          -3.2168159157011935
+        ],
+        "try_offset_mm": [
+          3.0,
+          [
+            2.91,
+            -0.71
+          ]
+        ],
+        "d_mm": [
+          0.23970329332637075,
+          1.2329604515014527
+        ],
+        "pads_applied": true,
+        "action": "descend",
+        "used_mm": [
+          0.23970329332637075,
+          1.2329604515014527
+        ],
+        "truth_after_mm": null
+      },
+      "occluded": {
+        "n": 9,
+        "kind": "from",
+        "time": "18:07:48",
+        "phase": "low",
+        "text": "GRASP black bishop on c8; feature: the middle of the small ball on top. Image 840 x 840 pixels. Phase: at BODY grasp/release height. The coloured boundary is approximate; locate the real feature.",
+        "answer": {
+          "visible": false,
+          "target_px": null,
+          "pad_gap_px": null,
+          "clear": true,
+          "roll_deg": 0,
+          "confidence": 0.35,
+          "_latency_s": 18.54,
+          "_usage": {
+            "in": 1535,
+            "out": 943,
+            "cached": 0,
+            "effort": "medium"
+          },
+          "_model": "gpt-6-astra",
+          "_service_tier": "fast",
+          "pads_offset_px": [
+            0,
+            0
+          ],
+          "grid_px": [],
+          "notes": "",
+          "_source": "astra"
+        },
+        "q": [
+          33.010990142822266,
+          -18.19780158996582,
+          36.0439567565918,
+          82.72527313232422,
+          21.406593322753906,
+          14.745307922363281
+        ],
+        "land_px": [
+          449.2823353439396,
+          423.56533740116816
+        ],
+        "land_w": [
+          0.1474866444524418,
+          -0.0714162662677958,
+          0.043000000000000003
+        ],
+        "z_plane": 0.043000000000000003,
+        "tips_px": [
+          [
+            345.85298582299237,
+            477.40297753770244
+          ],
+          [
+            339.15760885868985,
+            314.02345154405106
+          ]
+        ],
+        "action": "give_up",
+        "used_mm": [
+          0.0,
+          0.0
+        ],
+        "truth_after_mm": null
+      }
+    }
+  ]
+}

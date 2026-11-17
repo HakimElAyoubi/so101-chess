@@ -1,0 +1,3350 @@
+{
+ "setup_black": {
+  "a8": "rook",
+  "b8": "knight",
+  "c8": "bishop",
+  "d8": "queen",
+  "e8": "king",
+  "f8": "bishop",
+  "g8": "knight",
+  "h8": "rook",
+  "a7": "pawn",
+  "b7": "pawn",
+  "c7": "pawn",
+  "d7": "pawn",
+  "e7": "pawn",
+  "f7": "pawn",
+  "g7": "pawn",
+  "h7": "pawn"
+ },
+ "setup_white": {
+  "g1": "rook",
+  "f1": "bishop",
+  "c1": "bishop",
+  "c2": "pawn",
+  "a3": "pawn",
+  "g3": "pawn",
+  "e1": "king"
+ },
+ "spot_mm": 6.0,
+ "episodes": [
+  {
+   "i": 0,
+   "part": "A",
+   "colour": "black",
+   "piece": "rook",
+   "square": "a8",
+   "spot": "toward the h1 corner",
+   "offset_mm": [
+    -4.2,
+    4.2
+   ],
+   "task": "pick up the black rook",
+   "note": ""
+  },
+  {
+   "i": 1,
+   "part": "A",
+   "colour": "black",
+   "piece": "rook",
+   "square": "a8",
+   "spot": "toward the a-file",
+   "offset_mm": [
+    0.0,
+    -6.0
+   ],
+   "task": "pick up the black rook",
+   "note": ""
+  },
+  {
+   "i": 2,
+   "part": "A",
+   "colour": "black",
+   "piece": "rook",
+   "square": "a8",
+   "spot": "toward the h8 corner",
+   "offset_mm": [
+    4.2,
+    4.2
+   ],
+   "task": "pick up the black rook",
+   "note": ""
+  },
+  {
+   "i": 3,
+   "part": "A",
+   "colour": "black",
+   "piece": "knight",
+   "square": "b8",
+   "spot": "toward the a1 corner",
+   "offset_mm": [
+    -4.2,
+    -4.2
+   ],
+   "task": "pick up the black knight",
+   "note": ""
+  },
+  {
+   "i": 4,
+   "part": "A",
+   "colour": "black",
+   "piece": "knight",
+   "square": "b8",
+   "spot": "toward the h1 corner",
+   "offset_mm": [
+    -4.2,
+    4.2
+   ],
+   "task": "pick up the black knight",
+   "note": ""
+  },
+  {
+   "i": 5,
+   "part": "A",
+   "colour": "black",
+   "piece": "knight",
+   "square": "b8",
+   "spot": "centre",
+   "offset_mm": [
+    0.0,
+    0.0
+   ],
+   "task": "pick up the black knight",
+   "note": ""
+  },
+  {
+   "i": 6,
+   "part": "A",
+   "colour": "black",
+   "piece": "bishop",
+   "square": "c8",
+   "spot": "toward the a-file",
+   "offset_mm": [
+    0.0,
+    -6.0
+   ],
+   "task": "pick up the black bishop",
+   "note": ""
+  },
+  {
+   "i": 7,
+   "part": "A",
+   "colour": "black",
+   "piece": "bishop",
+   "square": "c8",
+   "spot": "toward the a1 corner",
+   "offset_mm": [
+    -4.2,
+    -4.2
+   ],
+   "task": "pick up the black bishop",
+   "note": ""
+  },
+  {
+   "i": 8,
+   "part": "A",
+   "colour": "black",
+   "piece": "bishop",
+   "square": "c8",
+   "spot": "toward the h1 corner",
+   "offset_mm": [
+    -4.2,
+    4.2
+   ],
+   "task": "pick up the black bishop",
+   "note": ""
+  },
+  {
+   "i": 9,
+   "part": "A",
+   "colour": "black",
+   "piece": "queen",
+   "square": "d8",
+   "spot": "toward the h8 corner",
+   "offset_mm": [
+    4.2,
+    4.2
+   ],
+   "task": "pick up the black queen",
+   "note": ""
+  },
+  {
+   "i": 10,
+   "part": "A",
+   "colour": "black",
+   "piece": "queen",
+   "square": "d8",
+   "spot": "toward the a-file",
+   "offset_mm": [
+    0.0,
+    -6.0
+   ],
+   "task": "pick up the black queen",
+   "note": ""
+  },
+  {
+   "i": 11,
+   "part": "A",
+   "colour": "black",
+   "piece": "queen",
+   "square": "d8",
+   "spot": "toward the h1 corner",
+   "offset_mm": [
+    -4.2,
+    4.2
+   ],
+   "task": "pick up the black queen",
+   "note": ""
+  },
+  {
+   "i": 12,
+   "part": "A",
+   "colour": "black",
+   "piece": "king",
+   "square": "e8",
+   "spot": "toward the a8 corner",
+   "offset_mm": [
+    4.2,
+    -4.2
+   ],
+   "task": "pick up the black king",
+   "note": ""
+  },
+  {
+   "i": 13,
+   "part": "A",
+   "colour": "black",
+   "piece": "king",
+   "square": "e8",
+   "spot": "toward the a1 corner",
+   "offset_mm": [
+    -4.2,
+    -4.2
+   ],
+   "task": "pick up the black king",
+   "note": ""
+  },
+  {
+   "i": 14,
+   "part": "A",
+   "colour": "black",
+   "piece": "king",
+   "square": "e8",
+   "spot": "toward rank 8",
+   "offset_mm": [
+    6.0,
+    0.0
+   ],
+   "task": "pick up the black king",
+   "note": ""
+  },
+  {
+   "i": 15,
+   "part": "A",
+   "colour": "black",
+   "piece": "bishop",
+   "square": "f8",
+   "spot": "toward the a8 corner",
+   "offset_mm": [
+    4.2,
+    -4.2
+   ],
+   "task": "pick up the black bishop",
+   "note": ""
+  },
+  {
+   "i": 16,
+   "part": "A",
+   "colour": "black",
+   "piece": "bishop",
+   "square": "f8",
+   "spot": "toward the a-file",
+   "offset_mm": [
+    0.0,
+    -6.0
+   ],
+   "task": "pick up the black bishop",
+   "note": ""
+  },
+  {
+   "i": 17,
+   "part": "A",
+   "colour": "black",
+   "piece": "bishop",
+   "square": "f8",
+   "spot": "centre",
+   "offset_mm": [
+    0.0,
+    0.0
+   ],
+   "task": "pick up the black bishop",
+   "note": ""
+  },
+  {
+   "i": 18,
+   "part": "A",
+   "colour": "black",
+   "piece": "knight",
+   "square": "g8",
+   "spot": "toward rank 8",
+   "offset_mm": [
+    6.0,
+    0.0
+   ],
+   "task": "pick up the black knight",
+   "note": ""
+  },
+  {
+   "i": 19,
+   "part": "A",
+   "colour": "black",
+   "piece": "knight",
+   "square": "g8",
+   "spot": "toward the h8 corner",
+   "offset_mm": [
+    4.2,
+    4.2
+   ],
+   "task": "pick up the black knight",
+   "note": ""
+  },
+  {
+   "i": 20,
+   "part": "A",
+   "colour": "black",
+   "piece": "knight",
+   "square": "g8",
+   "spot": "centre",
+   "offset_mm": [
+    0.0,
+    0.0
+   ],
+   "task": "pick up the black knight",
+   "note": ""
+  },
+  {
+   "i": 21,
+   "part": "A",
+   "colour": "black",
+   "piece": "rook",
+   "square": "h8",
+   "spot": "toward rank 1",
+   "offset_mm": [
+    -6.0,
+    0.0
+   ],
+   "task": "pick up the black rook",
+   "note": ""
+  },
+  {
+   "i": 22,
+   "part": "A",
+   "colour": "black",
+   "piece": "rook",
+   "square": "h8",
+   "spot": "toward the h-file",
+   "offset_mm": [
+    0.0,
+    6.0
+   ],
+   "task": "pick up the black rook",
+   "note": ""
+  },
+  {
+   "i": 23,
+   "part": "A",
+   "colour": "black",
+   "piece": "rook",
+   "square": "h8",
+   "spot": "centre",
+   "offset_mm": [
+    0.0,
+    0.0
+   ],
+   "task": "pick up the black rook",
+   "note": ""
+  },
+  {
+   "i": 24,
+   "part": "A",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "a7",
+   "spot": "centre",
+   "offset_mm": [
+    0.0,
+    0.0
+   ],
+   "task": "pick up the black pawn",
+   "note": ""
+  },
+  {
+   "i": 25,
+   "part": "A",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "a7",
+   "spot": "toward the a1 corner",
+   "offset_mm": [
+    -4.2,
+    -4.2
+   ],
+   "task": "pick up the black pawn",
+   "note": ""
+  },
+  {
+   "i": 26,
+   "part": "A",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "a7",
+   "spot": "toward rank 1",
+   "offset_mm": [
+    -6.0,
+    0.0
+   ],
+   "task": "pick up the black pawn",
+   "note": ""
+  },
+  {
+   "i": 27,
+   "part": "A",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "b7",
+   "spot": "toward the h8 corner",
+   "offset_mm": [
+    4.2,
+    4.2
+   ],
+   "task": "pick up the black pawn",
+   "note": ""
+  },
+  {
+   "i": 28,
+   "part": "A",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "b7",
+   "spot": "toward the h1 corner",
+   "offset_mm": [
+    -4.2,
+    4.2
+   ],
+   "task": "pick up the black pawn",
+   "note": ""
+  },
+  {
+   "i": 29,
+   "part": "A",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "b7",
+   "spot": "toward the a-file",
+   "offset_mm": [
+    0.0,
+    -6.0
+   ],
+   "task": "pick up the black pawn",
+   "note": ""
+  },
+  {
+   "i": 30,
+   "part": "A",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "c7",
+   "spot": "toward the h8 corner",
+   "offset_mm": [
+    4.2,
+    4.2
+   ],
+   "task": "pick up the black pawn",
+   "note": ""
+  },
+  {
+   "i": 31,
+   "part": "A",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "c7",
+   "spot": "toward the h-file",
+   "offset_mm": [
+    0.0,
+    6.0
+   ],
+   "task": "pick up the black pawn",
+   "note": ""
+  },
+  {
+   "i": 32,
+   "part": "A",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "c7",
+   "spot": "toward the a-file",
+   "offset_mm": [
+    0.0,
+    -6.0
+   ],
+   "task": "pick up the black pawn",
+   "note": ""
+  },
+  {
+   "i": 33,
+   "part": "A",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "d7",
+   "spot": "toward the a8 corner",
+   "offset_mm": [
+    4.2,
+    -4.2
+   ],
+   "task": "pick up the black pawn",
+   "note": ""
+  },
+  {
+   "i": 34,
+   "part": "A",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "d7",
+   "spot": "toward the h-file",
+   "offset_mm": [
+    0.0,
+    6.0
+   ],
+   "task": "pick up the black pawn",
+   "note": ""
+  },
+  {
+   "i": 35,
+   "part": "A",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "d7",
+   "spot": "toward the a1 corner",
+   "offset_mm": [
+    -4.2,
+    -4.2
+   ],
+   "task": "pick up the black pawn",
+   "note": ""
+  },
+  {
+   "i": 36,
+   "part": "A",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "e7",
+   "spot": "toward the h8 corner",
+   "offset_mm": [
+    4.2,
+    4.2
+   ],
+   "task": "pick up the black pawn",
+   "note": ""
+  },
+  {
+   "i": 37,
+   "part": "A",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "e7",
+   "spot": "toward the a8 corner",
+   "offset_mm": [
+    4.2,
+    -4.2
+   ],
+   "task": "pick up the black pawn",
+   "note": ""
+  },
+  {
+   "i": 38,
+   "part": "A",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "e7",
+   "spot": "toward the h1 corner",
+   "offset_mm": [
+    -4.2,
+    4.2
+   ],
+   "task": "pick up the black pawn",
+   "note": ""
+  },
+  {
+   "i": 39,
+   "part": "A",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "f7",
+   "spot": "centre",
+   "offset_mm": [
+    0.0,
+    0.0
+   ],
+   "task": "pick up the black pawn",
+   "note": ""
+  },
+  {
+   "i": 40,
+   "part": "A",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "f7",
+   "spot": "toward the a-file",
+   "offset_mm": [
+    0.0,
+    -6.0
+   ],
+   "task": "pick up the black pawn",
+   "note": ""
+  },
+  {
+   "i": 41,
+   "part": "A",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "f7",
+   "spot": "toward the a8 corner",
+   "offset_mm": [
+    4.2,
+    -4.2
+   ],
+   "task": "pick up the black pawn",
+   "note": ""
+  },
+  {
+   "i": 42,
+   "part": "A",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "g7",
+   "spot": "toward rank 1",
+   "offset_mm": [
+    -6.0,
+    0.0
+   ],
+   "task": "pick up the black pawn",
+   "note": ""
+  },
+  {
+   "i": 43,
+   "part": "A",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "g7",
+   "spot": "toward the h-file",
+   "offset_mm": [
+    0.0,
+    6.0
+   ],
+   "task": "pick up the black pawn",
+   "note": ""
+  },
+  {
+   "i": 44,
+   "part": "A",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "g7",
+   "spot": "toward the h1 corner",
+   "offset_mm": [
+    -4.2,
+    4.2
+   ],
+   "task": "pick up the black pawn",
+   "note": ""
+  },
+  {
+   "i": 45,
+   "part": "A",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "h7",
+   "spot": "toward the a1 corner",
+   "offset_mm": [
+    -4.2,
+    -4.2
+   ],
+   "task": "pick up the black pawn",
+   "note": ""
+  },
+  {
+   "i": 46,
+   "part": "A",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "h7",
+   "spot": "toward the a8 corner",
+   "offset_mm": [
+    4.2,
+    -4.2
+   ],
+   "task": "pick up the black pawn",
+   "note": ""
+  },
+  {
+   "i": 47,
+   "part": "A",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "h7",
+   "spot": "centre",
+   "offset_mm": [
+    0.0,
+    0.0
+   ],
+   "task": "pick up the black pawn",
+   "note": ""
+  },
+  {
+   "i": 48,
+   "part": "C",
+   "colour": "white",
+   "piece": "rook",
+   "square": "g1",
+   "spot": "toward rank 1",
+   "offset_mm": [
+    -6.0,
+    0.0
+   ],
+   "task": "pick up the white rook",
+   "note": ""
+  },
+  {
+   "i": 49,
+   "part": "C",
+   "colour": "white",
+   "piece": "rook",
+   "square": "g1",
+   "spot": "toward the h1 corner",
+   "offset_mm": [
+    -4.2,
+    4.2
+   ],
+   "task": "pick up the white rook",
+   "note": ""
+  },
+  {
+   "i": 50,
+   "part": "C",
+   "colour": "white",
+   "piece": "rook",
+   "square": "g1",
+   "spot": "toward the a-file",
+   "offset_mm": [
+    0.0,
+    -6.0
+   ],
+   "task": "pick up the white rook",
+   "note": ""
+  },
+  {
+   "i": 51,
+   "part": "C",
+   "colour": "white",
+   "piece": "bishop",
+   "square": "f1",
+   "spot": "toward the h1 corner",
+   "offset_mm": [
+    -4.2,
+    4.2
+   ],
+   "task": "pick up the white bishop",
+   "note": ""
+  },
+  {
+   "i": 52,
+   "part": "C",
+   "colour": "white",
+   "piece": "bishop",
+   "square": "f1",
+   "spot": "toward the a-file",
+   "offset_mm": [
+    0.0,
+    -6.0
+   ],
+   "task": "pick up the white bishop",
+   "note": ""
+  },
+  {
+   "i": 53,
+   "part": "C",
+   "colour": "white",
+   "piece": "bishop",
+   "square": "f1",
+   "spot": "toward the h-file",
+   "offset_mm": [
+    0.0,
+    6.0
+   ],
+   "task": "pick up the white bishop",
+   "note": ""
+  },
+  {
+   "i": 54,
+   "part": "C",
+   "colour": "white",
+   "piece": "bishop",
+   "square": "c1",
+   "spot": "toward the a1 corner",
+   "offset_mm": [
+    -4.2,
+    -4.2
+   ],
+   "task": "pick up the white bishop",
+   "note": ""
+  },
+  {
+   "i": 55,
+   "part": "C",
+   "colour": "white",
+   "piece": "bishop",
+   "square": "c1",
+   "spot": "toward the h1 corner",
+   "offset_mm": [
+    -4.2,
+    4.2
+   ],
+   "task": "pick up the white bishop",
+   "note": ""
+  },
+  {
+   "i": 56,
+   "part": "C",
+   "colour": "white",
+   "piece": "bishop",
+   "square": "c1",
+   "spot": "toward rank 1",
+   "offset_mm": [
+    -6.0,
+    0.0
+   ],
+   "task": "pick up the white bishop",
+   "note": ""
+  },
+  {
+   "i": 57,
+   "part": "C",
+   "colour": "white",
+   "piece": "pawn",
+   "square": "c2",
+   "spot": "toward the a-file",
+   "offset_mm": [
+    0.0,
+    -6.0
+   ],
+   "task": "pick up the white pawn",
+   "note": ""
+  },
+  {
+   "i": 58,
+   "part": "C",
+   "colour": "white",
+   "piece": "pawn",
+   "square": "c2",
+   "spot": "toward the a1 corner",
+   "offset_mm": [
+    -4.2,
+    -4.2
+   ],
+   "task": "pick up the white pawn",
+   "note": ""
+  },
+  {
+   "i": 59,
+   "part": "C",
+   "colour": "white",
+   "piece": "pawn",
+   "square": "c2",
+   "spot": "centre",
+   "offset_mm": [
+    0.0,
+    0.0
+   ],
+   "task": "pick up the white pawn",
+   "note": ""
+  },
+  {
+   "i": 60,
+   "part": "C",
+   "colour": "white",
+   "piece": "pawn",
+   "square": "a3",
+   "spot": "toward the a1 corner",
+   "offset_mm": [
+    -4.2,
+    -4.2
+   ],
+   "task": "pick up the white pawn",
+   "note": ""
+  },
+  {
+   "i": 61,
+   "part": "C",
+   "colour": "white",
+   "piece": "pawn",
+   "square": "a3",
+   "spot": "toward the a8 corner",
+   "offset_mm": [
+    4.2,
+    -4.2
+   ],
+   "task": "pick up the white pawn",
+   "note": ""
+  },
+  {
+   "i": 62,
+   "part": "C",
+   "colour": "white",
+   "piece": "pawn",
+   "square": "a3",
+   "spot": "toward rank 1",
+   "offset_mm": [
+    -6.0,
+    0.0
+   ],
+   "task": "pick up the white pawn",
+   "note": ""
+  },
+  {
+   "i": 63,
+   "part": "C",
+   "colour": "white",
+   "piece": "pawn",
+   "square": "g3",
+   "spot": "centre",
+   "offset_mm": [
+    0.0,
+    0.0
+   ],
+   "task": "pick up the white pawn",
+   "note": ""
+  },
+  {
+   "i": 64,
+   "part": "C",
+   "colour": "white",
+   "piece": "pawn",
+   "square": "g3",
+   "spot": "toward the a8 corner",
+   "offset_mm": [
+    4.2,
+    -4.2
+   ],
+   "task": "pick up the white pawn",
+   "note": ""
+  },
+  {
+   "i": 65,
+   "part": "C",
+   "colour": "white",
+   "piece": "pawn",
+   "square": "g3",
+   "spot": "toward the a1 corner",
+   "offset_mm": [
+    -4.2,
+    -4.2
+   ],
+   "task": "pick up the white pawn",
+   "note": ""
+  },
+  {
+   "i": 66,
+   "part": "C",
+   "colour": "white",
+   "piece": "king",
+   "square": "e1",
+   "spot": "toward the a-file",
+   "offset_mm": [
+    0.0,
+    -6.0
+   ],
+   "task": "pick up the white king",
+   "note": ""
+  },
+  {
+   "i": 67,
+   "part": "C",
+   "colour": "white",
+   "piece": "king",
+   "square": "e1",
+   "spot": "toward the h1 corner",
+   "offset_mm": [
+    -4.2,
+    4.2
+   ],
+   "task": "pick up the white king",
+   "note": ""
+  },
+  {
+   "i": 68,
+   "part": "C",
+   "colour": "white",
+   "piece": "king",
+   "square": "e1",
+   "spot": "toward rank 8",
+   "offset_mm": [
+    6.0,
+    0.0
+   ],
+   "task": "pick up the white king",
+   "note": ""
+  },
+  {
+   "i": 69,
+   "part": "B",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "a1",
+   "spot": "toward the h1 corner",
+   "offset_mm": [
+    -4.2,
+    4.2
+   ],
+   "task": "pick up the black pawn",
+   "note": "Tour of the black pawn: take the one on e7."
+  },
+  {
+   "i": 70,
+   "part": "B",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "b1",
+   "spot": "toward the h8 corner",
+   "offset_mm": [
+    4.2,
+    4.2
+   ],
+   "task": "pick up the black pawn",
+   "note": ""
+  },
+  {
+   "i": 71,
+   "part": "B",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "h3",
+   "spot": "toward the a8 corner",
+   "offset_mm": [
+    4.2,
+    -4.2
+   ],
+   "task": "pick up the black pawn",
+   "note": ""
+  },
+  {
+   "i": 72,
+   "part": "B",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "h5",
+   "spot": "toward the a1 corner",
+   "offset_mm": [
+    -4.2,
+    -4.2
+   ],
+   "task": "pick up the black pawn",
+   "note": ""
+  },
+  {
+   "i": 73,
+   "part": "B",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "c4",
+   "spot": "toward the h-file",
+   "offset_mm": [
+    0.0,
+    6.0
+   ],
+   "task": "pick up the black pawn",
+   "note": ""
+  },
+  {
+   "i": 74,
+   "part": "B",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "d1",
+   "spot": "toward rank 1",
+   "offset_mm": [
+    -6.0,
+    0.0
+   ],
+   "task": "pick up the black pawn",
+   "note": ""
+  },
+  {
+   "i": 75,
+   "part": "B",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "b3",
+   "spot": "centre",
+   "offset_mm": [
+    0.0,
+    0.0
+   ],
+   "task": "pick up the black pawn",
+   "note": ""
+  },
+  {
+   "i": 76,
+   "part": "B",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "d2",
+   "spot": "toward the a-file",
+   "offset_mm": [
+    0.0,
+    -6.0
+   ],
+   "task": "pick up the black pawn",
+   "note": ""
+  },
+  {
+   "i": 77,
+   "part": "B",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "e2",
+   "spot": "toward rank 8",
+   "offset_mm": [
+    6.0,
+    0.0
+   ],
+   "task": "pick up the black pawn",
+   "note": ""
+  },
+  {
+   "i": 78,
+   "part": "B",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "f6",
+   "spot": "toward the h-file",
+   "offset_mm": [
+    0.0,
+    6.0
+   ],
+   "task": "pick up the black pawn",
+   "note": ""
+  },
+  {
+   "i": 79,
+   "part": "B",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "e5",
+   "spot": "centre",
+   "offset_mm": [
+    0.0,
+    0.0
+   ],
+   "task": "pick up the black pawn",
+   "note": ""
+  },
+  {
+   "i": 80,
+   "part": "B",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "f3",
+   "spot": "toward the h8 corner",
+   "offset_mm": [
+    4.2,
+    4.2
+   ],
+   "task": "pick up the black pawn",
+   "note": ""
+  },
+  {
+   "i": 81,
+   "part": "B",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "h6",
+   "spot": "toward the a-file",
+   "offset_mm": [
+    0.0,
+    -6.0
+   ],
+   "task": "pick up the black pawn",
+   "note": ""
+  },
+  {
+   "i": 82,
+   "part": "B",
+   "colour": "black",
+   "piece": "pawn",
+   "square": "g4",
+   "spot": "toward the h1 corner",
+   "offset_mm": [
+    -4.2,
+    4.2
+   ],
+   "task": "pick up the black pawn",
+   "note": "Last of this tour: afterwards put it back on e7."
+  },
+  {
+   "i": 83,
+   "part": "B",
+   "colour": "black",
+   "piece": "knight",
+   "square": "h4",
+   "spot": "toward the a1 corner",
+   "offset_mm": [
+    -4.2,
+    -4.2
+   ],
+   "task": "pick up the black knight",
+   "note": "Tour of the black knight: take the one on b8."
+  },
+  {
+   "i": 84,
+   "part": "B",
+   "colour": "black",
+   "piece": "knight",
+   "square": "g4",
+   "spot": "toward the a8 corner",
+   "offset_mm": [
+    4.2,
+    -4.2
+   ],
+   "task": "pick up the black knight",
+   "note": ""
+  },
+  {
+   "i": 85,
+   "part": "B",
+   "colour": "black",
+   "piece": "knight",
+   "square": "h6",
+   "spot": "toward rank 1",
+   "offset_mm": [
+    -6.0,
+    0.0
+   ],
+   "task": "pick up the black knight",
+   "note": ""
+  },
+  {
+   "i": 86,
+   "part": "B",
+   "colour": "black",
+   "piece": "knight",
+   "square": "g5",
+   "spot": "toward rank 8",
+   "offset_mm": [
+    6.0,
+    0.0
+   ],
+   "task": "pick up the black knight",
+   "note": ""
+  },
+  {
+   "i": 87,
+   "part": "B",
+   "colour": "black",
+   "piece": "knight",
+   "square": "g6",
+   "spot": "toward the a-file",
+   "offset_mm": [
+    0.0,
+    -6.0
+   ],
+   "task": "pick up the black knight",
+   "note": ""
+  },
+  {
+   "i": 88,
+   "part": "B",
+   "colour": "black",
+   "piece": "knight",
+   "square": "a5",
+   "spot": "toward the h8 corner",
+   "offset_mm": [
+    4.2,
+    4.2
+   ],
+   "task": "pick up the black knight",
+   "note": ""
+  },
+  {
+   "i": 89,
+   "part": "B",
+   "colour": "black",
+   "piece": "knight",
+   "square": "b2",
+   "spot": "centre",
+   "offset_mm": [
+    0.0,
+    0.0
+   ],
+   "task": "pick up the black knight",
+   "note": ""
+  },
+  {
+   "i": 90,
+   "part": "B",
+   "colour": "black",
+   "piece": "knight",
+   "square": "d1",
+   "spot": "toward the h-file",
+   "offset_mm": [
+    0.0,
+    6.0
+   ],
+   "task": "pick up the black knight",
+   "note": ""
+  },
+  {
+   "i": 91,
+   "part": "B",
+   "colour": "black",
+   "piece": "knight",
+   "square": "e3",
+   "spot": "toward the h1 corner",
+   "offset_mm": [
+    -4.2,
+    4.2
+   ],
+   "task": "pick up the black knight",
+   "note": ""
+  },
+  {
+   "i": 92,
+   "part": "B",
+   "colour": "black",
+   "piece": "knight",
+   "square": "b3",
+   "spot": "centre",
+   "offset_mm": [
+    0.0,
+    0.0
+   ],
+   "task": "pick up the black knight",
+   "note": ""
+  },
+  {
+   "i": 93,
+   "part": "B",
+   "colour": "black",
+   "piece": "knight",
+   "square": "g2",
+   "spot": "toward the h8 corner",
+   "offset_mm": [
+    4.2,
+    4.2
+   ],
+   "task": "pick up the black knight",
+   "note": ""
+  },
+  {
+   "i": 94,
+   "part": "B",
+   "colour": "black",
+   "piece": "knight",
+   "square": "h1",
+   "spot": "toward rank 8",
+   "offset_mm": [
+    6.0,
+    0.0
+   ],
+   "task": "pick up the black knight",
+   "note": ""
+  },
+  {
+   "i": 95,
+   "part": "B",
+   "colour": "black",
+   "piece": "knight",
+   "square": "a1",
+   "spot": "toward the a-file",
+   "offset_mm": [
+    0.0,
+    -6.0
+   ],
+   "task": "pick up the black knight",
+   "note": ""
+  },
+  {
+   "i": 96,
+   "part": "B",
+   "colour": "black",
+   "piece": "knight",
+   "square": "h3",
+   "spot": "toward the a8 corner",
+   "offset_mm": [
+    4.2,
+    -4.2
+   ],
+   "task": "pick up the black knight",
+   "note": "Last of this tour: afterwards put it back on b8."
+  },
+  {
+   "i": 97,
+   "part": "B",
+   "colour": "black",
+   "piece": "bishop",
+   "square": "a5",
+   "spot": "toward rank 8",
+   "offset_mm": [
+    6.0,
+    0.0
+   ],
+   "task": "pick up the black bishop",
+   "note": "Tour of the black bishop: take the one on c8."
+  },
+  {
+   "i": 98,
+   "part": "B",
+   "colour": "black",
+   "piece": "bishop",
+   "square": "e3",
+   "spot": "toward the h1 corner",
+   "offset_mm": [
+    -4.2,
+    4.2
+   ],
+   "task": "pick up the black bishop",
+   "note": ""
+  },
+  {
+   "i": 99,
+   "part": "B",
+   "colour": "black",
+   "piece": "bishop",
+   "square": "b3",
+   "spot": "toward the a1 corner",
+   "offset_mm": [
+    -4.2,
+    -4.2
+   ],
+   "task": "pick up the black bishop",
+   "note": ""
+  },
+  {
+   "i": 100,
+   "part": "B",
+   "colour": "black",
+   "piece": "bishop",
+   "square": "c6",
+   "spot": "toward the a8 corner",
+   "offset_mm": [
+    4.2,
+    -4.2
+   ],
+   "task": "pick up the black bishop",
+   "note": ""
+  },
+  {
+   "i": 101,
+   "part": "B",
+   "colour": "black",
+   "piece": "bishop",
+   "square": "a1",
+   "spot": "toward rank 1",
+   "offset_mm": [
+    -6.0,
+    0.0
+   ],
+   "task": "pick up the black bishop",
+   "note": ""
+  },
+  {
+   "i": 102,
+   "part": "B",
+   "colour": "black",
+   "piece": "bishop",
+   "square": "h1",
+   "spot": "centre",
+   "offset_mm": [
+    0.0,
+    0.0
+   ],
+   "task": "pick up the black bishop",
+   "note": ""
+  },
+  {
+   "i": 103,
+   "part": "B",
+   "colour": "black",
+   "piece": "bishop",
+   "square": "d4",
+   "spot": "toward the a-file",
+   "offset_mm": [
+    0.0,
+    -6.0
+   ],
+   "task": "pick up the black bishop",
+   "note": ""
+  },
+  {
+   "i": 104,
+   "part": "B",
+   "colour": "black",
+   "piece": "bishop",
+   "square": "a2",
+   "spot": "toward the h-file",
+   "offset_mm": [
+    0.0,
+    6.0
+   ],
+   "task": "pick up the black bishop",
+   "note": ""
+  },
+  {
+   "i": 105,
+   "part": "B",
+   "colour": "black",
+   "piece": "bishop",
+   "square": "g4",
+   "spot": "toward the h8 corner",
+   "offset_mm": [
+    4.2,
+    4.2
+   ],
+   "task": "pick up the black bishop",
+   "note": ""
+  },
+  {
+   "i": 106,
+   "part": "B",
+   "colour": "black",
+   "piece": "bishop",
+   "square": "e2",
+   "spot": "toward the h-file",
+   "offset_mm": [
+    0.0,
+    6.0
+   ],
+   "task": "pick up the black bishop",
+   "note": ""
+  },
+  {
+   "i": 107,
+   "part": "B",
+   "colour": "black",
+   "piece": "bishop",
+   "square": "b6",
+   "spot": "toward the h1 corner",
+   "offset_mm": [
+    -4.2,
+    4.2
+   ],
+   "task": "pick up the black bishop",
+   "note": ""
+  },
+  {
+   "i": 108,
+   "part": "B",
+   "colour": "black",
+   "piece": "bishop",
+   "square": "b1",
+   "spot": "toward the a1 corner",
+   "offset_mm": [
+    -4.2,
+    -4.2
+   ],
+   "task": "pick up the black bishop",
+   "note": ""
+  },
+  {
+   "i": 109,
+   "part": "B",
+   "colour": "black",
+   "piece": "bishop",
+   "square": "d3",
+   "spot": "toward the a-file",
+   "offset_mm": [
+    0.0,
+    -6.0
+   ],
+   "task": "pick up the black bishop",
+   "note": ""
+  },
+  {
+   "i": 110,
+   "part": "B",
+   "colour": "black",
+   "piece": "bishop",
+   "square": "e5",
+   "spot": "toward rank 8",
+   "offset_mm": [
+    6.0,
+    0.0
+   ],
+   "task": "pick up the black bishop",
+   "note": "Last of this tour: afterwards put it back on c8."
+  },
+  {
+   "i": 111,
+   "part": "B",
+   "colour": "black",
+   "piece": "rook",
+   "square": "a2",
+   "spot": "toward the a8 corner",
+   "offset_mm": [
+    4.2,
+    -4.2
+   ],
+   "task": "pick up the black rook",
+   "note": "Tour of the black rook: take the one on h8."
+  },
+  {
+   "i": 112,
+   "part": "B",
+   "colour": "black",
+   "piece": "rook",
+   "square": "g4",
+   "spot": "toward rank 8",
+   "offset_mm": [
+    6.0,
+    0.0
+   ],
+   "task": "pick up the black rook",
+   "note": ""
+  },
+  {
+   "i": 113,
+   "part": "B",
+   "colour": "black",
+   "piece": "rook",
+   "square": "d3",
+   "spot": "toward the h8 corner",
+   "offset_mm": [
+    4.2,
+    4.2
+   ],
+   "task": "pick up the black rook",
+   "note": ""
+  },
+  {
+   "i": 114,
+   "part": "B",
+   "colour": "black",
+   "piece": "rook",
+   "square": "h2",
+   "spot": "toward the h1 corner",
+   "offset_mm": [
+    -4.2,
+    4.2
+   ],
+   "task": "pick up the black rook",
+   "note": ""
+  },
+  {
+   "i": 115,
+   "part": "B",
+   "colour": "black",
+   "piece": "rook",
+   "square": "a5",
+   "spot": "toward the a-file",
+   "offset_mm": [
+    0.0,
+    -6.0
+   ],
+   "task": "pick up the black rook",
+   "note": ""
+  },
+  {
+   "i": 116,
+   "part": "B",
+   "colour": "black",
+   "piece": "rook",
+   "square": "h4",
+   "spot": "toward the h-file",
+   "offset_mm": [
+    0.0,
+    6.0
+   ],
+   "task": "pick up the black rook",
+   "note": ""
+  },
+  {
+   "i": 117,
+   "part": "B",
+   "colour": "black",
+   "piece": "rook",
+   "square": "a1",
+   "spot": "toward rank 1",
+   "offset_mm": [
+    -6.0,
+    0.0
+   ],
+   "task": "pick up the black rook",
+   "note": ""
+  },
+  {
+   "i": 118,
+   "part": "B",
+   "colour": "black",
+   "piece": "rook",
+   "square": "d1",
+   "spot": "toward the a1 corner",
+   "offset_mm": [
+    -4.2,
+    -4.2
+   ],
+   "task": "pick up the black rook",
+   "note": ""
+  },
+  {
+   "i": 119,
+   "part": "B",
+   "colour": "black",
+   "piece": "rook",
+   "square": "b1",
+   "spot": "centre",
+   "offset_mm": [
+    0.0,
+    0.0
+   ],
+   "task": "pick up the black rook",
+   "note": ""
+  },
+  {
+   "i": 120,
+   "part": "B",
+   "colour": "black",
+   "piece": "rook",
+   "square": "h6",
+   "spot": "toward the h-file",
+   "offset_mm": [
+    0.0,
+    6.0
+   ],
+   "task": "pick up the black rook",
+   "note": ""
+  },
+  {
+   "i": 121,
+   "part": "B",
+   "colour": "black",
+   "piece": "rook",
+   "square": "f3",
+   "spot": "centre",
+   "offset_mm": [
+    0.0,
+    0.0
+   ],
+   "task": "pick up the black rook",
+   "note": ""
+  },
+  {
+   "i": 122,
+   "part": "B",
+   "colour": "black",
+   "piece": "rook",
+   "square": "h5",
+   "spot": "toward the h8 corner",
+   "offset_mm": [
+    4.2,
+    4.2
+   ],
+   "task": "pick up the black rook",
+   "note": ""
+  },
+  {
+   "i": 123,
+   "part": "B",
+   "colour": "black",
+   "piece": "rook",
+   "square": "a6",
+   "spot": "toward the h1 corner",
+   "offset_mm": [
+    -4.2,
+    4.2
+   ],
+   "task": "pick up the black rook",
+   "note": ""
+  },
+  {
+   "i": 124,
+   "part": "B",
+   "colour": "black",
+   "piece": "rook",
+   "square": "b3",
+   "spot": "toward the a-file",
+   "offset_mm": [
+    0.0,
+    -6.0
+   ],
+   "task": "pick up the black rook",
+   "note": "Last of this tour: afterwards put it back on h8."
+  },
+  {
+   "i": 125,
+   "part": "B",
+   "colour": "black",
+   "piece": "queen",
+   "square": "h3",
+   "spot": "toward the h8 corner",
+   "offset_mm": [
+    4.2,
+    4.2
+   ],
+   "task": "pick up the black queen",
+   "note": "Tour of the black queen: take the one on d8."
+  },
+  {
+   "i": 126,
+   "part": "B",
+   "colour": "black",
+   "piece": "queen",
+   "square": "g5",
+   "spot": "toward the a-file",
+   "offset_mm": [
+    0.0,
+    -6.0
+   ],
+   "task": "pick up the black queen",
+   "note": ""
+  },
+  {
+   "i": 127,
+   "part": "B",
+   "colour": "black",
+   "piece": "queen",
+   "square": "c3",
+   "spot": "toward the a1 corner",
+   "offset_mm": [
+    -4.2,
+    -4.2
+   ],
+   "task": "pick up the black queen",
+   "note": ""
+  },
+  {
+   "i": 128,
+   "part": "B",
+   "colour": "black",
+   "piece": "queen",
+   "square": "d1",
+   "spot": "toward the h-file",
+   "offset_mm": [
+    0.0,
+    6.0
+   ],
+   "task": "pick up the black queen",
+   "note": ""
+  },
+  {
+   "i": 129,
+   "part": "B",
+   "colour": "black",
+   "piece": "queen",
+   "square": "b2",
+   "spot": "centre",
+   "offset_mm": [
+    0.0,
+    0.0
+   ],
+   "task": "pick up the black queen",
+   "note": ""
+  },
+  {
+   "i": 130,
+   "part": "B",
+   "colour": "black",
+   "piece": "queen",
+   "square": "f3",
+   "spot": "toward rank 1",
+   "offset_mm": [
+    -6.0,
+    0.0
+   ],
+   "task": "pick up the black queen",
+   "note": ""
+  },
+  {
+   "i": 131,
+   "part": "B",
+   "colour": "black",
+   "piece": "queen",
+   "square": "b1",
+   "spot": "toward the a8 corner",
+   "offset_mm": [
+    4.2,
+    -4.2
+   ],
+   "task": "pick up the black queen",
+   "note": ""
+  },
+  {
+   "i": 132,
+   "part": "B",
+   "colour": "black",
+   "piece": "queen",
+   "square": "e4",
+   "spot": "toward rank 8",
+   "offset_mm": [
+    6.0,
+    0.0
+   ],
+   "task": "pick up the black queen",
+   "note": ""
+  },
+  {
+   "i": 133,
+   "part": "B",
+   "colour": "black",
+   "piece": "queen",
+   "square": "g6",
+   "spot": "toward the h1 corner",
+   "offset_mm": [
+    -4.2,
+    4.2
+   ],
+   "task": "pick up the black queen",
+   "note": ""
+  },
+  {
+   "i": 134,
+   "part": "B",
+   "colour": "black",
+   "piece": "queen",
+   "square": "g4",
+   "spot": "toward the h-file",
+   "offset_mm": [
+    0.0,
+    6.0
+   ],
+   "task": "pick up the black queen",
+   "note": ""
+  },
+  {
+   "i": 135,
+   "part": "B",
+   "colour": "black",
+   "piece": "queen",
+   "square": "h2",
+   "spot": "toward the h1 corner",
+   "offset_mm": [
+    -4.2,
+    4.2
+   ],
+   "task": "pick up the black queen",
+   "note": ""
+  },
+  {
+   "i": 136,
+   "part": "B",
+   "colour": "black",
+   "piece": "queen",
+   "square": "h1",
+   "spot": "centre",
+   "offset_mm": [
+    0.0,
+    0.0
+   ],
+   "task": "pick up the black queen",
+   "note": ""
+  },
+  {
+   "i": 137,
+   "part": "B",
+   "colour": "black",
+   "piece": "queen",
+   "square": "h6",
+   "spot": "toward the a8 corner",
+   "offset_mm": [
+    4.2,
+    -4.2
+   ],
+   "task": "pick up the black queen",
+   "note": ""
+  },
+  {
+   "i": 138,
+   "part": "B",
+   "colour": "black",
+   "piece": "queen",
+   "square": "f5",
+   "spot": "toward the a-file",
+   "offset_mm": [
+    0.0,
+    -6.0
+   ],
+   "task": "pick up the black queen",
+   "note": "Last of this tour: afterwards put it back on d8."
+  },
+  {
+   "i": 139,
+   "part": "B",
+   "colour": "black",
+   "piece": "king",
+   "square": "b2",
+   "spot": "toward rank 1",
+   "offset_mm": [
+    -6.0,
+    0.0
+   ],
+   "task": "pick up the black king",
+   "note": "Tour of the black king: take the one on e8."
+  },
+  {
+   "i": 140,
+   "part": "B",
+   "colour": "black",
+   "piece": "king",
+   "square": "h1",
+   "spot": "toward the a1 corner",
+   "offset_mm": [
+    -4.2,
+    -4.2
+   ],
+   "task": "pick up the black king",
+   "note": ""
+  },
+  {
+   "i": 141,
+   "part": "B",
+   "colour": "black",
+   "piece": "king",
+   "square": "e4",
+   "spot": "toward the h1 corner",
+   "offset_mm": [
+    -4.2,
+    4.2
+   ],
+   "task": "pick up the black king",
+   "note": ""
+  },
+  {
+   "i": 142,
+   "part": "B",
+   "colour": "black",
+   "piece": "king",
+   "square": "h5",
+   "spot": "toward the h-file",
+   "offset_mm": [
+    0.0,
+    6.0
+   ],
+   "task": "pick up the black king",
+   "note": ""
+  },
+  {
+   "i": 143,
+   "part": "B",
+   "colour": "black",
+   "piece": "king",
+   "square": "d3",
+   "spot": "toward rank 8",
+   "offset_mm": [
+    6.0,
+    0.0
+   ],
+   "task": "pick up the black king",
+   "note": ""
+  },
+  {
+   "i": 144,
+   "part": "B",
+   "colour": "black",
+   "piece": "king",
+   "square": "b3",
+   "spot": "centre",
+   "offset_mm": [
+    0.0,
+    0.0
+   ],
+   "task": "pick up the black king",
+   "note": ""
+  },
+  {
+   "i": 145,
+   "part": "B",
+   "colour": "black",
+   "piece": "king",
+   "square": "d6",
+   "spot": "toward the a8 corner",
+   "offset_mm": [
+    4.2,
+    -4.2
+   ],
+   "task": "pick up the black king",
+   "note": ""
+  },
+  {
+   "i": 146,
+   "part": "B",
+   "colour": "black",
+   "piece": "king",
+   "square": "e6",
+   "spot": "toward the h8 corner",
+   "offset_mm": [
+    4.2,
+    4.2
+   ],
+   "task": "pick up the black king",
+   "note": ""
+  },
+  {
+   "i": 147,
+   "part": "B",
+   "colour": "black",
+   "piece": "king",
+   "square": "b1",
+   "spot": "toward the a-file",
+   "offset_mm": [
+    0.0,
+    -6.0
+   ],
+   "task": "pick up the black king",
+   "note": ""
+  },
+  {
+   "i": 148,
+   "part": "B",
+   "colour": "black",
+   "piece": "king",
+   "square": "h4",
+   "spot": "toward rank 1",
+   "offset_mm": [
+    -6.0,
+    0.0
+   ],
+   "task": "pick up the black king",
+   "note": ""
+  },
+  {
+   "i": 149,
+   "part": "B",
+   "colour": "black",
+   "piece": "king",
+   "square": "a5",
+   "spot": "toward the a-file",
+   "offset_mm": [
+    0.0,
+    -6.0
+   ],
+   "task": "pick up the black king",
+   "note": ""
+  },
+  {
+   "i": 150,
+   "part": "B",
+   "colour": "black",
+   "piece": "king",
+   "square": "d1",
+   "spot": "toward the h-file",
+   "offset_mm": [
+    0.0,
+    6.0
+   ],
+   "task": "pick up the black king",
+   "note": ""
+  },
+  {
+   "i": 151,
+   "part": "B",
+   "colour": "black",
+   "piece": "king",
+   "square": "d2",
+   "spot": "toward rank 8",
+   "offset_mm": [
+    6.0,
+    0.0
+   ],
+   "task": "pick up the black king",
+   "note": ""
+  },
+  {
+   "i": 152,
+   "part": "B",
+   "colour": "black",
+   "piece": "king",
+   "square": "e3",
+   "spot": "toward the h1 corner",
+   "offset_mm": [
+    -4.2,
+    4.2
+   ],
+   "task": "pick up the black king",
+   "note": "Last of this tour: afterwards put it back on e8."
+  },
+  {
+   "i": 153,
+   "part": "B",
+   "colour": "white",
+   "piece": "pawn",
+   "square": "h4",
+   "spot": "toward the h8 corner",
+   "offset_mm": [
+    4.2,
+    4.2
+   ],
+   "task": "pick up the white pawn",
+   "note": "Tour of the white pawn: take a spare one from the box."
+  },
+  {
+   "i": 154,
+   "part": "B",
+   "colour": "white",
+   "piece": "pawn",
+   "square": "b4",
+   "spot": "toward the h-file",
+   "offset_mm": [
+    0.0,
+    6.0
+   ],
+   "task": "pick up the white pawn",
+   "note": ""
+  },
+  {
+   "i": 155,
+   "part": "B",
+   "colour": "white",
+   "piece": "pawn",
+   "square": "f2",
+   "spot": "toward rank 1",
+   "offset_mm": [
+    -6.0,
+    0.0
+   ],
+   "task": "pick up the white pawn",
+   "note": ""
+  },
+  {
+   "i": 156,
+   "part": "B",
+   "colour": "white",
+   "piece": "pawn",
+   "square": "h5",
+   "spot": "toward the a1 corner",
+   "offset_mm": [
+    -4.2,
+    -4.2
+   ],
+   "task": "pick up the white pawn",
+   "note": ""
+  },
+  {
+   "i": 157,
+   "part": "B",
+   "colour": "white",
+   "piece": "pawn",
+   "square": "a1",
+   "spot": "toward the a8 corner",
+   "offset_mm": [
+    4.2,
+    -4.2
+   ],
+   "task": "pick up the white pawn",
+   "note": ""
+  },
+  {
+   "i": 158,
+   "part": "B",
+   "colour": "white",
+   "piece": "pawn",
+   "square": "f5",
+   "spot": "centre",
+   "offset_mm": [
+    0.0,
+    0.0
+   ],
+   "task": "pick up the white pawn",
+   "note": ""
+  },
+  {
+   "i": 159,
+   "part": "B",
+   "colour": "white",
+   "piece": "pawn",
+   "square": "h1",
+   "spot": "toward rank 8",
+   "offset_mm": [
+    6.0,
+    0.0
+   ],
+   "task": "pick up the white pawn",
+   "note": ""
+  },
+  {
+   "i": 160,
+   "part": "B",
+   "colour": "white",
+   "piece": "pawn",
+   "square": "e2",
+   "spot": "toward the h1 corner",
+   "offset_mm": [
+    -4.2,
+    4.2
+   ],
+   "task": "pick up the white pawn",
+   "note": ""
+  },
+  {
+   "i": 161,
+   "part": "B",
+   "colour": "white",
+   "piece": "pawn",
+   "square": "c3",
+   "spot": "toward the a-file",
+   "offset_mm": [
+    0.0,
+    -6.0
+   ],
+   "task": "pick up the white pawn",
+   "note": ""
+  },
+  {
+   "i": 162,
+   "part": "B",
+   "colour": "white",
+   "piece": "pawn",
+   "square": "h6",
+   "spot": "toward the h1 corner",
+   "offset_mm": [
+    -4.2,
+    4.2
+   ],
+   "task": "pick up the white pawn",
+   "note": ""
+  },
+  {
+   "i": 163,
+   "part": "B",
+   "colour": "white",
+   "piece": "pawn",
+   "square": "b3",
+   "spot": "toward rank 8",
+   "offset_mm": [
+    6.0,
+    0.0
+   ],
+   "task": "pick up the white pawn",
+   "note": ""
+  },
+  {
+   "i": 164,
+   "part": "B",
+   "colour": "white",
+   "piece": "pawn",
+   "square": "d1",
+   "spot": "toward the h-file",
+   "offset_mm": [
+    0.0,
+    6.0
+   ],
+   "task": "pick up the white pawn",
+   "note": ""
+  },
+  {
+   "i": 165,
+   "part": "B",
+   "colour": "white",
+   "piece": "pawn",
+   "square": "e3",
+   "spot": "toward the a1 corner",
+   "offset_mm": [
+    -4.2,
+    -4.2
+   ],
+   "task": "pick up the white pawn",
+   "note": ""
+  },
+  {
+   "i": 166,
+   "part": "B",
+   "colour": "white",
+   "piece": "pawn",
+   "square": "d6",
+   "spot": "centre",
+   "offset_mm": [
+    0.0,
+    0.0
+   ],
+   "task": "pick up the white pawn",
+   "note": "Last of this tour: afterwards put it back in the box."
+  },
+  {
+   "i": 167,
+   "part": "B",
+   "colour": "white",
+   "piece": "knight",
+   "square": "g6",
+   "spot": "toward the a-file",
+   "offset_mm": [
+    0.0,
+    -6.0
+   ],
+   "task": "pick up the white knight",
+   "note": "Tour of the white knight: take a spare one from the box."
+  },
+  {
+   "i": 168,
+   "part": "B",
+   "colour": "white",
+   "piece": "knight",
+   "square": "d6",
+   "spot": "toward the a8 corner",
+   "offset_mm": [
+    4.2,
+    -4.2
+   ],
+   "task": "pick up the white knight",
+   "note": ""
+  },
+  {
+   "i": 169,
+   "part": "B",
+   "colour": "white",
+   "piece": "knight",
+   "square": "b1",
+   "spot": "toward rank 1",
+   "offset_mm": [
+    -6.0,
+    0.0
+   ],
+   "task": "pick up the white knight",
+   "note": ""
+  },
+  {
+   "i": 170,
+   "part": "B",
+   "colour": "white",
+   "piece": "knight",
+   "square": "e3",
+   "spot": "toward the h1 corner",
+   "offset_mm": [
+    -4.2,
+    4.2
+   ],
+   "task": "pick up the white knight",
+   "note": ""
+  },
+  {
+   "i": 171,
+   "part": "B",
+   "colour": "white",
+   "piece": "knight",
+   "square": "h1",
+   "spot": "toward rank 8",
+   "offset_mm": [
+    6.0,
+    0.0
+   ],
+   "task": "pick up the white knight",
+   "note": ""
+  },
+  {
+   "i": 172,
+   "part": "B",
+   "colour": "white",
+   "piece": "knight",
+   "square": "a1",
+   "spot": "centre",
+   "offset_mm": [
+    0.0,
+    0.0
+   ],
+   "task": "pick up the white knight",
+   "note": ""
+  },
+  {
+   "i": 173,
+   "part": "B",
+   "colour": "white",
+   "piece": "knight",
+   "square": "d4",
+   "spot": "toward the h8 corner",
+   "offset_mm": [
+    4.2,
+    4.2
+   ],
+   "task": "pick up the white knight",
+   "note": ""
+  },
+  {
+   "i": 174,
+   "part": "B",
+   "colour": "white",
+   "piece": "knight",
+   "square": "f3",
+   "spot": "toward the a1 corner",
+   "offset_mm": [
+    -4.2,
+    -4.2
+   ],
+   "task": "pick up the white knight",
+   "note": ""
+  },
+  {
+   "i": 175,
+   "part": "B",
+   "colour": "white",
+   "piece": "knight",
+   "square": "d2",
+   "spot": "toward the h-file",
+   "offset_mm": [
+    0.0,
+    6.0
+   ],
+   "task": "pick up the white knight",
+   "note": ""
+  },
+  {
+   "i": 176,
+   "part": "B",
+   "colour": "white",
+   "piece": "knight",
+   "square": "c3",
+   "spot": "toward rank 8",
+   "offset_mm": [
+    6.0,
+    0.0
+   ],
+   "task": "pick up the white knight",
+   "note": ""
+  },
+  {
+   "i": 177,
+   "part": "B",
+   "colour": "white",
+   "piece": "knight",
+   "square": "e5",
+   "spot": "toward rank 1",
+   "offset_mm": [
+    -6.0,
+    0.0
+   ],
+   "task": "pick up the white knight",
+   "note": ""
+  },
+  {
+   "i": 178,
+   "part": "B",
+   "colour": "white",
+   "piece": "knight",
+   "square": "f2",
+   "spot": "toward the h-file",
+   "offset_mm": [
+    0.0,
+    6.0
+   ],
+   "task": "pick up the white knight",
+   "note": ""
+  },
+  {
+   "i": 179,
+   "part": "B",
+   "colour": "white",
+   "piece": "knight",
+   "square": "e4",
+   "spot": "toward the h8 corner",
+   "offset_mm": [
+    4.2,
+    4.2
+   ],
+   "task": "pick up the white knight",
+   "note": ""
+  },
+  {
+   "i": 180,
+   "part": "B",
+   "colour": "white",
+   "piece": "knight",
+   "square": "d5",
+   "spot": "toward the h1 corner",
+   "offset_mm": [
+    -4.2,
+    4.2
+   ],
+   "task": "pick up the white knight",
+   "note": "Last of this tour: afterwards put it back in the box."
+  },
+  {
+   "i": 181,
+   "part": "B",
+   "colour": "white",
+   "piece": "bishop",
+   "square": "a1",
+   "spot": "toward the h1 corner",
+   "offset_mm": [
+    -4.2,
+    4.2
+   ],
+   "task": "pick up the white bishop",
+   "note": "Tour of the white bishop: take the one on c1."
+  },
+  {
+   "i": 182,
+   "part": "B",
+   "colour": "white",
+   "piece": "bishop",
+   "square": "d3",
+   "spot": "toward the a-file",
+   "offset_mm": [
+    0.0,
+    -6.0
+   ],
+   "task": "pick up the white bishop",
+   "note": ""
+  },
+  {
+   "i": 183,
+   "part": "B",
+   "colour": "white",
+   "piece": "bishop",
+   "square": "c5",
+   "spot": "toward the a8 corner",
+   "offset_mm": [
+    4.2,
+    -4.2
+   ],
+   "task": "pick up the white bishop",
+   "note": ""
+  },
+  {
+   "i": 184,
+   "part": "B",
+   "colour": "white",
+   "piece": "bishop",
+   "square": "a6",
+   "spot": "toward the h-file",
+   "offset_mm": [
+    0.0,
+    6.0
+   ],
+   "task": "pick up the white bishop",
+   "note": ""
+  },
+  {
+   "i": 185,
+   "part": "B",
+   "colour": "white",
+   "piece": "bishop",
+   "square": "b2",
+   "spot": "toward the h8 corner",
+   "offset_mm": [
+    4.2,
+    4.2
+   ],
+   "task": "pick up the white bishop",
+   "note": ""
+  },
+  {
+   "i": 186,
+   "part": "B",
+   "colour": "white",
+   "piece": "bishop",
+   "square": "d1",
+   "spot": "toward rank 1",
+   "offset_mm": [
+    -6.0,
+    0.0
+   ],
+   "task": "pick up the white bishop",
+   "note": ""
+  },
+  {
+   "i": 187,
+   "part": "B",
+   "colour": "white",
+   "piece": "bishop",
+   "square": "a2",
+   "spot": "centre",
+   "offset_mm": [
+    0.0,
+    0.0
+   ],
+   "task": "pick up the white bishop",
+   "note": ""
+  },
+  {
+   "i": 188,
+   "part": "B",
+   "colour": "white",
+   "piece": "bishop",
+   "square": "h1",
+   "spot": "toward the a1 corner",
+   "offset_mm": [
+    -4.2,
+    -4.2
+   ],
+   "task": "pick up the white bishop",
+   "note": ""
+  },
+  {
+   "i": 189,
+   "part": "B",
+   "colour": "white",
+   "piece": "bishop",
+   "square": "f4",
+   "spot": "toward rank 8",
+   "offset_mm": [
+    6.0,
+    0.0
+   ],
+   "task": "pick up the white bishop",
+   "note": ""
+  },
+  {
+   "i": 190,
+   "part": "B",
+   "colour": "white",
+   "piece": "bishop",
+   "square": "b3",
+   "spot": "toward the h8 corner",
+   "offset_mm": [
+    4.2,
+    4.2
+   ],
+   "task": "pick up the white bishop",
+   "note": ""
+  },
+  {
+   "i": 191,
+   "part": "B",
+   "colour": "white",
+   "piece": "bishop",
+   "square": "e3",
+   "spot": "toward the h1 corner",
+   "offset_mm": [
+    -4.2,
+    4.2
+   ],
+   "task": "pick up the white bishop",
+   "note": ""
+  },
+  {
+   "i": 192,
+   "part": "B",
+   "colour": "white",
+   "piece": "bishop",
+   "square": "e5",
+   "spot": "toward the h-file",
+   "offset_mm": [
+    0.0,
+    6.0
+   ],
+   "task": "pick up the white bishop",
+   "note": ""
+  },
+  {
+   "i": 193,
+   "part": "B",
+   "colour": "white",
+   "piece": "bishop",
+   "square": "c6",
+   "spot": "centre",
+   "offset_mm": [
+    0.0,
+    0.0
+   ],
+   "task": "pick up the white bishop",
+   "note": ""
+  },
+  {
+   "i": 194,
+   "part": "B",
+   "colour": "white",
+   "piece": "bishop",
+   "square": "c4",
+   "spot": "toward the a-file",
+   "offset_mm": [
+    0.0,
+    -6.0
+   ],
+   "task": "pick up the white bishop",
+   "note": "Last of this tour: afterwards put it back on c1."
+  },
+  {
+   "i": 195,
+   "part": "B",
+   "colour": "white",
+   "piece": "rook",
+   "square": "b4",
+   "spot": "toward the a1 corner",
+   "offset_mm": [
+    -4.2,
+    -4.2
+   ],
+   "task": "pick up the white rook",
+   "note": "Tour of the white rook: take a spare one from the box."
+  },
+  {
+   "i": 196,
+   "part": "B",
+   "colour": "white",
+   "piece": "rook",
+   "square": "b3",
+   "spot": "toward the h8 corner",
+   "offset_mm": [
+    4.2,
+    4.2
+   ],
+   "task": "pick up the white rook",
+   "note": ""
+  },
+  {
+   "i": 197,
+   "part": "B",
+   "colour": "white",
+   "piece": "rook",
+   "square": "c4",
+   "spot": "centre",
+   "offset_mm": [
+    0.0,
+    0.0
+   ],
+   "task": "pick up the white rook",
+   "note": ""
+  },
+  {
+   "i": 198,
+   "part": "B",
+   "colour": "white",
+   "piece": "rook",
+   "square": "b6",
+   "spot": "toward rank 8",
+   "offset_mm": [
+    6.0,
+    0.0
+   ],
+   "task": "pick up the white rook",
+   "note": ""
+  },
+  {
+   "i": 199,
+   "part": "B",
+   "colour": "white",
+   "piece": "rook",
+   "square": "d1",
+   "spot": "toward the h1 corner",
+   "offset_mm": [
+    -4.2,
+    4.2
+   ],
+   "task": "pick up the white rook",
+   "note": ""
+  },
+  {
+   "i": 200,
+   "part": "B",
+   "colour": "white",
+   "piece": "rook",
+   "square": "e2",
+   "spot": "toward rank 1",
+   "offset_mm": [
+    -6.0,
+    0.0
+   ],
+   "task": "pick up the white rook",
+   "note": ""
+  },
+  {
+   "i": 201,
+   "part": "B",
+   "colour": "white",
+   "piece": "rook",
+   "square": "h1",
+   "spot": "toward the h-file",
+   "offset_mm": [
+    0.0,
+    6.0
+   ],
+   "task": "pick up the white rook",
+   "note": ""
+  },
+  {
+   "i": 202,
+   "part": "B",
+   "colour": "white",
+   "piece": "rook",
+   "square": "a1",
+   "spot": "toward the a-file",
+   "offset_mm": [
+    0.0,
+    -6.0
+   ],
+   "task": "pick up the white rook",
+   "note": ""
+  },
+  {
+   "i": 203,
+   "part": "B",
+   "colour": "white",
+   "piece": "rook",
+   "square": "e3",
+   "spot": "toward the a8 corner",
+   "offset_mm": [
+    4.2,
+    -4.2
+   ],
+   "task": "pick up the white rook",
+   "note": ""
+  },
+  {
+   "i": 204,
+   "part": "B",
+   "colour": "white",
+   "piece": "rook",
+   "square": "f3",
+   "spot": "toward rank 8",
+   "offset_mm": [
+    6.0,
+    0.0
+   ],
+   "task": "pick up the white rook",
+   "note": ""
+  },
+  {
+   "i": 205,
+   "part": "B",
+   "colour": "white",
+   "piece": "rook",
+   "square": "b5",
+   "spot": "toward the h8 corner",
+   "offset_mm": [
+    4.2,
+    4.2
+   ],
+   "task": "pick up the white rook",
+   "note": ""
+  },
+  {
+   "i": 206,
+   "part": "B",
+   "colour": "white",
+   "piece": "rook",
+   "square": "c6",
+   "spot": "toward the a8 corner",
+   "offset_mm": [
+    4.2,
+    -4.2
+   ],
+   "task": "pick up the white rook",
+   "note": ""
+  },
+  {
+   "i": 207,
+   "part": "B",
+   "colour": "white",
+   "piece": "rook",
+   "square": "h5",
+   "spot": "centre",
+   "offset_mm": [
+    0.0,
+    0.0
+   ],
+   "task": "pick up the white rook",
+   "note": ""
+  },
+  {
+   "i": 208,
+   "part": "B",
+   "colour": "white",
+   "piece": "rook",
+   "square": "b2",
+   "spot": "toward the a-file",
+   "offset_mm": [
+    0.0,
+    -6.0
+   ],
+   "task": "pick up the white rook",
+   "note": "Last of this tour: afterwards put it back in the box."
+  },
+  {
+   "i": 209,
+   "part": "B",
+   "colour": "white",
+   "piece": "queen",
+   "square": "c5",
+   "spot": "toward rank 1",
+   "offset_mm": [
+    -6.0,
+    0.0
+   ],
+   "task": "pick up the white queen",
+   "note": "Tour of the white queen: take a spare one from the box."
+  },
+  {
+   "i": 210,
+   "part": "B",
+   "colour": "white",
+   "piece": "queen",
+   "square": "b3",
+   "spot": "toward the h8 corner",
+   "offset_mm": [
+    4.2,
+    4.2
+   ],
+   "task": "pick up the white queen",
+   "note": ""
+  },
+  {
+   "i": 211,
+   "part": "B",
+   "colour": "white",
+   "piece": "queen",
+   "square": "b4",
+   "spot": "toward the a1 corner",
+   "offset_mm": [
+    -4.2,
+    -4.2
+   ],
+   "task": "pick up the white queen",
+   "note": ""
+  },
+  {
+   "i": 212,
+   "part": "B",
+   "colour": "white",
+   "piece": "queen",
+   "square": "b1",
+   "spot": "toward the h-file",
+   "offset_mm": [
+    0.0,
+    6.0
+   ],
+   "task": "pick up the white queen",
+   "note": ""
+  },
+  {
+   "i": 213,
+   "part": "B",
+   "colour": "white",
+   "piece": "queen",
+   "square": "h1",
+   "spot": "toward the a8 corner",
+   "offset_mm": [
+    4.2,
+    -4.2
+   ],
+   "task": "pick up the white queen",
+   "note": ""
+  },
+  {
+   "i": 214,
+   "part": "B",
+   "colour": "white",
+   "piece": "queen",
+   "square": "b6",
+   "spot": "toward the a-file",
+   "offset_mm": [
+    0.0,
+    -6.0
+   ],
+   "task": "pick up the white queen",
+   "note": ""
+  },
+  {
+   "i": 215,
+   "part": "B",
+   "colour": "white",
+   "piece": "queen",
+   "square": "d2",
+   "spot": "toward the h1 corner",
+   "offset_mm": [
+    -4.2,
+    4.2
+   ],
+   "task": "pick up the white queen",
+   "note": ""
+  },
+  {
+   "i": 216,
+   "part": "B",
+   "colour": "white",
+   "piece": "queen",
+   "square": "g5",
+   "spot": "toward rank 8",
+   "offset_mm": [
+    6.0,
+    0.0
+   ],
+   "task": "pick up the white queen",
+   "note": ""
+  },
+  {
+   "i": 217,
+   "part": "B",
+   "colour": "white",
+   "piece": "queen",
+   "square": "d1",
+   "spot": "centre",
+   "offset_mm": [
+    0.0,
+    0.0
+   ],
+   "task": "pick up the white queen",
+   "note": ""
+  },
+  {
+   "i": 218,
+   "part": "B",
+   "colour": "white",
+   "piece": "queen",
+   "square": "f3",
+   "spot": "toward the a-file",
+   "offset_mm": [
+    0.0,
+    -6.0
+   ],
+   "task": "pick up the white queen",
+   "note": ""
+  },
+  {
+   "i": 219,
+   "part": "B",
+   "colour": "white",
+   "piece": "queen",
+   "square": "f2",
+   "spot": "toward the h1 corner",
+   "offset_mm": [
+    -4.2,
+    4.2
+   ],
+   "task": "pick up the white queen",
+   "note": ""
+  },
+  {
+   "i": 220,
+   "part": "B",
+   "colour": "white",
+   "piece": "queen",
+   "square": "d3",
+   "spot": "toward the h-file",
+   "offset_mm": [
+    0.0,
+    6.0
+   ],
+   "task": "pick up the white queen",
+   "note": ""
+  },
+  {
+   "i": 221,
+   "part": "B",
+   "colour": "white",
+   "piece": "queen",
+   "square": "f4",
+   "spot": "toward rank 8",
+   "offset_mm": [
+    6.0,
+    0.0
+   ],
+   "task": "pick up the white queen",
+   "note": ""
+  },
+  {
+   "i": 222,
+   "part": "B",
+   "colour": "white",
+   "piece": "queen",
+   "square": "c6",
+   "spot": "toward the a8 corner",
+   "offset_mm": [
+    4.2,
+    -4.2
+   ],
+   "task": "pick up the white queen",
+   "note": "Last of this tour: afterwards put it back in the box."
+  },
+  {
+   "i": 223,
+   "part": "B",
+   "colour": "white",
+   "piece": "king",
+   "square": "b6",
+   "spot": "toward the a-file",
+   "offset_mm": [
+    0.0,
+    -6.0
+   ],
+   "task": "pick up the white king",
+   "note": "Tour of the white king: take the one on e1."
+  },
+  {
+   "i": 224,
+   "part": "B",
+   "colour": "white",
+   "piece": "king",
+   "square": "f6",
+   "spot": "toward the h8 corner",
+   "offset_mm": [
+    4.2,
+    4.2
+   ],
+   "task": "pick up the white king",
+   "note": ""
+  },
+  {
+   "i": 225,
+   "part": "B",
+   "colour": "white",
+   "piece": "king",
+   "square": "h3",
+   "spot": "toward rank 1",
+   "offset_mm": [
+    -6.0,
+    0.0
+   ],
+   "task": "pick up the white king",
+   "note": ""
+  },
+  {
+   "i": 226,
+   "part": "B",
+   "colour": "white",
+   "piece": "king",
+   "square": "f4",
+   "spot": "toward rank 8",
+   "offset_mm": [
+    6.0,
+    0.0
+   ],
+   "task": "pick up the white king",
+   "note": ""
+  },
+  {
+   "i": 227,
+   "part": "B",
+   "colour": "white",
+   "piece": "king",
+   "square": "d1",
+   "spot": "toward the a1 corner",
+   "offset_mm": [
+    -4.2,
+    -4.2
+   ],
+   "task": "pick up the white king",
+   "note": ""
+  },
+  {
+   "i": 228,
+   "part": "B",
+   "colour": "white",
+   "piece": "king",
+   "square": "a1",
+   "spot": "toward the a8 corner",
+   "offset_mm": [
+    4.2,
+    -4.2
+   ],
+   "task": "pick up the white king",
+   "note": ""
+  },
+  {
+   "i": 229,
+   "part": "B",
+   "colour": "white",
+   "piece": "king",
+   "square": "d3",
+   "spot": "centre",
+   "offset_mm": [
+    0.0,
+    0.0
+   ],
+   "task": "pick up the white king",
+   "note": ""
+  },
+  {
+   "i": 230,
+   "part": "B",
+   "colour": "white",
+   "piece": "king",
+   "square": "h2",
+   "spot": "toward the h1 corner",
+   "offset_mm": [
+    -4.2,
+    4.2
+   ],
+   "task": "pick up the white king",
+   "note": ""
+  },
+  {
+   "i": 231,
+   "part": "B",
+   "colour": "white",
+   "piece": "king",
+   "square": "h1",
+   "spot": "toward the h-file",
+   "offset_mm": [
+    0.0,
+    6.0
+   ],
+   "task": "pick up the white king",
+   "note": ""
+  },
+  {
+   "i": 232,
+   "part": "B",
+   "colour": "white",
+   "piece": "king",
+   "square": "d2",
+   "spot": "toward the a1 corner",
+   "offset_mm": [
+    -4.2,
+    -4.2
+   ],
+   "task": "pick up the white king",
+   "note": ""
+  },
+  {
+   "i": 233,
+   "part": "B",
+   "colour": "white",
+   "piece": "king",
+   "square": "b3",
+   "spot": "toward the h8 corner",
+   "offset_mm": [
+    4.2,
+    4.2
+   ],
+   "task": "pick up the white king",
+   "note": ""
+  },
+  {
+   "i": 234,
+   "part": "B",
+   "colour": "white",
+   "piece": "king",
+   "square": "d5",
+   "spot": "centre",
+   "offset_mm": [
+    0.0,
+    0.0
+   ],
+   "task": "pick up the white king",
+   "note": ""
+  },
+  {
+   "i": 235,
+   "part": "B",
+   "colour": "white",
+   "piece": "king",
+   "square": "f5",
+   "spot": "toward the h1 corner",
+   "offset_mm": [
+    -4.2,
+    4.2
+   ],
+   "task": "pick up the white king",
+   "note": ""
+  },
+  {
+   "i": 236,
+   "part": "B",
+   "colour": "white",
+   "piece": "king",
+   "square": "d4",
+   "spot": "toward rank 8",
+   "offset_mm": [
+    6.0,
+    0.0
+   ],
+   "task": "pick up the white king",
+   "note": "Last of this tour: afterwards put it back on e1."
+  }
+ ]
+}

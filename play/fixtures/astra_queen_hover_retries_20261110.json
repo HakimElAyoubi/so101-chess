@@ -1,0 +1,1151 @@
+{
+  "source": "astra/20261110_171630",
+  "records": [
+    {
+      "n": 0,
+      "kind": "from",
+      "time": "17:16:30",
+      "phase": "hover",
+      "text": "GRASP black queen on d8; feature: the middle of its crown (the top). Image 840 x 840 pixels. Phase: hover before descent. The coloured boundary is approximate; locate the real feature.",
+      "answer": {
+        "visible": true,
+        "target_px": [
+          399,
+          412
+        ],
+        "pad_gap_px": [
+          580,
+          324
+        ],
+        "clear": true,
+        "roll_deg": 0,
+        "confidence": 0.94,
+        "_latency_s": 9.65,
+        "_usage": {
+          "in": 1532,
+          "out": 411,
+          "cached": 0,
+          "effort": "medium"
+        },
+        "_model": "gpt-6-astra",
+        "_service_tier": "fast",
+        "pads_offset_px": [
+          -10.96691436279798,
+          -52.44407504865211
+        ],
+        "grid_px": [],
+        "notes": "",
+        "_source": "astra",
+        "_grid_trusted": false
+      },
+      "q": [
+        20.52747344970703,
+        -46.5054931640625,
+        31.824174880981445,
+        101.97801971435547,
+        21.14285659790039,
+        9.584450721740723
+      ],
+      "land_px": [
+        419.7748030133024,
+        396.6006204738365
+      ],
+      "land_w": [
+        0.14681448323313692,
+        -0.04175701849566074,
+        0.04700000000000001
+      ],
+      "z_plane": 0.04700000000000001,
+      "tips_px": [
+        [
+          591.8529858229922,
+          439.90297753770244
+        ],
+        [
+          589.7028367912193,
+          312.23164960840256
+        ]
+      ],
+      "reg": {
+        "grid_n": 0,
+        "grid_used": 0,
+        "reason": "insufficient 2D grid support"
+      },
+      "target_px": [
+        399.0,
+        412.0
+      ],
+      "target_raw": [
+        610.0,
+        426.6666666666667
+      ],
+      "feat_xy": [
+        0.14522180930140902,
+        -0.03858758498698221
+      ],
+      "method": "centre",
+      "pads_offset_mm": [
+        5.357305283059222,
+        0.5821237860075268
+      ],
+      "d_mm": [
+        -6.9499792147871275,
+        2.5873097226710025
+      ],
+      "pads_applied": true,
+      "action": "move",
+      "used_mm": [
+        -6.9499792147871275,
+        2.5873097226710025
+      ],
+      "truth_after_mm": null
+    },
+    {
+      "n": 1,
+      "kind": "from",
+      "time": "17:16:46",
+      "phase": "hover",
+      "text": "GRASP black queen on d8; feature: the middle of its crown (the top). Image 840 x 840 pixels. Phase: hover before descent. The coloured boundary is approximate; locate the real feature.",
+      "answer": {
+        "visible": true,
+        "target_px": [
+          375,
+          411
+        ],
+        "pad_gap_px": [
+          583,
+          331
+        ],
+        "clear": true,
+        "roll_deg": 0,
+        "confidence": 0.91,
+        "_latency_s": 14.27,
+        "_usage": {
+          "in": 1532,
+          "out": 675,
+          "cached": 0,
+          "effort": "medium"
+        },
+        "_model": "gpt-6-astra",
+        "_service_tier": "fast",
+        "pads_offset_px": [
+          -3.4669143627975245,
+          -46.94407504865211
+        ],
+        "grid_px": [],
+        "notes": "",
+        "_source": "astra",
+        "_grid_trusted": false
+      },
+      "q": [
+        20.52747344970703,
+        -59.868133544921875,
+        39.120880126953125,
+        101.97801971435547,
+        21.14285659790039,
+        9.584450721740723
+      ],
+      "land_px": [
+        413.6013331404157,
+        426.2563852500603
+      ],
+      "land_w": [
+        0.1396335928237207,
+        -0.03905840365449467,
+        0.04700000000000001
+      ],
+      "z_plane": 0.04700000000000001,
+      "tips_px": [
+        [
+          587.3529858229917,
+          441.40297753770216
+        ],
+        [
+          585.2028367912189,
+          313.73164960840256
+        ]
+      ],
+      "reg": {
+        "grid_n": 0,
+        "grid_used": 0,
+        "reason": "insufficient 2D grid support"
+      },
+      "target_px": [
+        375.0,
+        411.0
+      ],
+      "target_raw": [
+        597.0,
+        425.0
+      ],
+      "feat_xy": [
+        0.14207771848109654,
+        -0.03401683538548819
+      ],
+      "method": "centre",
+      "pads_offset_mm": [
+        4.78165527695909,
+        -0.66179847723849
+      ],
+      "d_mm": [
+        -2.3375296195832505,
+        5.70336674624497
+      ],
+      "pads_applied": true,
+      "action": "move",
+      "used_mm": [
+        -2.3375296195832505,
+        5.70336674624497
+      ],
+      "truth_after_mm": null
+    },
+    {
+      "n": 2,
+      "kind": "from",
+      "time": "17:17:06",
+      "phase": "hover",
+      "text": "GRASP black queen on d8; feature: the middle of its crown (the top). Image 840 x 840 pixels. Phase: hover before descent. The coloured boundary is approximate; locate the real feature.",
+      "answer": {
+        "visible": true,
+        "target_px": [
+          378,
+          412
+        ],
+        "pad_gap_px": [
+          558,
+          315
+        ],
+        "clear": true,
+        "roll_deg": 0,
+        "confidence": 0.82,
+        "_latency_s": 17.24,
+        "_usage": {
+          "in": 1532,
+          "out": 734,
+          "cached": 0,
+          "effort": "medium"
+        },
+        "_model": "gpt-6-astra",
+        "_service_tier": "fast",
+        "pads_offset_px": [
+          -14.96691436279798,
+          -49.44407504865194
+        ],
+        "grid_px": [],
+        "notes": "",
+        "_source": "astra",
+        "_grid_trusted": false
+      },
+      "q": [
+        17.89011001586914,
+        -74.54945373535156,
+        45.80219650268555,
+        101.97801971435547,
+        21.14285659790039,
+        9.584450721740723
+      ],
+      "land_px": [
+        397.1378098661749,
+        449.50507340484455
+      ],
+      "land_w": [
+        0.13841562472572078,
+        -0.03343613857619854,
+        0.04700000000000001
+      ],
+      "z_plane": 0.04700000000000001,
+      "tips_px": [
+        [
+          573.8529858229922,
+          427.9029775377023
+        ],
+        [
+          571.7028367912196,
+          300.2316496084024
+        ]
+      ],
+      "reg": {
+        "grid_n": 0,
+        "grid_used": 0,
+        "reason": "insufficient 2D grid support"
+      },
+      "target_px": [
+        378.0,
+        412.0
+      ],
+      "target_raw": [
+        608.0,
+        434.6666666666667
+      ],
+      "feat_xy": [
+        0.14329208895539786,
+        -0.0317725959571789
+      ],
+      "method": "centre",
+      "pads_offset_mm": [
+        5.276073665153619,
+        0.43465631385111725
+      ],
+      "d_mm": [
+        -0.39960943547653915,
+        1.2288863051685208
+      ],
+      "pads_applied": true,
+      "action": "descend",
+      "used_mm": [
+        -0.39960943547653915,
+        1.2288863051685208
+      ],
+      "truth_after_mm": null
+    },
+    {
+      "n": 3,
+      "kind": "from",
+      "time": "17:17:21",
+      "phase": "hover",
+      "text": "GRASP black queen on d8; feature: the middle of its crown (the top). Image 840 x 840 pixels. Phase: hover before descent. The coloured boundary is approximate; locate the real feature.",
+      "answer": {
+        "visible": true,
+        "target_px": [
+          405,
+          411
+        ],
+        "pad_gap_px": [
+          590,
+          322
+        ],
+        "clear": true,
+        "roll_deg": 0,
+        "confidence": 0.92,
+        "_latency_s": 8.13,
+        "_usage": {
+          "in": 1532,
+          "out": 340,
+          "cached": 0,
+          "effort": "medium"
+        },
+        "_model": "gpt-6-astra",
+        "_service_tier": "fast",
+        "pads_offset_px": [
+          -2.4669143627979793,
+          -52.944075048652394
+        ],
+        "grid_px": [],
+        "notes": "",
+        "_source": "astra",
+        "_grid_trusted": false
+      },
+      "q": [
+        20.52747344970703,
+        -45.4505500793457,
+        31.120878219604492,
+        101.89010620117188,
+        21.14285659790039,
+        9.584450721740723
+      ],
+      "land_px": [
+        420.6489754656195,
+        393.5741483914669
+      ],
+      "land_w": [
+        0.14777469836379026,
+        -0.04211787218574006,
+        0.04700000000000001
+      ],
+      "z_plane": 0.04700000000000001,
+      "tips_px": [
+        [
+          593.3529858229917,
+          438.4029775377023
+        ],
+        [
+          591.2028367912192,
+          310.73164960840273
+        ]
+      ],
+      "reg": {
+        "grid_n": 0,
+        "grid_used": 0,
+        "reason": "insufficient 2D grid support"
+      },
+      "target_px": [
+        405.0,
+        411.0
+      ],
+      "target_raw": [
+        613.0,
+        427.0
+      ],
+      "feat_xy": [
+        0.14585083820384104,
+        -0.0396337567717077
+      ],
+      "method": "centre",
+      "pads_offset_mm": [
+        5.325787939963855,
+        -0.4712021205839356
+      ],
+      "try_offset_mm": [
+        3.0,
+        [
+          3.0,
+          -0.08
+        ]
+      ],
+      "d_mm": [
+        -10.248682605871501,
+        3.0314229356773192
+      ],
+      "pads_applied": true,
+      "action": "move",
+      "used_mm": [
+        -10.248682605871501,
+        3.0314229356773192
+      ],
+      "truth_after_mm": null
+    },
+    {
+      "n": 4,
+      "kind": "from",
+      "time": "17:17:38",
+      "phase": "hover",
+      "text": "GRASP black queen on d8; feature: the middle of its crown (the top). Image 840 x 840 pixels. Phase: hover before descent. The coloured boundary is approximate; locate the real feature.",
+      "answer": {
+        "visible": true,
+        "target_px": [
+          368,
+          402
+        ],
+        "pad_gap_px": [
+          609,
+          318
+        ],
+        "clear": true,
+        "roll_deg": 0,
+        "confidence": 0.9,
+        "_latency_s": 14.15,
+        "_usage": {
+          "in": 1532,
+          "out": 668,
+          "cached": 0,
+          "effort": "medium"
+        },
+        "_model": "gpt-6-astra",
+        "_service_tier": "fast",
+        "pads_offset_px": [
+          13.533085637202362,
+          -46.44407504865211
+        ],
+        "grid_px": [],
+        "notes": "",
+        "_source": "astra",
+        "_grid_trusted": false
+      },
+      "q": [
+        21.05494499206543,
+        -67.6043930053711,
+        42.46154022216797,
+        101.97801971435547,
+        21.14285659790039,
+        9.584450721740723
+      ],
+      "land_px": [
+        417.1302482516402,
+        434.4201785708317
+      ],
+      "land_w": [
+        0.13773378894685673,
+        -0.03939128029637171,
+        0.04700000000000001
+      ],
+      "z_plane": 0.04700000000000001,
+      "tips_px": [
+        [
+          596.3529858229917,
+          427.9029775377021
+        ],
+        [
+          594.2028367912192,
+          300.2316496084024
+        ]
+      ],
+      "reg": {
+        "grid_n": 0,
+        "grid_used": 0,
+        "reason": "insufficient 2D grid support"
+      },
+      "target_px": [
+        368.0,
+        402.0
+      ],
+      "target_raw": [
+        586.3333333333334,
+        428.0
+      ],
+      "feat_xy": [
+        0.14252550326046132,
+        -0.0334683390316196
+      ],
+      "method": "centre",
+      "pads_offset_mm": [
+        4.6130294404748415,
+        -3.287451913565498
+      ],
+      "try_offset_mm": [
+        3.0,
+        [
+          3.0,
+          -0.06
+        ]
+      ],
+      "d_mm": [
+        -2.820680403091913,
+        9.272101684990139
+      ],
+      "pads_applied": true,
+      "action": "move",
+      "used_mm": [
+        -2.820680403091913,
+        9.272101684990139
+      ],
+      "truth_after_mm": null
+    },
+    {
+      "n": 5,
+      "kind": "from",
+      "time": "17:18:01",
+      "phase": "hover",
+      "text": "GRASP black queen on d8; feature: the middle of its crown (the top). Image 840 x 840 pixels. Phase: hover before descent. The coloured boundary is approximate; locate the real feature.",
+      "answer": {
+        "visible": true,
+        "target_px": [
+          371,
+          401
+        ],
+        "pad_gap_px": [
+          579,
+          315
+        ],
+        "clear": true,
+        "roll_deg": 0,
+        "confidence": 0.88,
+        "_latency_s": 20.73,
+        "_usage": {
+          "in": 1532,
+          "out": 1080,
+          "cached": 0,
+          "effort": "medium"
+        },
+        "_model": "gpt-6-astra",
+        "_service_tier": "fast",
+        "pads_offset_px": [
+          -8.96691436279798,
+          -49.44407504865228
+        ],
+        "grid_px": [],
+        "notes": "",
+        "_source": "astra",
+        "_grid_trusted": false
+      },
+      "q": [
+        20.0,
+        -73.93406677246094,
+        45.36263656616211,
+        101.97801971435547,
+        21.14285659790039,
+        9.584450721740723
+      ],
+      "land_px": [
+        409.90126353143967,
+        449.7772320454509
+      ],
+      "land_w": [
+        0.13742090414947983,
+        -0.03719062202839353,
+        0.04700000000000001
+      ],
+      "z_plane": 0.04700000000000001,
+      "tips_px": [
+        [
+          588.8529858229922,
+          427.9029775377028
+        ],
+        [
+          586.7028367912193,
+          300.2316496084027
+        ]
+      ],
+      "reg": {
+        "grid_n": 0,
+        "grid_used": 0,
+        "reason": "insufficient 2D grid support"
+      },
+      "target_px": [
+        371.0,
+        401.0
+      ],
+      "target_raw": [
+        593.3333333333334,
+        427.3333333333333
+      ],
+      "feat_xy": [
+        0.14402694284863443,
+        -0.033258867046684494
+      ],
+      "method": "centre",
+      "pads_offset_mm": [
+        5.242543136665306,
+        -0.5494778669127842
+      ],
+      "try_offset_mm": [
+        3.0,
+        [
+          3.0,
+          0.02
+        ]
+      ],
+      "d_mm": [
+        -1.6364666825034733,
+        4.466181980941016
+      ],
+      "pads_applied": true,
+      "action": "move",
+      "used_mm": [
+        -1.6364666825034733,
+        4.466181980941016
+      ],
+      "truth_after_mm": null
+    },
+    {
+      "n": 6,
+      "kind": "from",
+      "time": "17:18:19",
+      "phase": "hover",
+      "text": "GRASP black queen on d8; feature: the middle of its crown (the top). Image 840 x 840 pixels. Phase: hover before descent. The coloured boundary is approximate; locate the real feature.",
+      "answer": {
+        "visible": true,
+        "target_px": [
+          374,
+          411
+        ],
+        "pad_gap_px": [
+          582,
+          315
+        ],
+        "clear": true,
+        "roll_deg": 0,
+        "confidence": 0.88,
+        "_latency_s": 15.59,
+        "_usage": {
+          "in": 1532,
+          "out": 869,
+          "cached": 0,
+          "effort": "medium"
+        },
+        "_model": "gpt-6-astra",
+        "_service_tier": "fast",
+        "pads_offset_px": [
+          3.033085637202362,
+          -49.44407504865205
+        ],
+        "grid_px": [],
+        "notes": "",
+        "_source": "astra",
+        "_grid_trusted": false
+      },
+      "q": [
+        18.769229888916016,
+        -77.0988998413086,
+        46.85714340209961,
+        101.97801971435547,
+        21.14285659790039,
+        9.584450721740723
+      ],
+      "land_px": [
+        402.44207950611144,
+        456.47929218308207
+      ],
+      "land_w": [
+        0.13783074435038187,
+        -0.03493953551132429,
+        0.04700000000000001
+      ],
+      "z_plane": 0.04700000000000001,
+      "tips_px": [
+        [
+          579.8529858229917,
+          427.90297753770216
+        ],
+        [
+          577.7028367912193,
+          300.23164960840256
+        ]
+      ],
+      "reg": {
+        "grid_n": 0,
+        "grid_used": 0,
+        "reason": "insufficient 2D grid support"
+      },
+      "target_px": [
+        374.0,
+        411.0
+      ],
+      "target_raw": [
+        601.3333333333334,
+        434.0
+      ],
+      "feat_xy": [
+        0.1438482600080947,
+        -0.03235646397544233
+      ],
+      "method": "centre",
+      "pads_offset_mm": [
+        5.26000553494338,
+        -2.222789894591987
+      ],
+      "try_offset_mm": [
+        3.0,
+        [
+          3.0,
+          0.09
+        ]
+      ],
+      "d_mm": [
+        -2.2410917862671633,
+        4.714283097217429
+      ],
+      "pads_applied": true,
+      "action": "move",
+      "used_mm": [
+        -2.2410917862671633,
+        4.714283097217429
+      ],
+      "truth_after_mm": null
+    },
+    {
+      "n": 7,
+      "kind": "from",
+      "time": "17:18:21",
+      "phase": "hover",
+      "text": "GRASP black queen on d8; feature: the middle of its crown (the top). Image 840 x 840 pixels. Phase: hover before descent. The coloured boundary is approximate; locate the real feature.",
+      "answer": {
+        "visible": true,
+        "target_px": [
+          379.0022277832031,
+          412.52471923828125
+        ],
+        "pad_gap_px": [
+          576.0,
+          315.0000000000002
+        ],
+        "clear": true,
+        "roll_deg": 0,
+        "confidence": 0.88,
+        "_latency_s": 0.0,
+        "_usage": {
+          "in": 0,
+          "out": 0,
+          "cached": 0,
+          "effort": "medium"
+        },
+        "_model": "gpt-6-astra",
+        "_service_tier": "fast",
+        "pads_offset_px": [
+          3.033085637202362,
+          -49.44407504865205
+        ],
+        "grid_px": [],
+        "notes": "",
+        "_source": "local_tracker",
+        "_track_score": 0.974176824092865,
+        "_grid_trusted": false
+      },
+      "q": [
+        18.065933227539062,
+        -77.62637329101562,
+        47.20878982543945,
+        101.97801971435547,
+        21.14285659790039,
+        9.584450721740723
+      ],
+      "land_px": [
+        398.13612784472366,
+        456.385944955621
+      ],
+      "land_w": [
+        0.13806063231850224,
+        -0.03365905252476091,
+        0.04700000000000001
+      ],
+      "z_plane": 0.04700000000000001,
+      "tips_px": [
+        [
+          573.8529858229919,
+          427.90297753770216
+        ],
+        [
+          571.7028367912189,
+          300.2316496084027
+        ]
+      ],
+      "reg": {
+        "grid_n": 0,
+        "grid_used": 0,
+        "reason": "insufficient 2D grid support"
+      },
+      "target_px": [
+        379.0022277832031,
+        412.52471923828125
+      ],
+      "target_raw": [
+        608.6681518554688,
+        435.0164794921875
+      ],
+      "feat_xy": [
+        0.14375606561754012,
+        -0.032296991421606205
+      ],
+      "method": "centre",
+      "pads_offset_mm": [
+        5.29336873227984,
+        -2.174889017692652
+      ],
+      "try_offset_mm": [
+        3.0,
+        [
+          3.0,
+          0.13
+        ]
+      ],
+      "d_mm": [
+        -2.5951298072581785,
+        3.4072354942027845
+      ],
+      "pads_applied": true,
+      "action": "give_up",
+      "used_mm": [
+        -2.5951298072581785,
+        3.4072354942027845
+      ],
+      "truth_after_mm": null
+    },
+    {
+      "n": 8,
+      "kind": "from",
+      "time": "17:18:36",
+      "phase": "hover",
+      "text": "GRASP black queen on d8; feature: the middle of its crown (the top). Image 840 x 840 pixels. Phase: hover before descent. The coloured boundary is approximate; locate the real feature.",
+      "answer": {
+        "visible": true,
+        "target_px": [
+          402,
+          420
+        ],
+        "pad_gap_px": [
+          585,
+          330
+        ],
+        "clear": true,
+        "roll_deg": 0,
+        "confidence": 0.93,
+        "_latency_s": 7.43,
+        "_usage": {
+          "in": 1532,
+          "out": 339,
+          "cached": 0,
+          "effort": "medium"
+        },
+        "_model": "gpt-6-astra",
+        "_service_tier": "fast",
+        "pads_offset_px": [
+          -5.966914362797979,
+          -46.44407504865211
+        ],
+        "grid_px": [],
+        "notes": "",
+        "_source": "astra",
+        "_grid_trusted": false
+      },
+      "q": [
+        20.439559936523438,
+        -45.27472686767578,
+        31.120878219604492,
+        101.89010620117188,
+        21.14285659790039,
+        9.584450721740723
+      ],
+      "land_px": [
+        420.3471469884308,
+        394.123798759744
+      ],
+      "land_w": [
+        0.1477416846459786,
+        -0.04191419400738728,
+        0.04700000000000001
+      ],
+      "z_plane": 0.04700000000000001,
+      "tips_px": [
+        [
+          591.8529858229922,
+          439.90297753770216
+        ],
+        [
+          589.7028367912193,
+          312.23164960840234
+        ]
+      ],
+      "reg": {
+        "grid_n": 0,
+        "grid_used": 0,
+        "reason": "insufficient 2D grid support"
+      },
+      "target_px": [
+        402.0,
+        420.0
+      ],
+      "target_raw": [
+        612.0,
+        432.0
+      ],
+      "feat_xy": [
+        0.14481689228591935,
+        -0.038930913332567
+      ],
+      "method": "centre",
+      "pads_offset_mm": [
+        4.707291351159188,
+        0.08430263823332174
+      ],
+      "try_offset_mm": [
+        -3.0,
+        [
+          -3.0,
+          0.07
+        ]
+      ],
+      "d_mm": [
+        -4.632945218378093,
+        2.8270871417300225
+      ],
+      "pads_applied": true,
+      "action": "move",
+      "used_mm": [
+        -4.632945218378093,
+        2.8270871417300225
+      ],
+      "truth_after_mm": null
+    },
+    {
+      "n": 9,
+      "kind": "from",
+      "time": "17:18:53",
+      "phase": "hover",
+      "text": "GRASP black queen on d8; feature: the middle of its crown (the top). Image 840 x 840 pixels. Phase: hover before descent. The coloured boundary is approximate; locate the real feature.",
+      "answer": {
+        "visible": true,
+        "target_px": [
+          399,
+          400
+        ],
+        "pad_gap_px": [
+          581,
+          330
+        ],
+        "clear": true,
+        "roll_deg": 0,
+        "confidence": 0.9,
+        "_latency_s": 14.53,
+        "_usage": {
+          "in": 1532,
+          "out": 711,
+          "cached": 0,
+          "effort": "medium"
+        },
+        "_model": "gpt-6-astra",
+        "_service_tier": "fast",
+        "pads_offset_px": [
+          -2.466914362797638,
+          -49.444075048652394
+        ],
+        "grid_px": [],
+        "notes": "",
+        "_source": "astra",
+        "_grid_trusted": false
+      },
+      "q": [
+        19.824174880981445,
+        -53.27472686767578,
+        35.69230651855469,
+        101.97801971435547,
+        21.14285659790039,
+        9.584450721740723
+      ],
+      "land_px": [
+        411.4900535130745,
+        413.17135777478416
+      ],
+      "land_w": [
+        0.14304670691145055,
+        -0.03888253900709892,
+        0.04700000000000001
+      ],
+      "z_plane": 0.04700000000000001,
+      "tips_px": [
+        [
+          584.3529858229919,
+          442.9029775377023
+        ],
+        [
+          582.2028367912189,
+          315.2316496084027
+        ]
+      ],
+      "reg": {
+        "grid_n": 0,
+        "grid_used": 0,
+        "reason": "insufficient 2D grid support"
+      },
+      "target_px": [
+        399.0,
+        400.0
+      ],
+      "target_raw": [
+        615.0,
+        416.6666666666667
+      ],
+      "feat_xy": [
+        0.14483460474203616,
+        -0.037360092158420885
+      ],
+      "method": "centre",
+      "pads_offset_mm": [
+        5.00070719096371,
+        -0.5692393219961511
+      ],
+      "try_offset_mm": [
+        -3.0,
+        [
+          -3.0,
+          0.03
+        ]
+      ],
+      "d_mm": [
+        -0.21296453389613124,
+        2.0611735990117563
+      ],
+      "pads_applied": true,
+      "action": "move",
+      "used_mm": [
+        -0.21296453389613124,
+        2.0611735990117563
+      ],
+      "truth_after_mm": null
+    },
+    {
+      "n": 10,
+      "kind": "from",
+      "time": "17:19:09",
+      "phase": "hover",
+      "text": "GRASP black queen on d8; feature: the middle of its crown (the top). Image 840 x 840 pixels. Phase: hover before descent. The coloured boundary is approximate; locate the real feature.",
+      "answer": {
+        "visible": true,
+        "target_px": [
+          404,
+          407
+        ],
+        "pad_gap_px": [
+          575,
+          325
+        ],
+        "clear": true,
+        "roll_deg": 0,
+        "confidence": 0.9,
+        "_latency_s": 13.45,
+        "_usage": {
+          "in": 1532,
+          "out": 650,
+          "cached": 0,
+          "effort": "medium"
+        },
+        "_model": "gpt-6-astra",
+        "_service_tier": "fast",
+        "pads_offset_px": [
+          -2.4669143627979793,
+          -49.94407504865211
+        ],
+        "grid_px": [],
+        "notes": "",
+        "_source": "astra",
+        "_grid_trusted": false
+      },
+      "q": [
+        18.593406677246094,
+        -54.85714340209961,
+        36.39560317993164,
+        101.97801971435547,
+        21.14285659790039,
+        9.584450721740723
+      ],
+      "land_px": [
+        403.55358605368457,
+        413.10407666429643
+      ],
+      "land_w": [
+        0.1433374100723534,
+        -0.03645940648881032,
+        0.04700000000000001
+      ],
+      "z_plane": 0.04700000000000001,
+      "tips_px": [
+        [
+          578.3529858229919,
+          438.40297753770244
+        ],
+        [
+          576.2028367912196,
+          310.7316496084027
+        ]
+      ],
+      "reg": {
+        "grid_n": 0,
+        "grid_used": 0,
+        "reason": "insufficient 2D grid support"
+      },
+      "target_px": [
+        404.0,
+        407.0
+      ],
+      "target_raw": [
+        622.3333333333333,
+        424.3333333333333
+      ],
+      "feat_xy": [
+        0.1440915276934149,
+        -0.03662710930999517
+      ],
+      "method": "centre",
+      "pads_offset_mm": [
+        5.0725554940236615,
+        -0.5300572251810132
+      ],
+      "try_offset_mm": [
+        -3.0,
+        [
+          -3.0,
+          -0.04
+        ]
+      ],
+      "d_mm": [
+        -1.318664274972153,
+        0.39921035062742
+      ],
+      "pads_applied": true,
+      "action": "descend",
+      "used_mm": [
+        -1.318664274972153,
+        0.39921035062742
+      ],
+      "truth_after_mm": null
+    }
+  ]
+}

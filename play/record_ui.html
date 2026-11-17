@@ -1,0 +1,83 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Move recorder</title>
+<style>
+:root{--ink:#1b1b1a;--ink2:#55554f;--ink3:#85857d;--panel:#f4f4f1;--rule:#dcdcd6;--blue:#1d5bbf;--red:#b8322a;--amber:#c98c0e;--green:#2c7a3b;--mono:ui-monospace,Menlo,monospace}
+*{box-sizing:border-box}body{margin:0;background:#fff;color:var(--ink);font:16px/1.45 -apple-system,"Helvetica Neue",sans-serif}
+header{border-bottom:1px solid var(--rule);padding:14px 24px;display:flex;flex-wrap:wrap;gap:8px 24px;align-items:baseline;justify-content:space-between}header h1{font:600 22px Georgia,serif;margin:0}.byline{color:var(--ink2);font-size:15px}.byline b{color:var(--ink);font-variant-numeric:tabular-nums}
+main{max-width:1320px;margin:0 auto;padding:24px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:32px}@media(max-width:960px){main{grid-template-columns:1fr}}
+h2{font:600 13px sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin:0 0 10px}section+section{margin-top:22px;padding-top:22px;border-top:1px solid var(--rule)}
+.cam{position:relative;background:#000;border-radius:4px;overflow:hidden;aspect-ratio:16/9;outline:3px solid transparent;outline-offset:2px}.cam img{width:100%;height:100%;object-fit:cover;display:block}.cam.recording{outline-color:var(--red)}
+.rec{position:absolute;top:10px;left:10px;display:none;align-items:center;gap:8px;background:var(--red);color:#fff;font:700 14px sans-serif;padding:8px 10px;border-radius:4px;font-variant-numeric:tabular-nums}.rec i{width:10px;height:10px;border-radius:50%;background:#fff;animation:blink 1s steps(2) infinite}.cam.recording .rec{display:flex}@keyframes blink{50%{opacity:.25}}
+.status{display:flex;align-items:center;gap:8px;font-weight:600;margin:10px 0}.status i{width:12px;height:12px;border-radius:2px;background:var(--ink3)}.status.ok{color:var(--green)}.status.ok i{background:var(--green)}.status.no{color:var(--amber)}.status.no i{background:#e3a21a}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;table-layout:fixed}.takes td{white-space:normal;vertical-align:middle}.takes td:last-child{text-align:right}.takes button{margin:2px 0 2px 6px;padding:7px 10px}thead th{border-top:1.5px solid var(--ink);border-bottom:1px solid var(--ink);text-align:right;font-weight:600;padding:6px 6px;font-size:14px}thead th:first-child,td:first-child{text-align:left}td{padding:6px 6px;border-bottom:1px solid var(--rule);text-align:right;font-family:var(--mono);font-size:14px}tbody tr:last-child td{border-bottom:1.5px solid var(--ink)}td.ok{color:var(--green)}td.no{color:var(--amber);font-weight:600}
+button{font:inherit;font-size:15px;padding:9px 14px;border-radius:4px;border:1px solid #b9b9b1;background:#fff;cursor:pointer;margin:4px 6px 4px 0}button.primary{background:var(--blue);color:#fff;border-color:var(--blue)}button.recbtn{background:var(--red);color:#fff;border-color:var(--red)}button.warn{color:var(--red);border-color:#d99}button:disabled{opacity:.4;cursor:default}kbd{font:600 12px var(--mono);background:var(--panel);border:1px solid var(--rule);border-radius:3px;padding:1px 5px;margin-left:6px}
+.phase{font:600 20px Georgia,serif;margin:4px 0}.instruction{font-size:17px;margin:6px 0 10px}.msg{color:var(--ink2);min-height:1.4em}#err{color:var(--red)}.takes td{font-family:inherit}.takes .mono{font-family:var(--mono)}.timer{font:700 34px var(--mono);color:var(--red)}
+.hint{color:var(--ink2);font-size:14px}ol{padding-left:20px;margin:6px 0}li{margin:3px 0}
+.board{display:grid;grid-template-columns:repeat(8,1fr);width:min(100%,392px);aspect-ratio:1;border:2px solid #6b5438;border-radius:3px;overflow:hidden;user-select:none;margin:8px 0}
+.sq{position:relative;display:flex;align-items:center;justify-content:center;font-size:clamp(22px,3.6vw,34px);line-height:1}.sq.l{background:#ecdcc1}.sq.d{background:#b48b66}
+.sq .p{position:relative;z-index:2;font-family:"Apple Symbols","Segoe UI Symbol","DejaVu Sans",sans-serif}.sq .p.w{color:#fff;text-shadow:0 0 1.5px #000,0 0 1.5px #000,0 1px 1px rgba(0,0,0,.6)}.sq .p.b{color:#15120f;text-shadow:0 0 1px rgba(255,255,255,.35)}
+.sq.from::before,.sq.to::before{content:"";position:absolute;inset:0;z-index:1}.sq.from::before{background:rgba(250,205,0,.55)}.sq.to::before{background:rgba(70,170,90,.55)}.sq.to.cap::before{background:rgba(205,60,45,.55)}
+.sq.wm::after{content:"";position:absolute;inset:0;z-index:1;box-shadow:inset 0 0 0 3px rgba(29,91,191,.75)}
+.sq .c{position:absolute;font:600 10px var(--mono);color:rgba(0,0,0,.55);z-index:3}.sq .c.r{left:3px;top:2px}.sq .c.f{right:3px;bottom:1px}
+.boardhead{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline}.boardhead b{font:600 18px Georgia,serif}.legend{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:13px;color:var(--ink2);margin:4px 0 8px}.legend i{display:inline-block;width:12px;height:12px;vertical-align:-1px;margin-right:5px;border-radius:2px}
+.takes tr.sel td{background:#eef3fb}.takes td:first-child{cursor:pointer}
+</style></head><body>
+<header><h1>Move recorder · leader-arm demonstrations</h1><div class="byline">script <select id="scripts" onchange="cmd('game_script:'+this.value)"></select> · follower gain P=16 · 30 Hz · <b id="ntakes">0</b> of <b id="nmoves">6</b> moves recorded · <a href="/">game page</a></div></header>
+<main><div>
+<section><h2>Wrist camera</h2><div class="cam" id="cam"><img src="/stream.mjpg" alt="Live wrist camera"><div class="rec"><i></i><span id="rectime">REC 0.0 s</span></div></div></section>
+<section><h2>Both arms vs the ready pose</h2><div class="status" id="readyStatus"><i></i><span>…</span></div>
+<table><thead><tr><th>joint</th><th>leader</th><th>Δ ready</th><th>follower</th><th>Δ ready</th><th>ready</th><th>tol</th></tr></thead><tbody id="joints"></tbody></table>
+<p class="hint" id="leaderline"></p>
+<button class="primary" onclick="cmd('rec_home')">Both arms to ready<kbd>H</kbd></button><button onclick="cmd('rec_connect')">Connect leader</button></section>
+<section><h2>How a take works</h2><ol><li>Pieces as they stand just before the move, as the board diagram shows them. <b>Both arms to ready</b>: the leader's motors switch on, both arms glide home, the leader is released again.</li><li>When every joint is green, press <b>● Record</b> on the move's row: the follower copies the leader from the ready pose.</li><li>Make the move with the leader: down, close on the piece, carry, open, back up to the ready pose. For a capture, first lift the white piece off the destination square and drop it beside the board, then move the black piece. <b>■ Stop &amp; save</b> <kbd>Space</kbd>, or <b>Discard</b> <kbd>Esc</kbd>.</li><li><b>Play back</b> repeats a take from the ready pose. Re-record a move whenever the pieces around it change.</li></ol></section>
+</div><div>
+<section><div class="phase" id="phase">…</div><div class="instruction" id="instruction"></div><div class="msg" id="msg"></div><div id="err"></div>
+<div id="recbox" hidden><div class="timer" id="timer">0.0 s</div><div class="hint" id="frames"></div><button class="warn" onclick="cmd('rec_stop')">■ Stop &amp; save<kbd>Space</kbd></button><button onclick="cmd('rec_discard')">Discard<kbd>Esc</kbd></button></div></section>
+<section><h2>Board · the position to set up for this take</h2><div class="boardhead"><b id="boardmove">…</b><span class="hint" id="boardwhen"></span></div>
+<div class="board" id="board"></div>
+<div class="legend"><span><i style="background:rgba(250,205,0,.8)"></i>from</span><span><i style="background:rgba(70,170,90,.8)"></i>to</span><span><i style="background:rgba(205,60,45,.8)"></i>to, lift the white piece off first</span><span><i style="box-shadow:inset 0 0 0 3px rgba(29,91,191,.75)"></i>White's move just before</span></div>
+<p class="instruction" id="boardwhite"></p><p class="hint" id="boardtake"></p>
+<button id="aftbtn" onclick="boardAfter=!boardAfter">Show the position after the move</button><button onclick="flipped=!flipped">Flip board</button><button id="nextbtn" onclick="pick=null">Back to the next move to record</button>
+<p class="hint">Click a move in the takes list to see its position. Otherwise the board follows the move being recorded, or the first move without a take.</p></section>
+<section><h2>Takes · one per robot move</h2><table class="takes"><thead><tr><th style="width:46%">move · take</th><th></th></tr></thead><tbody id="takes"></tbody></table><p class="hint">Files: play/games/recorded/&lt;script&gt;/plyNN_&lt;uci&gt;.npz (t, cmd = what the follower was sent, meas = what it did). In the game's Play mode a move with a take is replayed exactly; the others use the vision grasp, except a capture, which waits for a take or is made by hand.</p></section>
+</div></main>
+<script>
+let state;const el=id=>document.getElementById(id),J=['shoulder_pan','shoulder_lift','elbow_flex','wrist_flex','wrist_roll','gripper'],NAMES={shoulder_pan:'pan',shoulder_lift:'lift',elbow_flex:'elbow',wrist_flex:'wrist',wrist_roll:'roll',gripper:'grip'};
+let pick=null,pickTakes=-1,boardAfter=false,flipped=false;const GL={k:'♚',q:'♛',r:'♜',b:'♝',n:'♞',p:'♟'},FILES='abcdefgh';
+function drawBoard(m,r,rec){const bm=el('boardmove'),bw=el('boardwhen'),bb=el('board'),w=m&&m.white;el('nextbtn').disabled=pick==null;el('aftbtn').textContent=boardAfter?'Show the position before the move':'Show the position after the move';
+if(!m){bm.textContent='No moves';bw.textContent='';bb.innerHTML='';el('boardwhite').textContent='';el('boardtake').textContent='';return}
+const n=Math.floor(m.ply/2)+1;bm.textContent=n+'\u2026 '+m.san;
+if(!m.fen){bw.textContent='';bb.innerHTML='';el('boardwhite').textContent='This player was started before the board diagram was added: restart it to see the positions.';el('boardtake').textContent='';return}
+bw.textContent=rec&&rec.ply===m.ply?'being recorded now':(boardAfter?'the position after the move':'set the pieces like this before the take');
+const pos={};(boardAfter?m.fen_after:m.fen).split(' ')[0].split('/').forEach((row,i)=>{let f=0;for(const ch of row){if(ch>='1'&&ch<='8')f+=+ch;else{pos[FILES[f]+(8-i)]=ch;f++}}});
+const from=m.uci.slice(0,2),to=m.uci.slice(2,4),wf=w?w.uci.slice(0,2):'',wt=w?w.uci.slice(2,4):'';let h='';
+for(let i=0;i<64;i++){const rank=flipped?1+Math.floor(i/8):8-Math.floor(i/8),file=flipped?7-i%8:i%8,sq=FILES[file]+rank,pc=pos[sq];
+h+='<div class="sq '+((file+rank)%2?'d':'l')+(sq===from?' from':'')+(sq===to?' to'+(m.capture?' cap':''):'')+(sq===wf||sq===wt?' wm':'')+'">'+(i%8===0?'<span class="c r">'+rank+'</span>':'')+(i>=56?'<span class="c f">'+FILES[file]+'</span>':'')+(pc?'<span class="p '+(pc===pc.toUpperCase()?'w':'b')+'">'+GL[pc.toLowerCase()]+'&#xFE0E;</span>':'')+'</div>'}
+bb.innerHTML=h;
+el('boardwhite').textContent=w?'White\u2019s move first: '+n+'. '+w.san+', '+w.piece+' '+wf+' \u2192 '+wt+(w.capture?', taking the black '+w.capture+' (take it off '+wt+')':'')+'.':'';
+el('boardtake').textContent='The take: move the black '+m.piece+' '+from+' \u2192 '+to+(m.capture?'; lift the white '+m.capture+' off '+to+' first and drop it beside the board':'')+(r?' \u00b7 take recorded ('+r.seconds+' s)':' \u00b7 no take yet')+'.'}
+async function cmd(c){await fetch('/',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({cmd:c})})}
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function fmt(v,j){return v==null?'—':((v>0?'+':'')+v.toFixed(1)+(j==='gripper'?'%':'°'))}
+async function poll(){try{state=await(await fetch('/state')).json();const g=state.game||{},L=state.leader||{},R=state.ready_pose||{},F=state.joints||{},LQ=L.q||{},rec=g.recording;
+const sel=el("scripts"),list=JSON.stringify(g.scripts||[]);if(sel.dataset.list!==list){sel.dataset.list=list;sel.replaceChildren(...(g.scripts||[]).map(s=>{const o=document.createElement('option');o.value=s;o.textContent=s.replaceAll('_',' ');return o}))}if(document.activeElement!==sel)sel.value=g.script||'';const moves=g.robot_moves||[],recs=g.recordings||{};el('nmoves').textContent=moves.length;el('ntakes').textContent=Object.keys(recs).length;
+el('cam').classList.toggle('recording',!!rec);if(rec){el('rectime').textContent='REC '+rec.seconds.toFixed(1)+' s';el('timer').textContent=rec.seconds.toFixed(1)+' s';el('frames').textContent='~'+Math.round(rec.seconds*30)+' frames · '+rec.uci}
+el('recbox').hidden=!rec;
+const folOk=!!state.at_ready,leadOk=!!L.ready,both=folOk&&leadOk;
+el('joints').innerHTML=J.map(j=>{const lv=LQ[j],fv=F[j],r=R[j],tol=(L.tol||{})[j]||4,dl=lv==null?null:lv-r,df=fv==null?null:fv-r;const cls=d=>d==null?'':(Math.abs(d)<=tol?'ok':'no'),lcls=dl==null?'':(((L.ok||{})[j]??(Math.abs(dl)<=tol))?'ok':'no');
+return '<tr><td>'+NAMES[j]+(j==='wrist_flex'?' <span class=hint>(leader may sit '+(L.backoff||8)+'° lower)</span>':'')+'</td><td>'+(lv==null?'—':lv.toFixed(1))+'</td><td class="'+lcls+'">'+fmt(dl,j)+'</td><td>'+(fv==null?'—':fv.toFixed(1))+'</td><td class="'+cls(df)+'">'+fmt(df,j)+'</td><td>'+(r==null?'—':r.toFixed(1))+'</td><td>±'+tol+'</td></tr>'}).join('');
+const st=el('readyStatus');st.className='status '+(both?'ok':'no');st.lastElementChild.textContent=state.phase==='homing'?'Moving both arms to the ready pose…':(both?'Follower at ready, leader near enough (within '+(L.near||25)+'°)':(!L.connected?'Leader not connected':(folOk?'Leader too far from ready (amber joints): press H to bring both arms there, then take the handle':(leadOk?'Follower not at ready: press H':'Press H: both arms go to the ready pose'))));
+el('leaderline').textContent=L.connected?'Leader connected (5 V). Its motors are on only during an auto-move to ready.':(L.error?'Leader: '+L.error:'Leader not connected: Connect leader, or H connects it on the way.');
+const ph=state.phase;el('phase').textContent=rec?('Recording '+rec.uci):(ph==='teleop'?'Teleoperation':ph==='homing'?'Auto-move to ready':ph==='running'?'Playing back a take':ph==='loading'?'Loading':'Ready to record');
+const inGame=!['setup','stopped','complete',undefined].includes(g.status);
+el('instruction').textContent=rec?'Make the move with the leader; bring the arm back up to the ready pose before you stop.':(inGame?'A game is running: use the game page (Record mode) for takes during a game.':(both?'Take the leader\'s handle and press ● Record on the move\'s row; the follower blends onto the leader in under a second.':'Press H first: both arms go to the ready pose and the leader is released.'));
+el('msg').textContent=state.msg||'';el('err').textContent=state.error||'';
+const idle=ph==='idle'&&!rec,armed=idle&&!inGame&&both;
+const ntk=Object.keys(recs).length;if(ntk!==pickTakes){pick=null;pickTakes=ntk}
+let cur=rec?moves.find(m=>m.ply===rec.ply):(pick!=null?moves.find(m=>m.ply===pick):null);if(!cur)cur=moves.find(m=>!recs[m.ply])||moves[moves.length-1];drawBoard(cur,cur?recs[cur.ply]:null,rec);
+el('takes').innerHTML=moves.map(m=>{const r=recs[m.ply];return '<tr'+(cur&&m.ply===cur.ply?' class="sel"':'')+'><td onclick="pick='+m.ply+'" title="Show this position on the board"><b>'+(Math.floor(m.ply/2)+1)+'. '+esc(m.san)+'</b> <span class="hint">'+esc(m.piece)+' '+esc(m.uci.slice(0,2))+' → '+esc(m.uci.slice(2,4))+(m.capture?' · takes the white '+esc(m.capture)+': lift it off '+esc(m.uci.slice(2,4))+' first':'')+'</span><br>'+(r?('<span class=mono>take '+r.seconds+' s</span>'):'<span class="hint">no take yet</span>')+'</td><td>'
++'<button class="recbtn" '+(armed?'':'disabled ')+'onclick="cmd(\'rec_start:'+m.ply+':'+m.uci+'\')">● Record</button>'
++(r?'<button '+(armed?'':'disabled ')+'onclick="cmd(\'rec_play:'+m.ply+':'+m.uci+'\')">Play back</button><button '+(idle?'':'disabled ')+'onclick="if(confirm(\'Delete the take of '+esc(m.san)+'?\'))cmd(\'rec_delete:'+m.ply+':'+m.uci+'\')">Delete</button>':'')+'</td></tr>'}).join('');
+}catch(e){el('err').textContent='No connection to the player.'}setTimeout(poll,300)}
+document.addEventListener('keydown',e=>{if(!state)return;const rec=state.game&&state.game.recording;if(e.code==='Space'&&rec){e.preventDefault();cmd('rec_stop')}else if(e.key==='Escape'&&rec)cmd('rec_discard');else if(e.key.toLowerCase()==='h'&&!rec)cmd('rec_home')});
+setTimeout(()=>cmd('rec_connect'),600);poll();
+</script></body></html>

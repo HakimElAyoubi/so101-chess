@@ -1,0 +1,191 @@
+{
+ "setup_black": {
+  "a8": "rook",
+  "b8": "knight",
+  "c8": "bishop",
+  "d8": "queen",
+  "e8": "king",
+  "f8": "bishop",
+  "g8": "knight",
+  "h8": "rook",
+  "a7": "pawn",
+  "b7": "pawn",
+  "c7": "pawn",
+  "d7": "pawn",
+  "e7": "pawn",
+  "f7": "pawn",
+  "g7": "pawn",
+  "h7": "pawn"
+ },
+ "setup_white": {
+  "g1": "rook",
+  "f1": "bishop",
+  "c1": "bishop",
+  "c2": "pawn",
+  "a3": "pawn",
+  "g3": "pawn",
+  "e1": "king"
+ },
+ "trials": [
+  {
+   "i": 1,
+   "category": "common",
+   "task": "move the black pawn from e7 to e5",
+   "frm": "e7",
+   "to": "e5",
+   "train_count": 2
+  },
+  {
+   "i": 2,
+   "category": "common",
+   "task": "move the black knight from g8 to f6",
+   "frm": "g8",
+   "to": "f6",
+   "train_count": 2
+  },
+  {
+   "i": 3,
+   "category": "common",
+   "task": "move the black knight from b8 to c6",
+   "frm": "b8",
+   "to": "c6",
+   "train_count": 2
+  },
+  {
+   "i": 4,
+   "category": "common",
+   "task": "move the black pawn from d7 to d6",
+   "frm": "d7",
+   "to": "d6",
+   "train_count": 1
+  },
+  {
+   "i": 5,
+   "category": "common",
+   "task": "move the black pawn from c7 to c5",
+   "frm": "c7",
+   "to": "c5",
+   "train_count": 1
+  },
+  {
+   "i": 6,
+   "category": "common",
+   "task": "move the black pawn from h7 to h6",
+   "frm": "h7",
+   "to": "h6",
+   "train_count": 2
+  },
+  {
+   "i": 7,
+   "category": "common",
+   "task": "move the black bishop from f8 to d6",
+   "frm": "f8",
+   "to": "d6",
+   "train_count": 0
+  },
+  {
+   "i": 8,
+   "category": "drill_squares",
+   "task": "move the black queen from d8 to d2",
+   "frm": "d8",
+   "to": "d2",
+   "train_count": 1
+  },
+  {
+   "i": 9,
+   "category": "drill_squares",
+   "task": "move the black bishop from c8 to g4",
+   "frm": "c8",
+   "to": "g4",
+   "train_count": 1
+  },
+  {
+   "i": 10,
+   "category": "drill_squares",
+   "task": "move the black rook from h8 to h3",
+   "frm": "h8",
+   "to": "h3",
+   "train_count": 0
+  },
+  {
+   "i": 11,
+   "category": "drill_squares",
+   "task": "move the black pawn from e7 to e3",
+   "frm": "e7",
+   "to": "e3",
+   "train_count": 0
+  },
+  {
+   "i": 12,
+   "category": "drill_squares",
+   "task": "move the black queen from d8 to g4",
+   "frm": "d8",
+   "to": "g4",
+   "train_count": 0
+  },
+  {
+   "i": 13,
+   "category": "new_combination",
+   "task": "move the black queen from d8 to a5",
+   "frm": "d8",
+   "to": "a5",
+   "train_count": 0
+  },
+  {
+   "i": 14,
+   "category": "new_combination",
+   "task": "move the black bishop from c8 to f5",
+   "frm": "c8",
+   "to": "f5",
+   "train_count": 0
+  },
+  {
+   "i": 15,
+   "category": "new_combination",
+   "task": "move the black rook from a8 to a5",
+   "frm": "a8",
+   "to": "a5",
+   "train_count": 0
+  },
+  {
+   "i": 16,
+   "category": "new_combination",
+   "task": "move the black bishop from f8 to b4",
+   "frm": "f8",
+   "to": "b4",
+   "train_count": 0
+  },
+  {
+   "i": 17,
+   "category": "new_combination",
+   "task": "move the black queen from d8 to f6",
+   "frm": "d8",
+   "to": "f6",
+   "train_count": 1
+  },
+  {
+   "i": 18,
+   "category": "capture",
+   "task": "move the white pawn on c2 to the drop zone",
+   "frm": "c2",
+   "to": null,
+   "train_count": 1
+  },
+  {
+   "i": 19,
+   "category": "capture",
+   "task": "move the white rook on g1 to the drop zone",
+   "frm": "g1",
+   "to": null,
+   "train_count": 1
+  },
+  {
+   "i": 20,
+   "category": "capture",
+   "task": "move the white bishop on f1 to the drop zone",
+   "frm": "f1",
+   "to": null,
+   "train_count": 1
+  }
+ ]
+}

@@ -1,0 +1,107 @@
+{
+  "source": "results/astra/20261110_165745/looks.jsonl",
+  "record": {
+    "n": 3,
+    "kind": "from",
+    "time": "16:58:52",
+    "phase": "hover",
+    "text": "GRASP black queen on d8; feature: the middle of its crown (the top). Image 840 x 840 pixels. Phase: hover before descent. The coloured boundary is approximate; locate the real feature.",
+    "answer": {
+      "visible": true,
+      "target_px": [
+        400,
+        426
+      ],
+      "pad_gap_px": [
+        566,
+        317
+      ],
+      "clear": true,
+      "roll_deg": 0,
+      "confidence": 0.9,
+      "_latency_s": 15.22,
+      "_usage": {
+        "in": 1532,
+        "out": 711,
+        "cached": 0,
+        "effort": "medium"
+      },
+      "_model": "gpt-6-astra",
+      "_service_tier": "fast",
+      "pads_offset_px": [
+        2.0330856372020207,
+        -47.44407504865211
+      ],
+      "grid_px": [],
+      "notes": "",
+      "_source": "astra",
+      "_grid_trusted": false
+    },
+    "q": [
+      16.21977996826172,
+      -77.18681335449219,
+      46.85714340209961,
+      101.97801971435547,
+      21.406593322753906,
+      9.584450721740723
+    ],
+    "land_px": [
+      386.494215553103,
+      457.01963384929985
+    ],
+    "land_w": [
+      0.13933950324928807,
+      -0.030527707176870558,
+      0.04700000000000001
+    ],
+    "z_plane": 0.04700000000000001,
+    "tips_px": [
+      [
+        564.8529858229919,
+        427.90297753770216
+      ],
+      [
+        562.7028367912196,
+        300.23164960840256
+      ]
+    ],
+    "reg": {
+      "grid_n": 0,
+      "grid_used": 0,
+      "reason": "insufficient 2D grid support"
+    },
+    "target_px": [
+      400.0,
+      426.0
+    ],
+    "target_raw": [
+      628.6666666666667,
+      444.0
+    ],
+    "feat_xy": [
+      0.14322755722789274,
+      -0.03335401458034505
+    ],
+    "method": "centre",
+    "pads_offset_mm": [
+      5.141707768404558,
+      -1.7693313161038504
+    ],
+    "d_mm": [
+      -2.159395027346677,
+      3.8603029173846495
+    ],
+    "pads_applied": true,
+    "queen_file_trim_mm": 5.0,
+    "queen_trim_world_mm": [
+      -0.9057412375467908,
+      4.917279004755293
+    ],
+    "action": "move",
+    "used_mm": [
+      -2.159395027346677,
+      3.8603029173846495
+    ],
+    "truth_after_mm": null
+  }
+}

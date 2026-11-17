@@ -1,0 +1,26 @@
+# machine-specific settings and secrets
+config.yaml
+.env
+*_api_key
+
+# Python and OS
+__pycache__/
+*.pyc
+.DS_Store
+
+# recordings, results and logs (keep them out of git; datasets and models go to the Hugging Face Hub)
+data/
+outputs/
+*.log
+play/results/
+play/results_dryrun/
+play/games/
+chess_sim/data/progress.txt
+
+# calibration outputs of your own rig (the reference intrinsics stay tracked)
+calibration/output/*
+!calibration/output/wrist_camera_intrinsics_FINAL.json
+calibration/*_output/
+
+# LeRobot checkout made by the setup steps
+third_party/lerobot/

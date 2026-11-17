@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Policy Player</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* spacing scale: every margin and padding uses one of these */
+    --s1: .25rem; --s2: .5rem; --s3: .75rem; --s4: 1rem; --s5: 1.5rem; --s6: 2rem; --s7: 3rem;
+
+    --ink: #1b1b1a; --ink-2: #55554f; --ink-3: #85857d;
+    --bg: #ffffff; --panel: #f4f4f1; --rule: #dcdcd6; --rule-strong: #b9b9b1;
+    --blue: #1d5bbf; --blue-dark: #164a9e; --blue-tint: #e8effa;
+    --red: #b8322a; --red-tint: #fbeceb;
+    --amber: #e3a21a; --amber-dark: #c98c0e; --amber-tint: #fdf4de;
+    --green: #2c7a3b; --green-tint: #e9f4eb;
+    --sq-light: #ece6d6; --sq-dark: #b8a888;
+
+    --sans: "Source Sans 3", -apple-system, "Helvetica Neue", sans-serif;
+    --serif: "Source Serif 4", Georgia, serif;
+    --mono: "Source Code Pro", ui-monospace, monospace;
+    --radius: 4px;
+  }
+  * { box-sizing: border-box; }
+  html { font-size: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 1rem/1.5 var(--sans); -webkit-font-smoothing: antialiased; }
+
+  header { border-bottom: 1px solid var(--rule); padding: var(--s4) var(--s5); display: flex; flex-wrap: wrap; gap: var(--s2) var(--s5); align-items: baseline; justify-content: space-between; }
+  header h1 { font: 600 1.375rem/1.2 var(--serif); letter-spacing: -.01em; margin: 0; }
+  .byline { color: var(--ink-2); font-size: .9375rem; }
+  .byline b { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
+
+  main { max-width: 1320px; margin: 0 auto; padding: var(--s5); display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: var(--s6); }
+  @media (max-width: 960px) { main > div:last-child { order: -1; } main { grid-template-columns: minmax(0, 1fr); gap: var(--s5); padding: var(--s4); } header { padding: var(--s4); } }
+
+  h2 { font: 600 .8125rem/1.3 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); margin: 0 0 var(--s3); }
+  section + section { margin-top: var(--s5); padding-top: var(--s5); border-top: 1px solid var(--rule); }
+
+  /* camera */
+  .cam { position: relative; background: #000; border-radius: var(--radius); overflow: hidden; aspect-ratio: 16 / 9; outline: 3px solid transparent; outline-offset: 2px; }
+  .cam img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .cam.recording { outline-color: var(--red); }
+  .rec { position: absolute; top: var(--s3); left: var(--s3); display: none; align-items: center; gap: var(--s2); background: var(--red); color: #fff;
+    font: 700 .875rem/1 var(--sans); padding: var(--s2) var(--s3); border-radius: var(--radius); font-variant-numeric: tabular-nums; }
+  .rec i { width: .625rem; height: .625rem; border-radius: 50%; background: #fff; animation: blink 1s steps(2) infinite; }
+  .cam.recording .rec { display: flex; }
+  @keyframes blink { 50% { opacity: .25; } }
+
+  /* ready pose table */
+  .status { display: flex; align-items: center; gap: var(--s2); font-weight: 600; margin-bottom: var(--s3); }
+  .status i { width: .75rem; height: .75rem; border-radius: 2px; background: var(--ink-3); }
+  .status.ok { color: var(--green); } .status.ok i { background: var(--green); }
+  .status.no { color: var(--amber-dark); } .status.no i { background: var(--amber); }
+  table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+  thead th { border-top: 1.5px solid var(--ink); border-bottom: 1px solid var(--ink); }
+  tbody tr:last-child td { border-bottom: 1.5px solid var(--ink); }
+  th, td { text-align: left; padding: var(--s1) var(--s2); font-size: .9375rem; }
+  th { font-weight: 600; color: var(--ink-2); font-size: .8125rem; }
+  td.num, th.num { text-align: right; width: 4.5rem; }
+  td.bar { width: 45%; }
+  .track { position: relative; height: .625rem; background: var(--panel); border-radius: 2px; }
+  .zone { position: absolute; top: 0; bottom: 0; left: 37.5%; width: 25%; background: #cfe8d4; border-left: 1px solid #8cc39a; border-right: 1px solid #8cc39a; }
+  .mark { position: absolute; top: -3px; width: 3px; height: calc(100% + 6px); background: var(--ink); border-radius: 1px; transform: translateX(-1px); }
+  td.state { width: 2.5rem; font-weight: 700; }
+  tr.ok td.state { color: var(--green); } tr.no td.state { color: var(--amber-dark); }
+  tr.no td.val { color: var(--amber-dark); font-weight: 600; }
+  .note { color: var(--ink-2); font-size: .875rem; margin: var(--s3) 0 0; }
+
+  /* step */
+  .steps { display: flex; flex-wrap: wrap; gap: var(--s1) var(--s3); font-size: .875rem; color: var(--ink-3); margin-bottom: var(--s4); }
+  .steps span { white-space: nowrap; }
+  .steps span.now { color: var(--blue); font-weight: 700; }
+  .steps span.rec-now { color: var(--red); font-weight: 700; }
+  .steps span + span::before { content: "›"; margin-right: var(--s3); color: var(--rule-strong); font-weight: 400; }
+  .phase { font: 700 .8125rem/1.3 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--blue); margin-bottom: var(--s2); }
+  .phase.recording { color: var(--red); } .phase.warn { color: var(--amber-dark); }
+  .instruction { font: 600 1.75rem/1.2 var(--serif); letter-spacing: -.015em; margin: 0 0 var(--s3); }
+  .hint { color: var(--ink-2); margin: 0 0 var(--s4); max-width: 38rem; }
+  .parts { margin: 0 0 var(--s4); padding-left: var(--s5); color: var(--ink-3); }
+  .parts li.now { color: var(--ink); font-weight: 600; } .parts li.done { text-decoration: line-through; }
+
+  .msg { display: none; border: 1px solid; border-radius: var(--radius); padding: var(--s2) var(--s3); margin: 0 0 var(--s4); font-weight: 600; }
+  .msg.info { display: block; background: var(--panel); border-color: var(--rule); }
+  .msg.good { display: block; background: var(--green-tint); border-color: #b9dcc0; color: var(--green); }
+  .msg.warn { display: block; background: var(--amber-tint); border-color: #efd28a; color: #7a5304; }
+  .msg.err { display: block; background: var(--red-tint); border-color: #eab8b4; color: var(--red); }
+
+  /* buttons: one colour per meaning, everywhere
+       blue   = the next step (always the first, largest button)
+       white  = optional / alternative
+       amber  = confirm after a warning
+       red    = discard, cancel or end                                                */
+  .actions { display: flex; flex-wrap: wrap; gap: var(--s3); align-items: center; }
+  button { font: 600 1rem/1.2 var(--sans); border-radius: var(--radius); padding: var(--s3) var(--s4); cursor: pointer;
+    border: 1px solid var(--rule-strong); background: var(--bg); color: var(--ink); display: inline-flex; align-items: center; gap: var(--s2);
+    transition: background-color 80ms, border-color 80ms, transform 80ms; }
+  button:hover { border-color: var(--ink-2); background: var(--panel); }
+  button:active { transform: scale(.98); }
+  button:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+  button.next { background: var(--blue); border-color: var(--blue); color: #fff; font-size: 1.125rem; padding: var(--s4) var(--s5); }
+  button.next:hover { background: var(--blue-dark); border-color: var(--blue-dark); }
+  button.confirm { background: var(--amber); border-color: var(--amber); color: var(--ink); font-size: 1.125rem; padding: var(--s4) var(--s5); }
+  button.confirm:hover { background: var(--amber-dark); border-color: var(--amber-dark); }
+  button.danger { color: var(--red); border-color: #e2aaa5; }
+  button.danger:hover { background: var(--red-tint); border-color: var(--red); }
+  kbd { font: 500 .75rem/1 var(--mono); border: 1px solid currentColor; border-radius: 3px; padding: 2px 5px; opacity: .75; }
+  .legend { color: var(--ink-3); font-size: .8125rem; margin: var(--s3) 0 0; }
+  .legend b { font-weight: 600; } .legend .b { color: var(--blue); } .legend .a { color: var(--amber-dark); } .legend .r { color: var(--red); }
+
+  .board-wrap { background: var(--panel); border-radius: var(--radius); padding: var(--s4); }
+  .board-wrap svg { display: block; width: 100%; max-width: 440px; height: auto; margin: 0 auto; }
+  .caption { color: var(--ink-2); font-size: .8125rem; margin: var(--s2) 0 0; }
+  .tools { display: flex; flex-wrap: wrap; gap: var(--s2); }
+  .tools button { font-size: .9375rem; padding: var(--s2) var(--s3); }
+
+  @media (prefers-reduced-motion: reduce) { .rec i { animation: none; } button { transition: none; } button:active { transform: none; } }
+</style>
+<style>
+  .trials { width: 100%; border-collapse: collapse; font-size: .875rem; }
+  .trials td { padding: 3px var(--s2); border-bottom: 1px solid var(--rule); cursor: pointer; }
+  .trials tr:hover td { background: var(--panel); }
+  .trials tr.now td { background: var(--blue-tint); font-weight: 600; }
+  .trials td.cat { color: var(--ink-3); font-size: .8125rem; white-space: nowrap; }
+  .trials td.n { color: var(--ink-3); text-align: right; width: 3rem; }
+  .res { font-weight: 700; } .res.success { color: var(--green); } .res.partial { color: var(--amber-dark); } .res.fail { color: var(--red); }
+  select, input[type=text] { font: inherit; padding: var(--s2) var(--s3); border: 1px solid var(--rule-strong); border-radius: var(--radius); background: var(--bg); }
+  input[type=text] { width: 100%; }
+  .row { display: flex; gap: var(--s3); align-items: center; flex-wrap: wrap; margin-bottom: var(--s3); }
+  .cam.running { outline-color: var(--blue); }
+  .cam.running .rec { display: flex; background: var(--blue); }
+  .summary td, .summary th { text-align: center; } .summary td:first-child, .summary th:first-child { text-align: left; }
+</style>
+</head>
+<body>
+<header>
+  <h1>SO-101 policy player</h1>
+  <div class="byline"><span id="repo">LeHak0/smolvla_chess_v1</span> · checkpoint <b id="ckpt">none</b> · <span id="loading"></span></div>
+</header>
+<main>
+  <div>
+    <section>
+      <h2>Wrist camera</h2>
+      <div class="cam" id="cam"><img src="/stream.mjpg" alt="Live wrist camera"><div class="rec"><i></i><span id="runtime">POLICY 0.0 s</span></div></div>
+      <div class="msg info" id="calibmsg" style="display:none; margin-top: var(--s3)"></div>
+      <div class="row" style="margin-top: var(--s3)" id="calibrow"></div>
+      <p class="note">The board grid is display only (the model never sees it). Set the board on the arm, not on the image: the calibration tour lowers the closed jaws above the centre of 21 squares in turn (P = next; on a square that holds a piece the player asks you to lift it off first; put it back after); centre them with the arrows, lower them with S until the fingertips just touch the board, and press C. Each C refits the board's position, rotation and size to every square centred so far, plus a local correction map for what that model can't fit, and the board's height under the arm from the touch-offs (gravity bends the arm lower toward the white side), and saves it, so you never rotate by hand. Interrupted tours resume after a restart.</p>
+    </section>
+    <section>
+      <h2>Ready pose</h2>
+      <div class="status" id="readystatus"><i></i><span id="readytext"></span></div>
+      <table><thead><tr><th>Joint</th><th class="num">Offset</th><th class="num">Tol.</th><th></th></tr></thead><tbody id="joints"></tbody></table>
+    </section>
+    <section>
+      <h2>Results so far</h2>
+      <table class="summary"><thead><tr><th>Checkpoint</th><th>Trials</th><th>Success</th><th>Partial</th><th>Fail</th><th>Common</th><th>Drill sq.</th><th>New combo</th><th>Capture</th></tr></thead><tbody id="summary"></tbody></table>
+      <p class="note">Results are saved in play/results/trials.jsonl, with a wrist video of every trial.</p>
+    </section>
+  </div>
+  <div>
+    <section>
+      <div class="msg" id="err"></div>
+      <div class="phase" id="phase"></div>
+      <p class="instruction" id="instruction"></p>
+      <p class="hint" id="hint"></p>
+      <div class="msg" id="msg"></div>
+      <div class="actions" id="btns"></div>
+      <div class="row" id="noterow" style="margin-top: var(--s3); display: none"><input type="text" id="note" placeholder="Optional note, e.g. 'grasped but dropped on e6'"></div>
+      <p class="legend"><b class="b">Blue</b> next step · <b>White</b> optional · <b class="a">Amber</b> partial · <b class="r">Red</b> stop or fail</p>
+    </section>
+    <section>
+      <h2>Checkpoint</h2>
+      <div class="row"><select id="ckptsel"></select><button onclick="cmd('load:' + document.getElementById('ckptsel').value)">Load</button>
+        <span class="note">final = 20k steps. Compare 10k / 15k later.</span></div>
+    </section>
+    <section>
+      <h2>Evaluation moves</h2>
+      <p class="note" id="setup"></p>
+      <table class="trials"><tbody id="trials"></tbody></table>
+      <div class="row" style="margin-top: var(--s3)"><input type="text" id="custom" placeholder="Or type any task, e.g. move the black knight from b8 to a6">
+        <button onclick="const v = document.getElementById('custom').value.trim(); if (v) cmd('custom:' + v)">Use this task</button></div>
+    </section>
+  </div>
+</main>
+<script>
+const $ = id => document.getElementById(id);
+let S = null, lastBtns = "", lastTrials = "", lastCk = "";
+const cmd = c => fetch("/cmd", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({cmd: c})});
+function B(c, label, cls = "", k = "") { return `<button class="${cls}" onclick="${c}">${label}${k ? `<kbd>${k}</kbd>` : ""}</button>`; }
+const C = c => `cmd('${c}')`;
+const verdict = v => `cmd('verdict:${v}|' + document.getElementById('note').value); document.getElementById('note').value = ''`;
+const CAT = {common: "common", drill_squares: "drill squares", new_combination: "new combo", capture: "capture", custom: "custom"};
+
+function render(s) {
+  S = s; const ph = s.phase;
+  const NAMES = {h8: "h8: bottom-LEFT of the image, next to the H letter", h1: "h1: top-LEFT (often just off the image: skip it)",
+                 a1: "a1: top-RIGHT, beside the white pieces", a8: "a8: bottom-RIGHT, next to the A letter, by the jaw"};
+  if (s.calib) { $("calibmsg").style.display = "block"; $("calibmsg").textContent = `Step ${s.calib.step} of 4: click the outer corner of square ${NAMES[s.calib.corner]} in the camera image.`; }
+  else $("calibmsg").style.display = "none";
+  const ck = JSON.stringify([!!s.calib, s.grid, s.phase === "pointing" ? "idle" : s.phase, s.pointed, s.taught, s.taught_z]);   // no re-render on each nudge move
+  if (ck !== window._ck) {
+    window._ck = ck;
+    $("calibrow").innerHTML = s.calib ? `<button onclick="cmd('calib_skip')">Skip this corner</button><button class="danger" onclick="cmd('calib_cancel')">Cancel</button>`
+      : `<button onclick="cmd('grid')">${s.grid ? "Hide board grid" : "Show board grid"}<kbd>G</kbd></button>` + (["idle", "judging", "pointing"].includes(s.phase) ? `<button class="next" onclick="cmd('measure_board')">Measure board (automatic)</button><button onclick="cmd('calib_start')">Calibrate by clicking corners</button>`
+        + `<div class="row" style="width:100%; margin-top: var(--s2)"><span class="note">Fine-tune by hand:</span>`
+        + `<button onclick="cmd('nudge:near')">Toward the arm<kbd>↓</kbd></button><button onclick="cmd('nudge:far')">Away from the arm<kbd>↑</kbd></button>`
+        + `<button onclick="cmd('nudge:h')">Toward H<kbd>←</kbd></button><button onclick="cmd('nudge:a')">Toward A<kbd>→</kbd></button>`
+        + `<button onclick="cmd('nudge:ccw')">Rotate ⟲<kbd>Q</kbd></button><button onclick="cmd('nudge:cw')">Rotate ⟳<kbd>E</kbd></button>`
+        + `<button class="next" onclick="cmd('nudge:save')">Save position</button></div>`
+        + (s.phase !== "judging" ? `<div class="row" style="width:100%; margin-top: var(--s2)"><span class="note">Calibration tour, ${s.point_squares.filter(q => s.taught.includes(q)).length} of ${s.point_squares.length} centred, ${s.point_squares.filter(q => s.taught_z.includes(q)).length} touched:</span>`
+          + s.point_squares.map(q => `<button${q === s.pointed ? ' class="next"' : ""} onclick="cmd('point:${q}')">Point at ${q}${s.taught.includes(q) ? " ✓" : ""}${s.taught_z.includes(q) ? "↓" : ""}</button>`).join("")
+          + (s.pointed ? `<button onclick="cmd('lower')">Lower 1 mm<kbd>S</kbd></button><button onclick="cmd('lower:5')">Lower 5 mm<kbd>⇧S</kbd></button><button onclick="cmd('raise')">Raise 1 mm<kbd>W</kbd></button>`
+            + `<button class="next" onclick="cmd('centred')">Centred on ${s.pointed}<kbd>C</kbd></button><button onclick="cmd('go_ready')">Back up to ready<kbd>H</kbd></button>` : "")
+          + (s.taught.length ? `<button class="danger" onclick="if (confirm('Forget the centred squares and start the tour over?')) cmd('calib_clear')">Start the tour over</button>` : "") + `</div>` : "") : "");
+  }
+  $("cam").style.cursor = s.calib ? "crosshair" : "";
+  $("ckpt").textContent = s.checkpoint || "none"; if (s.repo) $("repo").textContent = s.repo; $("loading").textContent = s.loading ? `loading ${s.loading}…` : "";
+  if (lastCk !== s.checkpoints.join()) { $("ckptsel").innerHTML = s.checkpoints.map(c => `<option>${c}</option>`).join(""); lastCk = s.checkpoints.join(); }
+  const titles = {idle: "Ready to run", homing: "Auto-move", running: "Policy running", judging: "How did it go?", pointing: "Board check"};
+  $("phase").textContent = (ph === "pointing" && !s.pointed ? "Auto-move" : titles[ph]) + (s.trial >= 0 ? ` · trial ${s.trial + 1} of ${s.trials.length}` : " · custom task");
+  $("phase").className = "phase" + (ph === "judging" ? " warn" : "");
+  $("instruction").textContent = s.task.charAt(0).toUpperCase() + s.task.slice(1) + ".";
+  $("hint").textContent = ph === "idle" ? (s.at_ready ? "Hands off the arm, then run. Space stops it at any moment."
+      : s.pointed ? `Calibration at ${s.pointed}: with the arrows, put the cyan crosshair (straight under the jaw tips) on the centre of the real square in the camera view, then C. Hide the grid (G): it shows where the calibration thinks the squares are, not where they are. P = next square; H goes back up to the ready pose.`
+      : "First bring the arm to the ready pose (H).")
+    : ph === "pointing" ? (s.pointed ? "Moving for the board check. Space stops it." : "Straight up, then to the ready pose. Space stops it.")
+    : ph === "running" ? "The policy is driving the arm. Press Space or Stop to hold it where it is."
+    : ph === "homing" ? `Moving to the ready pose ${s.home_pct}%.` : ph === "judging" ? `Ended: ${s.last ? s.last.end : ""}. Success = piece on the right square and the arm back; partial = grasped or nearly placed.` : "";
+  $("msg").className = "msg " + (s.msg ? s.msg_kind : ""); $("msg").textContent = s.msg;
+  $("err").className = "msg " + (s.error ? "err" : ""); $("err").textContent = s.error;
+  $("cam").classList.toggle("running", ph === "running"); $("runtime").textContent = `POLICY ${s.run_s.toFixed(1)} s` + (s.stage ? ` · ${s.stage.toUpperCase()}${s.retries ? " · retry " + s.retries : ""}` : "");
+  $("noterow").style.display = ph === "judging" ? "flex" : "none";
+
+  const st = $("readystatus"); st.className = "status " + (s.at_ready ? "ok" : "no"); $("readytext").textContent = s.at_ready ? "At the ready pose" : "Not at the ready pose";
+  $("joints").innerHTML = s.ready.map(j => `<tr class="${Math.abs(j.off) <= j.tol ? "ok" : "no"}"><td>${j.name}</td><td class="num val">${(j.off > 0 ? "+" : "") + j.off.toFixed(1)}</td><td class="num">±${j.tol}</td><td class="state">${Math.abs(j.off) <= j.tol ? "ok" : "move"}</td></tr>`).join("");
+
+  let b = "";
+  if (ph === "idle") b = (s.at_ready ? B(C("run"), "Run the policy", "next", "Space") : B(C("go_ready"), "Arm to ready pose", "next", "H")) + (s.at_ready ? B(C("go_ready"), "Arm to ready pose", "", "H") : "");
+  if (ph === "running" || ph === "homing" || ph === "pointing") b = B(C("stop"), "Stop and hold", "danger", "Space");
+  if (ph === "judging") b = B(verdict("success"), "Success", "next", "1") + B(verdict("partial"), "Partial", "confirm", "2") + B(verdict("fail"), "Fail", "danger", "3") + B(C("go_ready"), "Skip, arm to ready", "", "H");
+  const key = ph + s.at_ready + !!s.checkpoint; if (key !== lastBtns) { $("btns").innerHTML = b; lastBtns = key; }
+
+  $("setup").textContent = "Same board for every trial: " + s.setup + ". After each trial put the moved piece back.";
+  const tk = JSON.stringify([s.trial, s.trials.map(t => t.outcome)]);
+  if (tk !== lastTrials) {
+    $("trials").innerHTML = s.trials.map((t, i) => `<tr class="${i === s.trial ? "now" : ""}" onclick="cmd('select:${i}')"><td>${t.i}</td><td>${t.task}</td><td class="cat">${CAT[t.category]}</td><td class="n" title="times this exact task is in the training data">×${t.train_count}</td><td class="res ${t.outcome || ""}">${t.outcome || ""}</td></tr>`).join("");
+    lastTrials = tk;
+  }
+  $("summary").innerHTML = s.summary.map(r => `<tr><td>${r.checkpoint}</td><td>${r.n}</td><td>${r.success}</td><td>${r.partial}</td><td>${r.fail}</td><td>${r.common}</td><td>${r.drill_squares}</td><td>${r.new_combination}</td><td>${r.capture}</td></tr>`).join("") || `<tr><td colspan="9" class="note">No trials yet.</td></tr>`;
+}
+async function poll() {
+  try { render(await (await fetch("/state")).json()); }
+  catch (e) { $("err").className = "msg err"; $("err").textContent = "Lost contact with the player. Is the Terminal window still open?"; }
+  setTimeout(poll, 150);
+}
+poll();
+document.querySelector("#cam img").addEventListener("click", e => {
+  if (!S || !S.calib) return;
+  const r = e.target.getBoundingClientRect();
+  cmd(`calib_click:${((e.clientX - r.left) / r.width).toFixed(4)},${((e.clientY - r.top) / r.height).toFixed(4)}`);
+});
+document.addEventListener("keydown", e => {
+  const isNudge = ["arrowdown", "arrowup", "arrowleft", "arrowright", "q", "e"].includes(e.key.toLowerCase());
+  if (!S || (e.repeat && !isNudge) || e.metaKey || e.ctrlKey || e.target.tagName === "INPUT") return;
+  const quick = isNudge || ["s", "w"].includes(e.key.toLowerCase());   // S / W: every press counts, but holding doesn't repeat
+  const now = Date.now(); if (!quick && now - (window._k || 0) < 500) return; if (!quick) window._k = now;
+  const k = e.key.toLowerCase();
+  if (k === " ") { e.preventDefault(); if (S.phase === "idle" && S.at_ready) cmd("run"); else if (["running", "homing", "pointing"].includes(S.phase)) cmd("stop"); }
+  else if (k === "h" && (S.phase === "idle" || S.phase === "judging")) cmd("go_ready");
+  else if (k === "g") cmd("grid");
+  else if (k === "p" && S.phase === "idle") { const L = S.point_squares; cmd("point:" + L[(L.indexOf(S.pointed) + 1) % L.length]); }
+  else if (k === "c" && S.phase === "idle" && S.pointed) cmd("centred");
+  else if ((k === "s" || k === "w") && S.pointed && (S.phase === "idle" || S.phase === "pointing")) cmd((k === "s" ? "lower" : "raise") + (e.shiftKey ? ":5" : ""));
+  else if (isNudge && (S.phase === "idle" || S.phase === "judging" || (S.phase === "pointing" && S.pointed))) {
+    e.preventDefault(); cmd("nudge:" + {arrowdown: "near", arrowup: "far", arrowleft: "h", arrowright: "a", q: "ccw", e: "cw"}[k]);
+  }
+  else if (S.phase === "judging" && "123".includes(k)) cmd("verdict:" + ["success", "partial", "fail"][+k - 1] + "|" + $("note").value);
+});
+</script>
+</body>
+</html>
